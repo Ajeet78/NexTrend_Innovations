@@ -1,0 +1,46 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #eee; /* Light text */
+}
+
+.dark-mode .top-nav {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .logo a,
+.dark-mode .menu-items a {
+    color: #fff;
+
+}
+
+.dark-mode .menu-items a:hover {
+    color: #121212;
+    background-color: #130d0d;
+}
+
+.dark-mode .cta-button {
+    background-color: #0056b3; /* Adjust button color for dark mode */
+}
+
+.dark-mode .cta-button:hover {
+    background-color: #007bff;
+}
+.dark-mode .hamburger-menu span {
+    background-color: #eee;
+}
+
+.dark-mode footer {
+    background-color: #1e1e1e;
+    color: #eee;
+}
+
+.dark-mode .newsletter input[type="email"]{
+    border: 1px solid #555;
+}
+.dark-mode .social-media a, .dark-mode .quick-links a{
+    color: #eee;
+}
+.dark-mode .social-media a:hover, .dark-mode .quick-links a:hover{
+     color: #007bff;
+}

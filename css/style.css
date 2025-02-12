@@ -1,0 +1,266 @@
+/* General Styles (Minor Tweaks) */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    /* Add a small amount of padding to the body for mobile */
+    padding: 0.5rem;
+    /* Fade-in animation on page load */
+    animation: fadeIn 1s ease-out;
+}
+
+/* Keyframes for fadeIn animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Top Navigation */
+.top-nav {
+    /* Subtle gradient background for a professional look */
+    background: linear-gradient(90deg, #f8f8f8, #eaeaea);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.menu-items {
+    display: flex;
+    gap: 1rem;
+}
+
+.menu-items a {
+    color: #333;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: color 0.3s, background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
+}
+
+.menu-items a:hover {
+    color: #fff;
+    background-color: #333;
+    /* Slight lift effect on hover */
+    transform: translateY(-3px);
+}
+
+.cta-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    /* Make the CTA button a bit larger on mobile */
+    font-size: 1rem;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    /* Scale up for a subtle pop effect */
+    transform: scale(1.05);
+}
+
+/* Hamburger Menu (for mobile) */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 1.5rem;
+    padding: 0;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 100%;
+    height: 4px; /* Thicker lines for a modern look */
+    background-color: #333;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Transform hamburger into a cross when active */
+.hamburger-menu.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Footer */
+footer {
+    /* Gradient background adds depth */
+    background: linear-gradient(45deg, #333, #555);
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.footer-content div {
+    text-align: left;
+}
+
+.social-media a {
+    color: #fff;
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-media a:hover {
+    color: #007bff;
+}
+
+.newsletter form {
+    display: flex;
+    align-items: center;
+    /* Make the newsletter form full-width on mobile */
+    width: 100%;
+}
+
+.newsletter input[type="email"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+    /* Make the input take up most of the space */
+    flex-grow: 1;
+}
+
+.newsletter button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.newsletter button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.quick-links a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.25rem 0;
+    transition: color 0.3s;
+}
+
+.quick-links a:hover {
+    color: #007bff;
+}
+
+.dark-mode-toggle {
+    margin-top: 1rem;
+}
+
+/* Responsive Design (Mobile First Enhancements) */
+@media (max-width: 768px) {
+    .menu-items {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        background-color: #f8f8f8;
+        /* Add padding to the top and bottom of the expanded menu */
+        padding: 1rem 0;
+    }
+    .menu-items.active {
+        display: flex;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+    .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        /* Add padding to the top-nav on mobile */
+        padding: 0.5rem;
+    }
+    .logo {
+        margin-bottom: 0.5rem;
+        /* Center the logo on mobile */
+        width: 100%;
+        text-align: center;
+    }
+
+    .cta-button {
+        margin-top: 0.5rem;
+        /* Make the CTA button full-width on mobile */
+        width: 100%;
+    }
+
+    /* Footer adjustments for mobile */
+    .footer-content {
+        /* Stack footer sections vertically on mobile */
+        grid-template-columns: 1fr;
+        gap: 1rem; /* Reduce the gap */
+    }
+
+    .footer-content div {
+        text-align: center; /* Center footer content on mobile */
+    }
+    
+    /* Adjust newsletter form on mobile */
+    .newsletter form {
+        flex-direction: column; /* Stack input and button */
+    }
+    .newsletter input[type="email"] {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 0.5rem; /* Add bottom margin */
+        width: 100%; /* Full width */
+    }
+    .newsletter button {
+        width: 100%;
+    }
+}
+
+/* Slightly larger screens (tablets, etc.) - Optional but good practice */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+    }
+}
