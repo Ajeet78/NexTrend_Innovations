@@ -347,8 +347,8 @@ footer {
 }
 
 .newsletter button {
-    background-color: #64b5f6; /* Accent color for button */
-    color: #232f3e; /* Dark text for button */
+    background-color: #2560ff; /* Accent color for button */
+    color: #ffffff; /* Dark text for button */
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -359,7 +359,8 @@ footer {
 }
 
 .newsletter button:hover {
-    background-color: #42a5f5; /* Lighter accent color on hover */
+    background-color: #ffffff; /* Lighter accent color on hover */
+    color: #2560ff;
 }
 
 .footer-bottom {
@@ -458,7 +459,7 @@ footer {
         }
     
         .newsletter button {
-            width: 50%;
+            width: 80%;
         }
           /* Remove staggering on mobile */
         .footer-content div:nth-child(n) {
