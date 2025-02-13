@@ -76,7 +76,7 @@ body {
     position: relative; /*  for positioning */
     animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s;
     opacity: 0;
-    border-bottom: 1px solid #e0e0e0; /* Add the divider */
+    border-bottom: 1px solid #b5b5b5; /* Add the divider */
 }
 
 .top-nav-wrapper.fixed {
@@ -249,172 +249,146 @@ body {
 
 /* ----- Footer ----- */
 footer {
-    background-color: #1c1b29;
-    color: #e0e0e0;
-    padding: 3rem 0;
-    text-align: center;
+    background-color: #232f3e;
+    color: #fff;
+    padding: 40px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center; /* Center align text by default */
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    justify-items: center;
-    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Distribute sections evenly */
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-.footer-content div {
-    text-align: left;
-    animation: slideInLeft 0.8s ease-out forwards;
-    opacity: 0;
+.footer-section {
+    width: 45%; /* Take up almost half the width */
+    margin-bottom: 20px;
+    text-align: left; /* Align text to the left within sections */
 }
 
-.footer-content div:nth-child(n) {
-    animation-delay: calc(0.6s + 0.2s * (n - 1)); /*  staggering */
+/* Responsive adjustments for footer sections */
+@media (max-width: 768px) {
+    .footer-section {
+        width: 100%; /* Full width on smaller screens */
+        text-align: center; /* Center align text on smaller screens */
+    }
+}
+
+.footer-heading {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center; /* Center the heading */
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    text-align: justify; /* Justify the text */
+}
+
+.contact-info a {
+    color: #fff; /* Make email and phone text white */
+    text-decoration: none; /* Remove underline */
+}
+
+.contact-info i {
+    color: #64b5f6; /* A subtle accent color for icons */
+    margin-right: 5px;
 }
 
 .social-media a {
-    color: #e0e0e0;
-    margin: 0 0.7rem;
-    font-size: 1.4rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.8rem;
-    height: 2.8rem;
-    border-radius: 50%;
-    transition: all 0.4s ease;
-    background-color: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    font-size: 1.4em;
+    color: #fff;
+    transition: color 0.3s ease;
 }
 
 .social-media a:hover {
-    color: #6200ee;
-    background-color: rgba(98, 0, 238, 0.2);
-    transform: scale(1.15);
+    color: #64b5f6; /* Hover color */
 }
 
-.newsletter form {
-    display: flex;
-    align-items: center;
-    width: 100%;
+.quick-links ul {
+    list-style: none;
+    padding: 0;
 }
 
-.newsletter input[type="email"] {
-    padding: 0.8rem 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 24px;
-    margin-right: 1rem;
-    flex-grow: 1;
-    transition: border-color 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #3d3d3d;
-    font-size: 1rem;
-}
-
-.newsletter input[type="email"]:focus {
-    border-color: #00ABE4;
-    outline: none;
-}
-
-.newsletter button {
-    padding: 0.8rem 1.8rem;
-    border: none;
-    border-radius: 24px;
-    cursor: pointer;
-    background-color: #1877f2;
-    color: #f0f4ff;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    font-size: 1rem;
-}
-
-.newsletter button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255,255,255,0) 60%);
-    border-radius: 50%;
-    transition: transform 0.5s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s ease;
-    z-index: -1;
-    opacity: 0;
-}
-
-.newsletter button:hover::before {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.newsletter button:hover {
-    background-color: #ede3ff;
-    color: #1877f2;
-    transform: translateY(-1px);
+.quick-links li {
+    margin-bottom: 8px;
 }
 
 .quick-links a {
-    display: block;
-    color: #e0e0e0;
+    color: #ddd;
     text-decoration: none;
-    padding: 0.5rem 0;
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: color 0.3s ease;
 }
 
 .quick-links a:hover {
-    color: #6200ee;
-    transform: translateX(8px);
+    color: #fff;
 }
 
+.newsletter input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #37474f; /* Darker input background */
+    color: #fff;
+}
+
+.newsletter button {
+    background-color: #64b5f6; /* Accent color for button */
+    color: #232f3e; /* Dark text for button */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase; /* Optional: Makes button text uppercase */
+}
+
+.newsletter button:hover {
+    background-color: #42a5f5; /* Lighter accent color on hover */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #37474f;
+    margin-top: 20px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* Dark Mode Toggle (adjust colors as needed) */
 .dark-mode-toggle {
-    margin-top: 2.5rem;
-    animation: scaleUp 0.8s ease-out forwards;
-    animation-delay: 1.4s;
-    opacity: 0;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .dark-mode-toggle button {
-    padding: 0.8rem 1.8rem;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    background-color: #6200ee;
+    background-color: #333;
     color: #fff;
-    font-weight: 500;
-    transition: background-color 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    font-size: 1rem;
-}
-
-.dark-mode-toggle button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 50%;
-    transition: transform 0.5s ease, opacity 0.4s ease;
-    z-index: -1;
-    opacity: 0;
-}
-
-.dark-mode-toggle button:hover::before,
-.dark-mode-toggle button:focus::before {
-    transform: translate(-50%, -50%) scale(2.5); /*  Combined Hover and Focus */
-    opacity: 1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .dark-mode-toggle button:hover {
-    background-color: #3700b3;
+    background-color: #555;
 }
 
 /* ----- Responsive Design ----- */
@@ -484,7 +458,7 @@ footer {
         }
     
         .newsletter button {
-            width: 100%;
+            width: 50%;
         }
           /* Remove staggering on mobile */
         .footer-content div:nth-child(n) {
