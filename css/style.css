@@ -544,7 +544,7 @@ footer {
         border-radius: 12px;
         background-color: #fff;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */ /*box shadow*/
     }
     
     .service-item:hover {
