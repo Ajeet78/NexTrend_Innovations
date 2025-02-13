@@ -136,3 +136,42 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 });
+
+
+
+
+// ---  Load Page-specific Content ---
+// --- Carousel Logic (Basic Example) ---
+const carousel = document.querySelector('.projects-carousel');
+const prevButton = document.querySelector('.prev-button');
+const nextButton = document.querySelector('.next-button');
+
+if (carousel && prevButton && nextButton) { // Make sure elements exist
+    let currentIndex = 0;
+    const projectItems = carousel.querySelectorAll('.project-item');
+    const numItems = projectItems.length;
+    const itemWidth = projectItems[0].offsetWidth; //Assumes all same size
+    const itemMarginRight = parseInt(window.getComputedStyle(projectItems[0]).marginRight); // Get marginRight
+    const itemFullWidth = itemWidth + itemMarginRight;
+
+
+
+    function updateCarousel() {
+        //Use translate for best performance.
+        carousel.style.transform = `translateX(-${currentIndex * itemFullWidth}px)`;
+
+    }
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = Math.max(0, currentIndex - 1); // Prevent going before first
+        updateCarousel();
+    });
+
+    nextButton.addEventListener('click', () => {
+         currentIndex = Math.min(numItems - 1, currentIndex + 1); // Prevent going past last item (if not looping)
+        // OR, for infinite loop:
+        // currentIndex = (currentIndex + 1) % numItems;
+
+        updateCarousel();
+    });
+}

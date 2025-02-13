@@ -6,16 +6,129 @@
     <title>Your Website Name</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dark-mode.css" id="dark-mode-stylesheet" disabled>
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div id="header-placeholder"></div>
+     <!-- <div id="nav-placeholder"></div> -->
 
     <main>
-        <h1>Welcome to Our Website</h1>
-         <p>This is the Home page.</p>
+        <section class="hero reveal">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-headline">Building Digital Experiences That Transform Businesses</h1>
+                    <p class="hero-subheadline">We create innovative web and mobile solutions that drive growth and engagement.</p>
+                    <a href="#" class="cta-button hero-cta">Get Started</a>
+                </div>
+                <div class="hero-visual">
+                    <img src="placeholder-image.jpg" alt="Hero Visual" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="services-snapshot reveal">
+            <div class="container">
+                <h2 class="section-title">Our Key Services</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-code service-icon"></i>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-description">Crafting responsive and performant websites.</p>
+                        <a href="services.html" class="service-link">Learn More</a>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-mobile-alt service-icon"></i>
+                        <h3 class="service-title">App Development</h3>
+                        <p class="service-description">Building native iOS and Android applications.</p>
+                        <a href="services.html" class="service-link">Learn More</a>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-paint-brush service-icon"></i>
+                        <h3 class="service-title">UI/UX Design</h3>
+                        <p class="service-description">Designing intuitive and user-friendly interfaces.</p>
+                        <a href="services.html" class="service-link">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-projects reveal">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-carousel">
+                    <div class="project-item">
+                        <img src="project-placeholder1.jpg" alt="Project 1" class="project-image">
+                        <h3 class="project-title">Project Title 1</h3>
+                        <p class="project-excerpt">Short description of the project.</p>
+                        <a href="portfolio.html" class="project-link">View Case Study</a>
+                    </div>
+                    <div class="project-item">
+                        <img src="project-placeholder2.jpg" alt="Project 2" class="project-image">
+                        <h3 class="project-title">Project Title 2</h3>
+                        <p class="project-excerpt">Short description of the project.</p>
+                         <a href="portfolio.html" class="project-link">View Case Study</a>
+                    </div>
+                    <div class="project-item">
+                        <img src="project-placeholder3.jpg" alt="Project 3" class="project-image">
+                        <h3 class="project-title">Project Title 3</h3>
+                        <p class="project-excerpt">Short description of the project.</p>
+                         <a href="portfolio.html" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+                 <div class="carousel-controls">
+                        <button class="prev-button" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next-button" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+                 </div>
+            </div>
+        </section>
+
+        <section class="testimonials reveal">
+            <div class="container">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-item">
+                        <p class="testimonial-quote">"Their work exceeded our expectations.  Highly recommended!"</p>
+                        <p class="testimonial-author">- Client Name, Company</p>
+                    </div>
+                    <div class="testimonial-item">
+                       <p class="testimonial-quote">"Their work exceeded our expectations.  Highly recommended!"</p>
+                        <p class="testimonial-author">- Client Name, Company</p>
+                    </div>
+                     </div>
+                     <div class="client-logos">
+                        <img src="client-logo1.png" alt="Client Logo 1" class="client-logo">
+                        <img src="client-logo2.png" alt="Client Logo 2" class="client-logo">
+                        <img src="client-logo3.png" alt="Client Logo 3" class="client-logo">
+                     </div>
+
+            </div>
+        </section>
+
+        <section class="blog-teaser reveal">
+            <div class="container">
+                <h2 class="section-title">Latest Insights</h2>
+                <div class="blog-posts">
+                    <div class="blog-post">
+                        <img src="blog-post1.jpg" alt="Blog Post 1" class="blog-post-image">
+                        <h3 class="blog-post-title">Blog Post Title 1</h3>
+                         <p class="blog-post-excerpt">Short description of the Blog post.</p>
+                        <a href="blog.html" class="blog-post-link">Read More</a>
+                    </div>
+                    <div class="blog-post">
+                         <img src="blog-post2.jpg" alt="Blog Post 2" class="blog-post-image">
+                        <h3 class="blog-post-title">Blog Post Title 2</h3>
+                         <p class="blog-post-excerpt">Short description of the Blog post.</p>
+                        <a href="blog.html" class="blog-post-link">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <div id="footer-placeholder"></div>
-</body>
+    <script src="js/script.js" defer></script>
+    </body>
 </html>

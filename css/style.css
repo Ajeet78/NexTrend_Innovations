@@ -1,266 +1,867 @@
-/* General Styles (Minor Tweaks) */
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #fff;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s;
-    /* Add a small amount of padding to the body for mobile */
-    padding: 0.5rem;
-    /* Fade-in animation on page load */
-    animation: fadeIn 1s ease-out;
+    background-color: #f0f4ff;
+    color: #3d3d3d;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
+    /* animation: fadeIn 1s ease-out;  Removed to avoid conflict */
 }
 
-/* Keyframes for fadeIn animation */
+/* Keyframes (Keep all keyframes) */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Top Navigation */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes subtleRotate {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(10deg); }
+}
+
+/* ----- Container ----- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ----- Top Navigation (Sticky) ----- */
+.top-nav-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff; /* Solid background *on the wrapper* */
+    transition: box-shadow 0.3s ease, padding 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Initial subtle shadow */
+}
+
+/* for fixed navbar*/
+.top-nav.animate-fade-in-up {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+
 .top-nav {
-    /* Subtle gradient background for a professional look */
-    background: linear-gradient(90deg, #f8f8f8, #eaeaea);
-    padding: 1rem;
+    /* Keep background and box-shadow on .top-nav itself */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.2rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    animation: fadeIn 1.2s ease-out;
+    position: relative; /* Important for positioning, keep this */
+    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s;
+    opacity: 0;
 }
 
+/* Sticky Class (Added by JavaScript) */
+.top-nav-wrapper.sticky {
+    padding-top: 0.5rem;  /* Reduce padding when sticky */
+    padding-bottom: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow when sticky */
+}
+
+/* ... (Rest of your navigation styles, logo, menu-items, cta-button, hamburger-menu - NO CHANGES NEEDED HERE) ... */
 .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #6200ee;
     text-decoration: none;
+   transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.logo a:hover {
+    color: #3700b3;
+    transform: scale(1.03);
 }
 
 .menu-items {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+    transform: translateY(15px);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
 
+/*Staggered animation*/
+.menu-items.animate-menu-items {
+     transform: translateY(0);
+     opacity: 1;
+}
+
+.menu-items.animate-menu-items a:nth-child(1){ transition-delay: 0.1s;}
+.menu-items.animate-menu-items a:nth-child(2){ transition-delay: 0.2s;}
+.menu-items.animate-menu-items a:nth-child(3){ transition-delay: 0.3s;}
+.menu-items.animate-menu-items a:nth-child(4){ transition-delay: 0.4s;}
+.menu-items.animate-menu-items a:nth-child(5){ transition-delay: 0.5s;}
+.menu-items.animate-menu-items a:nth-child(6){ transition-delay: 0.6s;}
+.menu-items.animate-menu-items a:nth-child(7){ transition-delay: 0.7s;}
+
 .menu-items a {
-    color: #333;
+    color: #424242;
     text-decoration: none;
-    padding: 0.5rem;
-    transition: color 0.3s, background-color 0.3s, transform 0.3s;
-    border-radius: 5px;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    transform-style: preserve-3d;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease, background-color 0.3s ease;
 }
 
 .menu-items a:hover {
-    color: #fff;
-    background-color: #333;
-    /* Slight lift effect on hover */
-    transform: translateY(-3px);
+    animation: subtleRotate 0.4s ease forwards;
+    color: #6200ee;
+}
+.menu-items a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     background-color: rgba(98, 0, 238, 0.15); /* More vibrant hover effect */
+    border-radius: 24px;
+    z-index: -1;
+    transform: scaleX(0); /* Start with 0 width */
+    transform-origin: right; /* Transform from the right */
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1); /* Material 3 easing */
 }
 
+.menu-items a:hover::before,
+.menu-items a:focus::before {
+    transform: scaleX(1); /* Expand to full width on hover/focus */
+    transform-origin: left; /* Transform from the left */
+}
 .cta-button {
-    background-color: #007bff;
+   background-color: #6200ee;
     color: #fff;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.5rem; /* Increased padding */
     border: none;
-    border-radius: 5px;
+    border-radius: 24px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    /* Make the CTA button a bit larger on mobile */
-    font-size: 1rem;
+    font-size: 1.1rem; /* Slightly larger font */
+    font-weight: 500;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease; /* Transition all properties */
+      /* Initial state for animation */
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s cubic-bezier(0.2, 0, 0, 1), background-color 0.3s, box-shadow 0.3s;
+}
+
+/*Animate*/
+.cta-button.animate-cta-button{
+    transform: scale(1);
+    opacity: 1;
+}
+
+.cta-button::before {
+     content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%); /* Radial gradient for ripple */
+    border-radius: 24px;
+    z-index: -1;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.4s ease, transform 0.5s ease;
+}
+
+.cta-button:hover::before {
+   opacity: 1;
+    transform: scale(1.5); /* Enlarge the ripple */
 }
 
 .cta-button:hover {
-    background-color: #0056b3;
-    /* Scale up for a subtle pop effect */
-    transform: scale(1.05);
-}
-
-/* Hamburger Menu (for mobile) */
-.hamburger-menu {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 2rem;
-    height: 1.5rem;
-    padding: 0;
-}
-
-.hamburger-menu span {
-    display: block;
-    width: 100%;
-    height: 4px; /* Thicker lines for a modern look */
-    background-color: #333;
-    transition: transform 0.3s, opacity 0.3s;
-}
-
-/* Transform hamburger into a cross when active */
-.hamburger-menu.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger-menu.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Footer */
-footer {
-    /* Gradient background adds depth */
-    background: linear-gradient(45deg, #333, #555);
-    color: #fff;
-    padding: 2rem;
-    text-align: center;
-    animation: fadeIn 1.5s ease-out;
-}
-
-.footer-content {
+     background-color: #3700b3;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+     transform: translateY(-2px); /* Slight lift */
+ }
+ 
+ .cta-button:active {
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+     transform: translateY(0); /* Reset transform on click */
+ }
+ /* Hamburger Menu (for mobile) */
+ .hamburger-menu {
+     display: none;
+     background: none;
+     border: none;
+     cursor: pointer;
+     flex-direction: column;
+     justify-content: space-around;
+      width: 2.4rem; /* Larger hamburger */
+     height: 1.9rem;
+     padding: 0;
+     position: relative;
+       /* Initial state for animation */
+     transform: scale(0.9);
+     opacity: 0;
+     transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s cubic-bezier(0.2, 0, 0, 1);
+ }
+ 
+ /* Animation Hamburger */
+ .hamburger-menu.animate-hamburger-menu{
+    transform: scale(1);
+    opacity: 1;
+ }
+ 
+ .hamburger-menu span {
+     display: block;
+     width: 100%;
+      height: 3.5px; /* Thicker lines */
+     background-color: #424242;
+     transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s;
+     border-radius: 4px; /* More rounded lines */
+ }
+ 
+ /* Active state for hamburger (transforms into an X) */
+ .hamburger-menu.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg); /* More precise positioning */
+ }
+ 
+ .hamburger-menu.active span:nth-child(2) {
+     opacity: 0;
+ }
+ 
+ .hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); /* More precise positioning */
+ }
+ /* Footer */
+ footer {
+      background-color: #1c1b29;  /*Darker background*/
+     color: #e0e0e0; /* Lighter text */
+     padding: 3rem 0; /* Padding only top/bottom */
+     text-align: center;
+      /* Removed initial opacity: 0; */
+ }
+ 
+ 
+ .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    justify-items: center;
-}
-
-.footer-content div {
-    text-align: left;
-}
-
-.social-media a {
-    color: #fff;
-    margin: 0 0.5rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.social-media a:hover {
-    color: #007bff;
-}
-
-.newsletter form {
-    display: flex;
-    align-items: center;
-    /* Make the newsletter form full-width on mobile */
-    width: 100%;
-}
-
-.newsletter input[type="email"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 0.5rem;
-    /* Make the input take up most of the space */
-    flex-grow: 1;
-}
-
-.newsletter button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.newsletter button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-.quick-links a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    padding: 0.25rem 0;
-    transition: color 0.3s;
-}
-
-.quick-links a:hover {
-    color: #007bff;
-}
-
-.dark-mode-toggle {
-    margin-top: 1rem;
-}
-
-/* Responsive Design (Mobile First Enhancements) */
-@media (max-width: 768px) {
-    .menu-items {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        text-align: center;
-        background-color: #f8f8f8;
-        /* Add padding to the top and bottom of the expanded menu */
-        padding: 1rem 0;
-    }
-    .menu-items.active {
-        display: flex;
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-    .top-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        /* Add padding to the top-nav on mobile */
-        padding: 0.5rem;
-    }
-    .logo {
-        margin-bottom: 0.5rem;
-        /* Center the logo on mobile */
-        width: 100%;
-        text-align: center;
-    }
-
-    .cta-button {
-        margin-top: 0.5rem;
-        /* Make the CTA button full-width on mobile */
-        width: 100%;
-    }
-
-    /* Footer adjustments for mobile */
-    .footer-content {
-        /* Stack footer sections vertically on mobile */
-        grid-template-columns: 1fr;
-        gap: 1rem; /* Reduce the gap */
-    }
-
-    .footer-content div {
-        text-align: center; /* Center footer content on mobile */
-    }
-    
-    /* Adjust newsletter form on mobile */
-    .newsletter form {
-        flex-direction: column; /* Stack input and button */
-    }
-    .newsletter input[type="email"] {
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: 0.5rem; /* Add bottom margin */
-        width: 100%; /* Full width */
-    }
-    .newsletter button {
-        width: 100%;
-    }
-}
-
-/* Slightly larger screens (tablets, etc.) - Optional but good practice */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
-    }
-}
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly wider columns */
+     gap: 2.5rem; /* Increased gap */
+     justify-items: center;
+     /* Add container for consistent spacing */
+     width: 90%;
+     max-width: 1200px;
+     margin: 0 auto;
+ }
+ 
+ .footer-content div {
+      text-align: left;
+       animation: slideInLeft 0.8s ease-out forwards; /* Apply slideInLeft */
+     opacity: 0; /* Start hidden for animation */
+ }
+ 
+ /* Staggered animation for footer sections */
+ .footer-content div:nth-child(1) { animation-delay: 0.6s; }
+ .footer-content div:nth-child(2) { animation-delay: 0.8s; }
+ .footer-content div:nth-child(3) { animation-delay: 1s; }
+ .footer-content div:nth-child(4) { animation-delay: 1.2s; }
+ 
+ .social-media a {
+     color: #e0e0e0;
+     margin: 0 0.7rem; /* Increased spacing */
+     font-size: 1.4rem;
+     text-decoration: none;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+      width: 2.8rem; /* Larger icons */
+     height: 2.8rem;
+     border-radius: 50%;
+     transition: all 0.4s ease; /* Transition all properties */
+      background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+ }
+ 
+ .social-media a:hover {
+      color: #6200ee;
+     background-color: rgba(98, 0, 238, 0.2); /* More vibrant hover effect */
+     transform: scale(1.15); /* Enlarge on hover */
+ }
+ 
+ .newsletter form {
+     display: flex;
+     align-items: center;
+     width: 100%;
+ }
+ 
+ .newsletter input[type="email"] {
+     padding: 0.8rem 1.2rem; /* Increased padding */
+     border: 1px solid #ccc;
+     border-radius: 24px;
+     margin-right: 1rem;
+     flex-grow: 1;
+     transition: border-color 0.3s ease;
+     background-color: rgba(255, 255, 255, 0.1);
+     color: #3d3d3d;
+     font-size: 1rem;
+ }
+ 
+ .newsletter input[type="email"]:focus {
+    border-color: #00ABE4;
+     outline: none;
+ }
+ 
+ .newsletter button {
+    padding: 0.8rem 1.8rem;
+     border: none;
+     border-radius: 24px;
+     cursor: pointer;
+     background-color: #3D52A0;
+     color: #fff;
+     font-weight: 500;
+     transition: all 0.3s ease;
+     position: relative;
+     overflow: hidden;
+     font-size: 1rem;
+ }
+ 
+ .newsletter button::before {
+     content: '';
+     position: absolute;
+     top: 50%;
+     left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+     width: 120%; /* Slightly larger */
+     height: 120%;
+     background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%); /* More subtle ripple */
+     border-radius: 50%;
+     transition: transform 0.5s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s ease;
+     z-index: -1;
+     opacity: 0;
+ }
+ 
+ .newsletter button:hover::before {
+    opacity: 1;
+     transform: translate(-50%, -50%) scale(1); /* Scale up from the center */
+ }
+ 
+ .newsletter button:hover {
+    background-color: #3700b3;
+     transform: translateY(-1px);
+ }
+ 
+ .quick-links a {
+     display: block;
+     color: #e0e0e0;
+     text-decoration: none;
+    padding: 0.5rem 0; /* Increased padding */
+     transition: color 0.3s ease, transform 0.2s ease; /* Faster transform */
+ }
+ 
+ .quick-links a:hover {
+     color: #6200ee;
+      transform: translateX(8px); /* More noticeable indent */
+ }
+ 
+ .dark-mode-toggle {
+     margin-top: 2.5rem; /* More margin */
+       animation: scaleUp 0.8s ease-out forwards; /* Apply scaleUp to the button */
+     animation-delay: 1.4s; /* Delay the animation */
+     opacity: 0;
+ }
+ 
+ .dark-mode-toggle button {
+     padding: 0.8rem 1.8rem;
+     border: none;
+     border-radius: 25px;
+     cursor: pointer;
+     background-color: #6200ee;
+     color: #fff;
+     font-weight: 500;
+     transition: background-color 0.4s ease;
+     position: relative;
+     overflow: hidden;
+     font-size: 1rem;
+ }
+ 
+ .dark-mode-toggle button::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%); /* Radial gradient for ripple */
+     border-radius: 50%;
+     transition: transform 0.5s ease, opacity 0.4s ease;
+     z-index: -1;
+         opacity: 0;
+ }
+ .dark-mode-toggle button:hover::before,
+ .dark-mode-toggle button:focus::before {
+    transform: translate(-50%, -50%) scale(2.5); /* Grow on hover/focus */
+     opacity: 1; /* Fade out */
+ }
+ 
+ .dark-mode-toggle button:hover {
+     background-color: #3700b3;
+ }
+ 
+ /* Responsive Design (Mobile First Enhancements) */
+ @media (max-width: 768px) {
+     .container {
+         padding: 0 1rem;
+     }
+ 
+     .menu-items {
+         display: none;
+         width: 100%;
+         flex-direction: column;
+         text-align: center;
+         background-color: #fff;
+         padding: 1.5rem 0;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+         transform: translateY(-15px);
+         opacity: 0;
+         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+     }
+      /* Mobile Menu Animation */
+     .menu-items.active {
+         display: flex;
+         transform: translateY(0);
+         opacity: 1;
+     }
+ 
+     .hamburger-menu {
+         display: flex;
+          animation: scaleUp 0.6s ease-out forwards; /* Apply scaleUp */
+     }
+ 
+     .top-nav {
+         flex-direction: column;
+         align-items: flex-start;
+         padding: 1rem 0;
+     }
+ 
+     .logo {
+         margin-bottom: 1rem;
+         width: 100%;
+         text-align: center;
+     }
+ 
+     .cta-button {
+         margin-top: 1rem;
+         width: 100%;
+         animation: scaleUp 0.6s ease-out forwards; /* Apply scaleUp */
+     }
+ 
+     .footer-content {
+         grid-template-columns: 1fr;
+         gap: 2rem;
+     }
+ 
+     .footer-content div {
+         text-align: center;
+     }
+ 
+     .newsletter form {
+         flex-direction: column;
+     }
+ 
+     .newsletter input[type="email"] {
+         margin-right: 0;
+         margin-bottom: 1rem;
+         width: 100%;
+     }
+ 
+     .newsletter button {
+         width: 100%;
+     }
+       /* Staggered animation for footer sections removed on mobile */
+     .footer-content div:nth-child(1) { animation-delay: 0s; }
+     .footer-content div:nth-child(2) { animation-delay: 0s; }
+     .footer-content div:nth-child(3) { animation-delay: 0s; }
+     .footer-content div:nth-child(4) { animation-delay: 0s; }
+ }
+ 
+ @media (min-width: 769px) and (max-width: 1024px) {
+     .footer-content {
+         grid-template-columns: repeat(2, 1fr);
+     }
+ 
+     .menu-items {
+         gap: 1rem;
+     }
+ 
+     .menu-items a {
+         padding: 0.5rem 1rem;
+     }
+ }
+ 
+ /* ----- Hero Section ----- */
+ .hero {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 4rem 0;
+     gap: 2rem;
+ }
+ 
+ .hero-content {
+     flex: 1;
+ }
+ 
+ .hero-headline {
+     font-size: 2.5rem;
+     font-weight: 700;
+     margin-bottom: 1.2rem;
+     line-height: 1.2;
+     color: #424242;
+ }
+ 
+ .hero-subheadline {
+     font-size: 1.3rem;
+     margin-bottom: 2.5rem;
+     color: #616161;
+ }
+ 
+ .hero-visual {
+     flex: 1;
+     text-align: center;
+ }
+ 
+ .hero-image {
+     max-width: 100%;
+     height: auto;
+     border-radius: 12px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .hero-cta {
+     margin-top: 1rem;
+     display: inline-block;
+ }
+ 
+ /* ----- Services Section ----- */
+ .services-snapshot {
+     padding: 5rem 0;
+     background-color: #f5f5f5;
+ }
+ 
+ .services-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     gap: 2.5rem;
+ }
+ 
+ .service-item {
+     text-align: center;
+     padding: 2.5rem;
+     border: 1px solid #e0e0e0;
+     border-radius: 12px;
+     background-color: #fff;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+ }
+ 
+ .service-item:hover {
+     transform: translateY(-8px);
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .service-icon {
+     font-size: 3.5rem;
+     color: #6200ee;
+     margin-bottom: 1.2rem;
+     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Add transition */
+ 
+ }
+ /* Add hover effect for service icons */
+ .service-item:hover .service-icon {
+     transform: scale(1.1) rotate(10deg); /* Scale and rotate on hover */
+ }
+ 
+ .service-title {
+     font-size: 1.6rem;
+     font-weight: 600;
+     margin-bottom: 0.8rem;
+     color: #424242;
+ }
+ 
+ .service-description {
+     color: #616161;
+     margin-bottom: 1.5rem;
+     line-height: 1.5;
+ }
+ 
+ .service-link {
+     color: #6200ee;
+     text-decoration: none;
+     font-weight: 500;
+     display: inline-block;
+     padding: 0.5rem 0;
+     transition: color 0.3s ease, transform 0.3s ease;
+ }
+ 
+ .service-link:hover {
+     text-decoration: underline;
+     transform: translateX(5px);
+ }
+ 
+ /* ----- Featured Projects ----- */
+ .featured-projects {
+     padding: 5rem 0;
+ }
+ 
+ .projects-carousel {
+     display: flex;
+     overflow-x: hidden;
+     gap: 1.5rem;
+     transition: transform 0.5s ease-out;
+ }
+ 
+ .project-item {
+     flex: 0 0 auto;
+     width: 320px;
+     border: 1px solid #e0e0e0;
+     border-radius: 12px;
+     overflow: hidden;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+ }
+ 
+ .project-item:hover {
+     transform: translateY(-8px);
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .project-image {
+     width:100%;
+     height: auto;
+     display: block;
+ }
+ 
+ .project-title {
+     font-size: 1.3rem;
+     font-weight: 600;
+     margin: 1.2rem;
+     color: #424242;
+ }
+ 
+ .project-excerpt {
+     margin: 1.2rem;
+     color: #616161;
+     line-height: 1.4;
+ }
+ 
+ .project-link {
+     display: inline-block;
+     margin: 1.2rem;
+     color: #6200ee;
+     text-decoration: none;
+     font-weight: 500;
+     padding: 0.5rem 0;
+     transition: color 0.3s ease, transform 0.3s ease;
+ }
+ 
+ .project-link:hover {
+     text-decoration: underline;
+     transform: translateX(5px);
+ }
+ 
+ /* Carousel controls */
+ .carousel-controls {
+     text-align: center;
+     margin-top: 1.5rem;
+ }
+ 
+ .carousel-controls button {
+     background: none;
+     border: none;
+     font-size: 2.5rem;
+     color: #6200ee;
+     cursor: pointer;
+     margin: 0 0.8rem;
+     padding: 0;
+     transition: color 0.3s, transform 0.3s;
+ }
+ 
+ .carousel-controls button:hover {
+     color: #3700b3;
+     transform: scale(1.2);
+ }
+ 
+ /* ----- Testimonials ----- */
+ .testimonials {
+     padding: 5rem 0;
+     background-color: #f5f5f5;
+ }
+ 
+ .testimonials-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+     gap: 2.5rem;
+ }
+ 
+ .testimonial-item {
+     border: 1px solid #e0e0e0;
+     padding: 2.5rem;
+     border-radius: 12px;
+     background-color: #fff;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+ }
+ 
+ .testimonial-item:hover {
+     transform: translateY(-8px);
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .testimonial-quote {
+     font-style: italic;
+     color: #555;
+     margin-bottom: 1.2rem;
+     line-height: 1.5;
+ }
+ 
+ .testimonial-author {
+     font-weight: 600;
+     color: #424242;
+ }
+ 
+ .client-logos {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+     gap: 3rem;
+     margin-top: 3rem;
+ }
+ 
+ .client-logo {
+     max-width: 160px;
+     height: auto;
+     opacity: 0.7;
+     filter: grayscale(100%);
+     transition: opacity 0.3s, filter 0.3s;
+ }
+ 
+ .client-logo:hover {
+     opacity: 1;
+     filter: grayscale(0%);
+ }
+ 
+ /* ----- Blog Teaser ----- */
+ .blog-teaser {
+     padding: 5rem 0;
+ }
+ 
+ .blog-posts {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+     gap: 2.5rem;
+ }
+ 
+ .blog-post {
+     border: 1px solid #e0e0e0;
+     border-radius: 12px;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     overflow: hidden;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+ }
+ 
+ .blog-post:hover {
+     transform: translateY(-8px);
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .blog-post-image {
+     width: 100%;
+     height: auto;
+     display: block;
+ }
+ 
+ .blog-post-title {
+     font-size: 1.3rem;
+     font-weight: 600;
+     margin: 1.2rem;
+     color: #424242;
+ }
+ 
+ .blog-post-excerpt {
+     margin: 1.2rem;
+     color: #616161;
+     line-height: 1.5;
+ }
+ 
+ .blog-post-link {
+     display: inline-block;
+     margin: 1.2rem;
+     color: #6200ee;
+     text-decoration: none;
+     font-weight: 500;
+     padding: 0.5rem 0;
+     transition: color 0.3s ease, transform 0.3s ease;
+ }
+ 
+ .blog-post-link:hover {
+     text-decoration: underline;
+     transform: translateX(5px);
+ }
+ 
+ /* ----- Responsive Adjustments ----- */
+ @media (max-width: 768px) {
+ 
+     .hero {
+         flex-direction: column;
+     }
+     .hero-visual{
+       order: -1;
+     }
+ 
+     .carousel-controls button{
+         font-size: 1.5rem;
+     }
+ }
+ 
+ /* Consistent animation timing and easing */
+ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu, .footer-content div, .social-media a, .newsletter input, .newsletter button, .quick-links a,  .dark-mode-toggle button{
+     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ }
+ 
+ /* Apply reveal to sections directly */
+ .reveal {
+     opacity: 0;
+     transform: translateY(30px);
+     transition: opacity 0.6s cubic-bezier(0.2, 0, 0, 1), transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+ }
+ 
+ .reveal.active {
+     opacity: 1;
+     transform: translateY(0);
+ }
+ 
+ /* ----- Dark Mode Styles ----- */
+ /* (Place your dark-mode.css overrides here, as provided in previous responses) */
