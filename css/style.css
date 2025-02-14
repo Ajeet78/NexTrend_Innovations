@@ -481,7 +481,7 @@ footer {
 
     .cta-button {
         margin-top: 1rem;
-        width: 100%;
+        width: auto;
         animation: scaleUp 0.6s ease-out forwards;
     }
 
