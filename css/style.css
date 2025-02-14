@@ -698,19 +698,23 @@ footer {
     line-height: 1.4;
 }
 
+/* ----- Project Link Styles ----- */
 .project-link {
-    display: inline-block;
-    margin: 1.2rem;
-    color: #6200ee;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 0;
-    transition: color 0.3s ease, transform 0.3s ease;
+    /* Core link styling for project links */
+    display: inline-block; /* Makes the link behave like an inline element but allows setting width/height and padding */
+    margin: 1.2rem; /* Adds margin around the link, creating visual spacing */
+    color: #6200ee; /* Sets the default text color of the link */
+    text-decoration: none; /* Removes the default underline from the link */
+    font-weight: 500; /* Sets the font weight to semi-bold */
+    padding: 0.5rem 0; /* Adds padding to the top and bottom of the link */
+    transition: color 0.3s ease, transform 0.3s ease; /* Defines a smooth transition for color and transform properties */
 }
 
+/* ----- Project Link Hover Styles ----- */
 .project-link:hover {
-    text-decoration: underline;
-    transform: translateX(5px);
+    /* Styles applied when the mouse hovers over the project link */
+    text-decoration: underline; /* Adds an underline to the link on hover for visual feedback */
+    transform: translateY(-5px); /* Moves the link 5 pixels to the right on hover */
 }
 
 /* Carousel controls */
