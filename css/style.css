@@ -626,18 +626,28 @@ footer {
     line-height: 1.5;
 }
 
+/* ----- Service Link Styles ----- */
 .service-link {
+    /* Sets the default text color for the service link */
     color: #6200ee;
+    /* Removes the underline from the link */
     text-decoration: none;
+    /* Sets the font weight to semi-bold */
     font-weight: 500;
+    /* Makes the link an inline-block element, allowing padding and margin */
     display: inline-block;
+    /* Adds padding to the top and bottom of the link */
     padding: 0.5rem 0;
+    /* Adds a smooth transition effect for color and transform properties */
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* ----- Service Link Hover Styles ----- */
 .service-link:hover {
+    /* Adds an underline to the link on hover */
     text-decoration: underline;
-    transform: translateX(5px);
+    /* Moves the link 5 pixels to the right on hover */
+    transform: translateY(-5px);
 }
 
 /* ==========================================================================
