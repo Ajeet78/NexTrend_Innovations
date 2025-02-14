@@ -149,6 +149,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    const menuLinks = document.querySelectorAll('.menu-items a');
+
+    menuLinks.forEach(link => {
+        link.addEventListener('mouseenter', function(event) {
+            const rect = this.getBoundingClientRect();
+            const x = event.clientX - rect.left; // X position relative to the element
+            const origin = (x / rect.width) * 100; // Calculate percentage
+
+            this.style.setProperty('--origin-x', `${origin}%`);
+        });
+
+        link.addEventListener('mouseleave', function() {
+            this.style.removeProperty('--origin-x');
+        });
+    });
 });
 
 
