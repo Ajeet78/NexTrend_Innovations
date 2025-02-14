@@ -153,6 +153,11 @@ body {
     transform-origin: left;
 }
 
+.menu-items a.active {
+    background-color: #2560ff;
+    color: #ffffff;
+}
+
 .cta-button {
     background-color: #2560ff;
     color: #fff;

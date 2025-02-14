@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (elementId === 'header-placeholder') {
                     initNavigation();
                     animateHeader(); // Call animation function after header loads
+                    highlightActiveLink(); // Call highlightActiveLink AFTER header is loaded
                 }
                 // FIX: Call initDarkMode() AFTER the footer is loaded!
                 if (elementId === 'footer-placeholder') {
@@ -135,6 +136,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
+
+    function highlightActiveLink() {
+        const path = window.location.pathname.split('/').pop();
+        const navLinks = document.querySelectorAll('.menu-items a');
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === path) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
 });
 
 
