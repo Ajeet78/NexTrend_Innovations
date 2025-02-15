@@ -1517,7 +1517,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .hero-visual {
-    width: 10rem;
+    width: 50rem;
     flex: 1;
     position: relative;
     z-index: 1;
