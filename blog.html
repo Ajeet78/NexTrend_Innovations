@@ -1,19 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title> <link rel="stylesheet" href="css/style.css">
+    <title>Blog - NexTrend Innovations</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dark-mode.css" id="dark-mode-stylesheet" disabled>
     <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
 </head>
+
 <body>
     <div id="header-placeholder"></div>
 
-    <main>
-        <h1>Blog</h1> <p>This is the blog page.</p>
+    <main class="blog-container">
+        <header class="blog-header">
+            <h1>Insights & Resources</h1>
+            <p>Stay updated with the latest trends, case studies, and industry news.</p>
+        </header>
+
+        <section class="search-filter">
+            <input type="text" placeholder="Search articles...">
+        </section>
+
+        <section class="article-listings">
+            <!-- Article 1 -->
+            <div class="blog-post">
+                <img src="images/blog-1.jpg" alt="Article 1">
+                <div class="post-content">
+                    <h2 class="post-title">The Future of Web Development</h2>
+                    <p class="post-snippet">Explore the emerging trends and technologies shaping the future of web
+                        development.</p>
+                    <p class="post-date">Published on February 14, 2025</p>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="blog-post">
+                <img src="images/blog-2.jpg" alt="Article 2">
+                <div class="post-content">
+                    <h2 class="post-title">Mobile App Development Best Practices</h2>
+                    <p class="post-snippet">Learn the best practices for building high-quality and user-friendly mobile
+                        applications.</p>
+                    <p class="post-date">Published on January 28, 2025</p>
+                </div>
+            </div>
+
+            <!-- Add more articles here -->
+        </section>
+
+        <section class="subscription-option">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Get the latest insights and updates delivered to your inbox.</p>
+            <input type="email" placeholder="Enter your email address">
+            <button>Subscribe</button>
+        </section>
     </main>
 
     <div id="footer-placeholder"></div>
 </body>
+
 </html>

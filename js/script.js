@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     // ---  Load Common Components ---
     function loadComponent(url, elementId) {
         fetch(url)
@@ -32,8 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loadComponent('common/nav.html', 'nav-placeholder'); // Load nav into its own placeholder
     loadComponent('common/footer.html', 'footer-placeholder');
 
-
-
     // --- Navigation Logic (moved inside a function) ---
     function initNavigation() {
         const hamburger = document.querySelector('.hamburger-menu');
@@ -51,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 spans[2].style.transform = isExpanded ? 'rotate(-45deg) translate(5px, -6px)' : '';
             });
 
-
             const navLinks = document.querySelectorAll('.menu-items a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -67,7 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-     // --- Dark Mode Toggle ---
+
+    // --- Dark Mode Toggle ---
     function initDarkMode(){
         const darkModeButton = document.getElementById('dark-mode-button');
         const darkModeStylesheet = document.getElementById('dark-mode-stylesheet');
@@ -94,31 +91,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-
     // --- Animation Functions ---
     function animateHeader() {
         const topNav = document.querySelector('.top-nav');
         const menuItems = document.querySelector('.menu-items');
         const ctaButton = document.querySelector('.cta-button');
-        const hamburgerMenu = document.querySelector('.hamburger-menu')
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
 
-        // Add animation classes
         if(topNav){
-          topNav.classList.add('animate-fade-in-up');
+            topNav.classList.add('animate-fade-in-up');
         }
         if(menuItems){
-            menuItems.classList.add('animate-menu-items'); // Add class to trigger staggered animation
-
+            menuItems.classList.add('animate-menu-items');
         }
         if(ctaButton){
-            ctaButton.classList.add('animate-cta-button'); // Add class to trigger animation
-
+            ctaButton.classList.add('animate-cta-button');
         }
         if(hamburgerMenu){
-          hamburgerMenu.classList.add('animate-hamburger-menu')
+            hamburgerMenu.classList.add('animate-hamburger-menu');
         }
     }
-
 
     // --- Scroll-triggered animations (basic example) ---
     function revealOnScroll() {
@@ -155,9 +147,8 @@ document.addEventListener('DOMContentLoaded', function() {
     menuLinks.forEach(link => {
         link.addEventListener('mouseenter', function(event) {
             const rect = this.getBoundingClientRect();
-            const x = event.clientX - rect.left; // X position relative to the element
-            const origin = (x / rect.width) * 100; // Calculate percentage
-
+            const x = event.clientX - rect.left;
+            const origin = (x / rect.width) * 100;
             this.style.setProperty('--origin-x', `${origin}%`);
         });
 
@@ -165,43 +156,55 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.removeProperty('--origin-x');
         });
     });
+
+    // --- Filtering functionality for the projects gallery ---
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+            // Update active filter button styling
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            // Show/hide projects based on filter
+            projectItems.forEach(item => {
+                if (filter === 'all' || item.dataset.type === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
 });
-
-
-
-
+ 
 // ---  Load Page-specific Content ---
 // --- Carousel Logic (Basic Example) ---
 const carousel = document.querySelector('.projects-carousel');
 const prevButton = document.querySelector('.prev-button');
 const nextButton = document.querySelector('.next-button');
 
-if (carousel && prevButton && nextButton) { // Make sure elements exist
+if (carousel && prevButton && nextButton) {
     let currentIndex = 0;
     const projectItems = carousel.querySelectorAll('.project-item');
     const numItems = projectItems.length;
-    const itemWidth = projectItems[0].offsetWidth; //Assumes all same size
-    const itemMarginRight = parseInt(window.getComputedStyle(projectItems[0]).marginRight); // Get marginRight
+    const itemWidth = projectItems[0].offsetWidth;
+    const itemMarginRight = parseInt(window.getComputedStyle(projectItems[0]).marginRight);
     const itemFullWidth = itemWidth + itemMarginRight;
 
-
-
     function updateCarousel() {
-        //Use translate for best performance.
         carousel.style.transform = `translateX(-${currentIndex * itemFullWidth}px)`;
-
     }
 
     prevButton.addEventListener('click', () => {
-        currentIndex = Math.max(0, currentIndex - 1); // Prevent going before first
+        currentIndex = Math.max(0, currentIndex - 1);
         updateCarousel();
     });
 
     nextButton.addEventListener('click', () => {
-         currentIndex = Math.min(numItems - 1, currentIndex + 1); // Prevent going past last item (if not looping)
-        // OR, for infinite loop:
-        // currentIndex = (currentIndex + 1) % numItems;
-
+        currentIndex = Math.min(numItems - 1, currentIndex + 1);
         updateCarousel();
     });
 }

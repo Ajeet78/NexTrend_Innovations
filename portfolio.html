@@ -3,17 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title> <link rel="stylesheet" href="css/style.css">
+    <title>Portfolio - NexTrend Innovations</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dark-mode.css" id="dark-mode-stylesheet" disabled>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/script.js" defer></script>
+  
 </head>
 <body>
     <div id="header-placeholder"></div>
 
-    <main>
-        <h1>Portfolio</h1> <p>This is the portfolio page.</p>
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Our Portfolio</h1>
+            <p>Showcasing our innovative projects and successful collaborations.</p>
+        </section>
+
+        <!-- Project Gallery Section -->
+        <section id="projects" class="featured-projects">
+            <h2>Featured Projects</h2>
+            <!-- Filters -->
+            <div class="project-filters">
+                <button data-filter="all" class="filter-button active">All</button>
+                <button data-filter="web" class="filter-button">Web Development</button>
+                <button data-filter="mobile" class="filter-button">Mobile App</button>
+                <button data-filter="ai" class="filter-button">AI Solutions</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-item" data-type="web">
+                    <img src="images/project1.jpg" alt="Project 1" class="project-image">
+                    <div class="project-details">
+                        <h3>Responsive Website</h3>
+                        <p>Discover how we built a sleek and responsive website for a growing business.</p>
+                        <a href="case-study-1.html" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-item" data-type="mobile">
+                    <img src="images/project2.jpg" alt="Project 2" class="project-image">
+                    <div class="project-details">
+                        <h3>Mobile App Solution</h3>
+                        <p>Explore our process in creating a user-friendly mobile app.</p>
+                        <a href="case-study-2.html" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-item" data-type="ai">
+                    <img src="images/project3.jpg" alt="Project 3" class="project-image">
+                    <div class="project-details">
+                        <h3>AI Integration</h3>
+                        <p>Learn about our AI solution that improved efficiency across operations.</p>
+                        <a href="case-study-3.html" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+                <!-- Add more project items as needed -->
+            </div>
+        </section>
+
+        <!-- Client Testimonials Section -->
+        <section class="testimonials">
+            <h2>Client Testimonials</h2>
+            <div class="testimonial-item">
+                <p>"NexTrend Innovations transformed our online presence with their expert web solutions. Highly recommended!"</p>
+                <h4>— Jane Doe, CEO, TechStart</h4>
+            </div>
+            <div class="testimonial-item">
+                <p>"Their mobile app development service exceeded our expectations. The process was smooth and transparent."</p>
+                <h4>— John Smith, Founder, AppWorks</h4>
+            </div>
+        </section>
+
+        <!-- Call To Action Section -->
+        <section class="cta">
+            <h2>Ready to Discuss Your Project?</h2>
+            <p>Let's collaborate and bring your vision to life. Get in touch with us today.</p>
+            <a href="contact.html" class="cta-button">Contact Us</a>
+        </section>
     </main>
 
     <div id="footer-placeholder"></div>
+
 </body>
 </html>
