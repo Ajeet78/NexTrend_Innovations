@@ -1074,7 +1074,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .section-header {
     font-size: 1.5rem; /* Adjusted font size for responsiveness */
-    margin-top: 5rem; /* Adjusted margin for responsiveness */
+    /*margin-top: 5rem;*/ /* Adjusted margin for responsiveness */
     text-align: center;
     margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
 }
@@ -1169,10 +1169,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .contact-container {
     width: 90%;
     max-width: 1200px;
-    margin-bottom: auto;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 75px;
+    margin:20px auto;
+  
     padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
@@ -1697,6 +1695,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .hero {
     text-align: center;
     padding: 3rem 0; /* Adjusted padding for responsiveness */
+    font-size: 1.5rem; /* Adjusted font size for responsiveness */
 }
 
 .cta-button {
@@ -1873,7 +1872,7 @@ border-radius: 50%;
 }
 
 .chatbot-header {
-    margin-top: 3rem; /* Adjusted margin for responsiveness */
+    margin-top: 4rem; /* Adjusted margin for responsiveness */
     background-color: #2560ff;
     color: #fff;
     padding: 0.5rem; /* Adjusted padding for responsiveness */
