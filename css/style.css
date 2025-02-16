@@ -32,7 +32,7 @@
    body {
     font-family: Arial, sans-serif;
     background: #F0F4FA;
-    color: #333;
+    color: #003c4b;
     width: 100%; /* Changed to 100% for full width */
     margin: 0;
     padding: 0;
@@ -682,7 +682,7 @@ footer {
     font-size: 1.3rem; /* Adjusted font size for responsiveness */
     font-weight: 600;
     margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
-    color: #424242;
+    color: #07677f;
 }
 
 .service-description {
