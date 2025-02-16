@@ -178,6 +178,54 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+    const chatbotMessages = document.getElementById('chatbot-messages');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotSend = document.getElementById('chatbot-send');
+    const skeletonScreen = document.querySelector('.skeleton-screen');
+    const spinner = document.querySelector('.spinner');
+
+    // Simulate loading state
+    setTimeout(() => {
+        skeletonScreen.style.display = 'none';
+        spinner.style.display = 'none';
+    }, 2000); // Adjust the timeout as needed
+
+    chatbotSend.addEventListener('click', sendMessage);
+    chatbotInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        const message = chatbotInput.value.trim();
+        if (message) {
+            addMessage('user', message);
+            chatbotInput.value = '';
+            setTimeout(() => {
+                addMessage('bot', getBotResponse(message));
+            }, 1000); // Simulate response delay
+        }
+    }
+
+    function addMessage(sender, text) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chatbot-message', sender);
+        messageElement.textContent = text;
+        chatbotMessages.appendChild(messageElement);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function getBotResponse(message) {
+        // Simple FAQ responses
+        const responses = {
+            "what’s your average project cost?": "Our average project cost varies depending on the scope and requirements. Please contact us for a detailed quote.",
+            "how long does it take to complete a project?": "The timeline for project completion depends on the complexity and requirements. Typically, it ranges from a few weeks to several months.",
+            "what services do you offer?": "We offer web development, mobile app development, UI/UX design, AI integration, and more. Visit our services page for more details."
+        };
+        return responses[message.toLowerCase()] || "I'm sorry, I don't have an answer for that. Please contact us for more information.";
+    }
 });
  
 // ---  Load Page-specific Content ---
