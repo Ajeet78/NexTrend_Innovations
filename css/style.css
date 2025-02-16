@@ -1,3 +1,5 @@
+/* css/style.css */
+
 /* ==========================================================================
    TABLE OF CONTENTS
    ==========================================================================
@@ -10,7 +12,7 @@
    7.  FOOTER                 - Styles for the site footer
    8.  RESPONSIVE DESIGN      - Media queries for different screen sizes
    9.  HERO SECTION           - Styles for the main landing section
-   10. SERVICES SECTION       - Styles for the services listing
+ -  10. SERVICES SECTION       - Styles for the services listing
    11. FEATURED PROJECTS      - Styles for the project carousel
    12. TESTIMONIALS           - Styles for customer feedback section
    13. CLIENT LOGOS           - Styles for the client logos display
@@ -27,16 +29,17 @@
 /* ==========================================================================
    1. GENERAL STYLES
    ========================================================================== */
-body {
+   body {
     font-family: Arial, sans-serif;
     background: #fafafa;
     color: #333;
-    width: -webkit-fill-available;
+    width: 100%; /* Changed to 100% for full width */
     margin: 0;
     padding: 0;
     line-height: 1.6;
     transition: background-color 0.5s ease, color 0.5s ease;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* ==========================================================================
@@ -79,7 +82,7 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    padding: 20px;
+    padding: 1rem; /* Adjusted padding for better responsiveness */
 }
 
 .reveal {
@@ -108,7 +111,7 @@ body {
 }
 
 .top-nav {
-    padding: 1.2rem 0;
+    padding: 1rem; /* Adjusted padding for responsiveness */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -126,7 +129,7 @@ body {
 }
 
 .logo a {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Adjusted font size for smaller screens */
     font-weight: 700;
     color: #6200ee;
     text-decoration: none;
@@ -140,7 +143,7 @@ body {
 
 .menu-items {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem; /* Adjusted gap for smaller screens */
     transform: translateY(15px);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s cubic-bezier(0.2, 0, 0, 1);
@@ -158,7 +161,7 @@ body {
 .menu-items a {
     color: #424242;
     text-decoration: none;
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem; /* Adjusted padding for smaller screens */
     border-radius: 25px;
     position: relative;
     overflow: hidden;
@@ -203,11 +206,11 @@ body {
 .cta-button {
     background-color: #2560ff;
     color: #fff;
-    padding: 0.7rem 1.5rem;
+    padding: 0.6rem 1.2rem; /* Adjusted padding for responsiveness */
     border: none;
     border-radius: 24px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Adjusted font size for smaller screens */
     font-weight: 500;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -307,7 +310,7 @@ body {
 footer {
     background-color: #232f3e;
     color: #fff;
-    padding: 40px 0;
+    padding: 2rem 0; /* Adjusted padding for responsiveness */
     font-size: 14px;
     line-height: 1.6;
     text-align: center; /* Center align text by default */
@@ -319,27 +322,27 @@ footer {
     justify-content: space-around; /* Distribute sections evenly */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 1rem; /* Adjusted padding for responsiveness */
 }
 
 .footer-section {
-    width: 45%; /* Take up almost half the width */
-    margin-bottom: 20px;
-    text-align: left; /* Align text to the left within sections */
+    width: 100%; /* Full width on smaller screens */
+    margin-bottom: 1rem; /* Adjusted margin for smaller screens */
+    text-align: center; /* Center align text on smaller screens */
 }
 
 /* Responsive adjustments for footer sections */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .footer-section {
-        width: 100%; /* Full width on smaller screens */
-        text-align: center; /* Center align text on smaller screens */
+        width: 45%;
+         text-align: left; /* Align text to the left within sections */
     }
 }
 
 .footer-heading {
-    font-size: 1.2em;
+    font-size: 1.1em; /* Adjusted font size for responsiveness */
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -347,7 +350,7 @@ footer {
 }
 
 .contact-info p {
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
     text-align: justify; /* Justify the text */
 }
 
@@ -363,8 +366,8 @@ footer {
 
 .social-media a {
     display: inline-block;
-    margin: 0 10px 10px 0;
-    font-size: 1.4em;
+    margin: 0 0.5rem 0.5rem 0; /* Adjusted margin for responsiveness */
+    font-size: 1.2em; /* Adjusted font size for responsiveness */
     color: #fff;
     transition: color 0.3s ease;
 }
@@ -379,7 +382,7 @@ footer {
 }
 
 .quick-links li {
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .quick-links a {
@@ -394,8 +397,8 @@ footer {
 
 .newsletter input[type="email"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
     border: 1px solid #555;
     border-radius: 4px;
     background-color: #37474f; /* Darker input background */
@@ -406,7 +409,7 @@ footer {
     background-color: #2560ff; /* Accent color for button */
     color: #ffffff; /* Dark text for button */
     border: none;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -421,9 +424,9 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 1rem; /* Adjusted padding for responsiveness */
     border-top: 1px solid #37474f;
-    margin-top: 20px;
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
     color: #777;
     font-size: 0.9em;
 }
@@ -431,14 +434,14 @@ footer {
 /* Dark Mode Toggle (adjust colors as needed) */
 .dark-mode-toggle {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
 }
 
 .dark-mode-toggle button {
     background-color: #333;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -491,6 +494,7 @@ footer {
         margin-bottom: 1rem;
         width: 100%;
         text-align: center;
+
     }
 
     .cta-button {
@@ -513,7 +517,7 @@ footer {
     }
 
     .newsletter input[type="email"] {
-        width: -webkit-fill-available;
+        width: 100%;
         margin-right: 0;
         margin-bottom: 1rem;
     }
@@ -525,6 +529,10 @@ footer {
     .footer-content div:nth-child(n) {
         animation-delay: 0s;
     }
+    .hero-content{
+        padding: 1rem;
+    }
+
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -539,6 +547,9 @@ footer {
     .menu-items a {
         padding: 0.5rem 1rem;
     }
+    .hero-content{
+        padding: 2rem;
+    }
 }
 
 /* ==========================================================================
@@ -546,47 +557,52 @@ footer {
    ========================================================================== */
 .hero {
     text-align: center;
-    padding: 40px 0;
+    padding: 2rem 0; /* Adjusted padding for responsiveness */
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: auto; /* Changed to auto for responsiveness */
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
 }
 
 .hero .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    height: 100%;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
 }
 
 .hero-content {
-    /* flex: 1; */
-    max-width: 500px;
+    max-width: 100%;
     z-index: 2;
 }
 
 .hero-headline {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Adjusted font size for responsiveness */
     font-weight: 700;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     line-height: 1.2;
     color: #424242;
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    
 }
 
 .hero-subheadline {
-    font-size: 1.3rem;
-    margin-bottom: 2.5rem;
+    font-size: 1rem; /* Adjusted font size for responsiveness */
+    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
     color: #616161;
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
+    
 }
 
 .hero-visual {
-    flex: 1;
+    width: 100%; /* Make image responsive */
     text-align: center;
     position: relative;
     z-index: 1;
@@ -619,48 +635,36 @@ footer {
    10. SERVICES SECTION
    ========================================================================== */
 .services-snapshot {
-    padding: 5rem 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
     background-color: #f5f5f5;
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax for responsiveness */
+    gap: 1.5rem; /* Adjusted gap for responsiveness */
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
 }
 
 .service-item {
     text-align: center;
-    padding: 2.5rem;
+    padding: 1.5rem; /* Adjusted padding for responsiveness */
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     background-color: #fff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */ /*box shadow*/
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    transition: transform 0.3s;
 }
 
 .service-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
 }
 
 .service-icon {
-    font-size: 3.5rem;
+    font-size: 2.5rem; /* Adjusted font size for responsiveness */
     color: #2560ff;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-size: 2rem;
-    margin-bottom: 10px;
 }
 
 .service-item:hover .service-icon {
@@ -668,26 +672,26 @@ footer {
 }
 
 .service-title {
-    font-size: 1.6rem;
+    font-size: 1.3rem; /* Adjusted font size for responsiveness */
     font-weight: 600;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
     color: #424242;
 }
 
 .service-description {
     color: #616161;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     line-height: 1.5;
 }
 
- .service-cta {
+.service-cta {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
 }
 
 .service-cta .cta-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     background-color: #2560ff;
     color: #fff;
     text-decoration: none;
@@ -701,25 +705,17 @@ footer {
 
 /* ----- Service Link Styles ----- */
 .service-link {
-    /* Sets the default text color for the service link */
     color: #6200ee;
-    /* Removes the underline from the link */
     text-decoration: none;
-    /* Sets the font weight to semi-bold */
     font-weight: 500;
-    /* Makes the link an inline-block element, allowing padding and margin */
     display: inline-block;
-    /* Adds padding to the top and bottom of the link */
     padding: 0.5rem 0;
-    /* Adds a smooth transition effect for color and transform properties */
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 /* ----- Service Link Hover Styles ----- */
 .service-link:hover {
-    /* Adds an underline to the link on hover */
     text-decoration: underline;
-    /* Moves the link 5 pixels to the right on hover */
     transform: translateY(-5px);
 }
 
@@ -727,34 +723,28 @@ footer {
    11. FEATURED PROJECTS
    ========================================================================== */
 .featured-projects {
-    padding: 5rem 0;
-    padding: 50px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
     text-align: center;
 }
 
 .projects-carousel {
     display: flex;
-    overflow-x: hidden;  /*  for carousel functionality */
-    gap: 1.5rem;
-    transition: transform 0.5s ease-out; /*  for smooth sliding */
-    display: flex;
     overflow-x: auto;
+    gap: 1rem; /* Adjusted gap for responsiveness */
+    transition: transform 0.5s ease-out;
     scroll-snap-type: x mandatory;
-    padding-bottom: 20px;
+    padding-bottom: 1rem; /* Adjusted padding for responsiveness */
 }
 
 .project-item {
-    flex: 0 0 auto;  /*  for consistent item sizing */
-    width: 320px;
+    flex: 0 0 auto;
+    width: 80%; /* Adjusted width for responsiveness */
+    max-width: 300px;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    flex: 0 0 80%; /* Adjust as needed */
-    margin-right: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     scroll-snap-align: start;
 }
 
@@ -770,78 +760,51 @@ footer {
 }
 
 .project-title {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Adjusted font size for responsiveness */
     font-weight: 600;
-    margin: 1.2rem;
+    margin: 1rem; /* Adjusted margin for responsiveness */
     color: #424242;
 }
 
 .project-excerpt {
-    margin: 1.2rem;
+    margin: 1rem; /* Adjusted margin for responsiveness */
     color: #616161;
     line-height: 1.4;
 }
 
-.project-item img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
-}
-
-.project-item h3,
-.project-item p {
-    padding: 10px;
-    text-align: left;
-}
-
 /* ----- Project Link Styles ----- */
 .project-link {
-    /* Core link styling for project links */
-    display: inline-block; /* Makes the link behave like an inline element but allows setting width/height and padding */
-    margin: 1.2rem; /* Adds margin around the link, creating visual spacing */
-    color: #6200ee; /* Sets the default text color of the link */
-    text-decoration: none; /* Removes the default underline from the link */
-    font-weight: 500; /* Sets the font weight to semi-bold */
-    padding: 0.5rem 0; /* Adds padding to the top and bottom of the link */
-    transition: color 0.3s ease, transform 0.3s ease; /* Defines a smooth transition for color and transform properties */
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #2560ff;
-    color: #fff;
+    margin: 1rem; /* Adjusted margin for responsiveness */
+    color: #6200ee;
     text-decoration: none;
-    border-radius: 5px;
-    margin: 10px;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 /* ----- Project Link Hover Styles ----- */
 .project-link:hover {
-    /* Styles applied when the mouse hovers over the project link */
-    text-decoration: underline; /* Adds an underline to the link on hover for visual feedback */
-    transform: translateY(-5px); /* Moves the link 5 pixels to the right on hover */
+    text-decoration: underline;
+    transform: translateY(-5px);
 }
 
 .carousel-controls {
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
     display: flex;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .carousel-controls button {
     background: none;
     border: none;
-    font-size: 2.5rem;
+    font-size: 1.5rem; /* Adjusted font size for responsiveness */
     color: #6200ee;
     cursor: pointer;
-    margin: 0 0.8rem;
+    margin: 0 0.5rem; /* Adjusted margin for responsiveness */
     padding: 0;
     transition: color 0.3s, transform 0.3s;
-    background: none;
-    border: none;
-    font-size: 20px;
-    margin: 0 10px;
-    cursor: pointer;
 }
 
 .carousel-controls button:hover {
@@ -853,34 +816,25 @@ footer {
    12. TESTIMONIALS
    ========================================================================== */
 .testimonials {
-    padding: 40px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
     background: #f5f5f5;
-    margin-top: 40px;
-    padding: 50px 0;
-    background-color: #f9f9f9;
     text-align: center;
 }
 
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for responsiveness */
+    gap: 1.5rem; /* Adjusted gap for responsiveness */
+    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .testimonial-item {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     text-align: left;
 }
 
@@ -892,7 +846,7 @@ footer {
 .testimonial-quote {
     font-style: italic;
     color: #555;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     line-height: 1.5;
 }
 
@@ -901,34 +855,19 @@ footer {
     color: #424242;
 }
 
-.testimonial-item p {
-    font-style: italic;
-    margin: 0 0 10px;
-}
-
-.testimonial-item h4 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #007bff;
-}
-
 /* ==========================================================================
    13. CLIENT LOGOS
    ========================================================================== */
 .client-logos {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 3rem;
-    margin-top: 3rem;
-    display: flex;
     justify-content: space-around;
-    margin-top: 30px;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Adjusted gap for responsiveness */
+    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .client-logo {
-    max-width: 160px;
+    max-width: 100px; /* Adjusted max-width for responsiveness */
     height: auto;
     opacity: 0.7;
     filter: grayscale(100%);
@@ -940,29 +879,19 @@ footer {
     filter: grayscale(0%);
 }
 
-.client-logos img {
-    max-width: 150px;
-    height: auto;
-    opacity: 0.7;
-}
-
 /* ==========================================================================
    14. BLOG TEASER
    ========================================================================== */
 .blog-teaser {
-    padding: 5rem 0;
-    padding: 50px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
     text-align: center;
 }
 
 .blog-posts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for responsiveness */
+    gap: 1.5rem; /* Adjusted gap for responsiveness */
+    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .blog-post {
@@ -971,9 +900,6 @@ footer {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
 }
 
 .blog-post:hover {
@@ -988,33 +914,26 @@ footer {
 }
 
 .blog-post-title {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Adjusted font size for responsiveness */
     font-weight: 600;
-    margin: 1.2rem;
+    margin: 1rem; /* Adjusted margin for responsiveness */
     color: #424242;
 }
 
 .blog-post-excerpt {
-    margin: 1.2rem;
+    margin: 1rem; /* Adjusted margin for responsiveness */
     color: #616161;
     line-height: 1.5;
 }
 
 .blog-post-link {
     display: inline-block;
-    margin: 1.2rem;
+    margin: 1rem; /* Adjusted margin for responsiveness */
     color: #6200ee;
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 0;
     transition: color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #2560ff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 10px;
 }
 
 .blog-post-link:hover {
@@ -1036,6 +955,9 @@ footer {
     .carousel-controls button{
         font-size: 1.5rem;
     }
+    .hero-visual {
+        width: 100%; /* Make image responsive */
+    }
 }
 
 /*  Consistent Transition Timing  */
@@ -1047,14 +969,14 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
    Project Filters
    ---------------------------------------------- */
 .project-filters {
-    margin-bottom: 20px;
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     text-align: center;
 }
 .filter-button {
     background: #f0f0f0;
     border: none;
-    padding: 10px 15px;
-    margin: 5px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
+    margin: 0.25rem; /* Adjusted margin for responsiveness */
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -1070,8 +992,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
    ---------------------------------------------- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for responsiveness */
+    gap: 1rem; /* Adjusted gap for responsiveness */
 }
 .project-item {
     position: relative;
@@ -1090,15 +1012,15 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     display: block;
 }
 .project-details {
-    padding: 15px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
 }
 .project-details h3 {
-    margin: 0 0 10px;
-    font-size: 1.5rem;
+    margin: 0 0 0.5rem; /* Adjusted margin for responsiveness */
+    font-size: 1.3rem; /* Adjusted font size for responsiveness */
 }
 .project-details p {
-    font-size: 0.95rem;
-    margin: 0 0 10px;
+    font-size: 0.85rem; /* Adjusted font size for responsiveness */
+    margin: 0 0 0.5rem; /* Adjusted margin for responsiveness */
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -1108,7 +1030,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 .project-link {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 0.5rem; /* Adjusted margin for responsiveness */
     color: #007bff;
     text-decoration: none;
     font-weight: 500;
@@ -1122,16 +1044,16 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
    ---------------------------------------------- */
 .cta {
     text-align: center;
-    padding: 40px 0;
+    padding: 2rem 0; /* Adjusted padding for responsiveness */
 }
 .cta-button {
     background-color: #2560ff;
     color: #fff;
-    padding: 0.7rem 1.5rem;
+    padding: 0.6rem 1.2rem; /* Adjusted padding for responsiveness */
     border: none;
     border-radius: 24px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Adjusted font size for responsiveness */
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -1147,48 +1069,48 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    padding: 20px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
 .section-header {
-    font-size: 1.5rem;
-    margin-top: 5rem;
+    font-size: 1.5rem; /* Adjusted font size for responsiveness */
+    margin-top: 5rem; /* Adjusted margin for responsiveness */
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .timeline {
-    margin: 2rem 0;
+    margin: 1.5rem 0; /* Adjusted margin for responsiveness */
     border-left: 2px solid #ddd;
-    padding-left: 20px;
+    padding-left: 1rem; /* Adjusted padding for responsiveness */
 }
 
 .timeline-item {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-left: 1rem; /* Adjusted margin for responsiveness */
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     position: relative;
 }
 
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -25px;
+    left: -20px; /* Adjusted position for responsiveness */
     top: 0;
-    width: 20px;
-    height: 20px;
+    width: 15px; /* Adjusted width for responsiveness */
+    height: 15px; /* Adjusted height for responsiveness */
     background: #2560ff;
     border-radius: 40%;
 }
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax for responsiveness */
+    gap: 1rem; /* Adjusted gap for responsiveness */
 }
 
 .team-member {
     text-align: center;
-    padding: 1rem;
+    padding: 0.75rem; /* Adjusted padding for responsiveness */
     border: 1px solid #ddd;
     border-radius: 8px;
     background: #fff;
@@ -1197,36 +1119,36 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .team-member img {
     width: 100%;
-    max-width: 150px;
+    max-width: 100px; /* Adjusted max-width for responsiveness */
     border-radius: 50%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem; /* Adjusted margin for responsiveness */
 }
 
 .awards-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 1rem; /* Adjusted gap for responsiveness */
 }
 
 .award-item {
     text-align: center;
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 0.75rem; /* Adjusted padding for responsiveness */
     border-radius: 8px;
     background: #fff;
-    width: 150px;
+    width: 120px; /* Adjusted width for responsiveness */
 }
 
 .award-item img {
-    width: 50px;
-    margin-bottom: 10px;
+    width: 40px; /* Adjusted width for responsiveness */
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .cta {
     text-align: center;
-    margin: 3rem 0;
-    padding: 20px;
+    margin: 2rem 0; /* Adjusted margin for responsiveness */
+    padding: 1rem; /* Adjusted padding for responsiveness */
     background: #f5f5f5;
     border-radius: 8px;
 }
@@ -1234,7 +1156,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .cta a {
     background-color: #2560ff;
     color: #fff;
-    padding: 0.7rem 1.5rem;
+    padding: 0.6rem 1.2rem; /* Adjusted padding for responsiveness */
     border-radius: 24px;
     text-decoration: none;
     transition: background-color 0.3s;
@@ -1247,58 +1169,61 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .contact-container {
     width: 90%;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    margin-bottom: auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 75px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
 .contact-form {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem; /* Adjusted margin for responsiveness */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem; /* Adjusted margin for responsiveness */
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: -webkit-fill-available;
-        padding: 0.75rem;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 .calendly-inline-widget {
-    height: 400px;
+    height: 300px; /* Adjusted height for responsiveness */
 }
 
 .location-map {
     display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            width: 100%;
-            height: 400px;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 300px; /* Adjusted height for responsiveness */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .collaboration-cta {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 2rem; /* Adjusted margin for responsiveness */
 }
 
 .collaboration-cta a {
     background-color: #2560ff;
     color: #fff;
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem; /* Adjusted padding for responsiveness */
     border-radius: 24px;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
@@ -1308,29 +1233,28 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .collaboration-cta a:hover {
     background-color: #3700b3;
     transform: scale(1.05);
-    /* Slight scale-up on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Add shadow for depth */
 }
 
 .contact-methods {
     display: flex;
+    flex-direction: row;
+    align-items: normal;
     justify-content: space-around;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .contact-methods div {
     display: inline-grid;
-        text-align: center;
-        justify-items: center;
-        align-content: space-between;
     text-align: center;
-    margin: 1px;
+    justify-items: center;
+    align-content: space-between;
+    margin: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .contact-methods a {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     background-color: #f0f0f0;
     border-radius: 5px;
     text-decoration: none;
@@ -1348,30 +1272,30 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .blog-container {
     width: 90%;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 1.5rem auto; /* Adjusted margin for responsiveness */
+    padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
 .blog-header {
-    margin-top: 5rem;
+    margin-top: 3rem; /* Adjusted margin for responsiveness */
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .blog-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2rem; /* Adjusted font size for responsiveness */
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .blog-header p {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Adjusted font size for responsiveness */
     color: #666;
 }
 
 .article-listings {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for responsiveness */
+    gap: 1rem; /* Adjusted gap for responsiveness */
 }
 
 .blog-post {
@@ -1394,63 +1318,63 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .post-content {
-    padding: 15px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
 .post-title {
-    margin: 0 0 10px;
-    font-size: 1.5rem;
+    margin: 0 0 0.5rem; /* Adjusted margin for responsiveness */
+    font-size: 1.3rem; /* Adjusted font size for responsiveness */
 }
 
 .post-snippet {
-    font-size: 0.95rem;
+    font-size: 0.85rem; /* Adjusted font size for responsiveness */
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .post-date {
-    font-size: 0.8rem;
+    font-size: 0.7rem; /* Adjusted font size for responsiveness */
     color: #888;
 }
 
 .search-filter {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
     text-align: center;
 }
 
 .search-filter input[type="text"] {
-    padding: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 70%;
+    width: 100%;
     max-width: 300px;
 }
 
 .subscription-option {
     text-align: center;
-    margin-top: 30px;
-    padding: 20px;
+    margin-top: 2rem; /* Adjusted margin for responsiveness */
+    padding: 1rem; /* Adjusted padding for responsiveness */
     background: #f5f5f5;
     border-radius: 8px;
 }
 
 .subscription-option h3 {
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .subscription-option input[type="email"] {
-    padding: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 70%;
+    width: 100%;
     max-width: 300px;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .subscription-option button {
     background-color: #2560ff;
     color: #fff;
-    padding: 10px 15px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -1466,30 +1390,40 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     position: sticky;
     top: 0;
     background-color: rgba(255, 255, 255, 0.9); /* Adjust transparency as needed */
-    padding: 10px 0;
+    padding: 0.5rem 0; /* Adjusted padding for responsiveness */
     text-align: center;
     z-index: 100; /* Ensure it stays on top */
 }
 
 .animated-stats {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
-    margin: 20px 0;
+    margin: 1.5rem 0; /* Adjusted margin for responsiveness */
 }
 
 .animated-stats div {
     text-align: center;
+    margin-bottom: 1rem; /* Add spacing between items */
+}
+@media (min-width: 768px){
+    .animated-stats {
+    flex-direction: row;
+    }
+    .animated-stats div {
+        margin-bottom: 0; /* Remove spacing between items on larger screens*/
+    }
 }
 
 .usp-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax for responsiveness */
+    gap: 1rem; /* Adjusted gap for responsiveness */
+    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .usp-item {
-    padding: 20px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
     border: 1px solid #ddd;
     border-radius: 8px;
 }
@@ -1498,7 +1432,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     overflow: hidden;
 }
 
@@ -1516,19 +1450,19 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .hero-headline {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .hero-subheadline {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
 }
 
 .hero-cta {
     background-color: #2560ff;
     color: #fff;
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem; /* Adjusted padding for responsiveness */
     border-radius: 8px;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
@@ -1540,7 +1474,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .hero-visual {
-    width: 50rem;
+    width: 100%;
     flex: 1;
     position: relative;
     z-index: 1;
@@ -1554,14 +1488,14 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem; /* Adjusted gap for responsiveness */
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
 }
 
 .service-item {
     text-align: center;
-    padding: 20px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
     border: 1px solid #eee;
     border-radius: 8px;
     transition: transform 0.3s;
@@ -1572,18 +1506,18 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .service-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 1.5rem; /* Adjusted font size for responsiveness */
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
- .service-cta {
+.service-cta {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
 }
 
 .service-cta .cta-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     background-color: #2560ff;
     color: #fff;
     text-decoration: none;
@@ -1597,20 +1531,20 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .usp-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; /* Adjusted gap for responsiveness */
+    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .usp-item {
-    padding: 20px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
     border: 1px solid #ddd;
     border-radius: 8px;
     text-align: center;
 }
 
 .featured-projects {
-    padding: 50px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
     text-align: center;
 }
 
@@ -1618,12 +1552,13 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-bottom: 20px;
+    padding-bottom: 1rem; /* Adjusted padding for responsiveness */
 }
 
 .project-item {
     flex: 0 0 80%; /* Adjust as needed */
-    margin-right: 20px;
+    max-width: 300px;
+    margin-right: 1rem; /* Adjusted margin for responsiveness */
     border: 1px solid #ddd;
     border-radius: 8px;
     scroll-snap-align: start;
@@ -1637,49 +1572,49 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .project-item h3,
 .project-item p {
-    padding: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     text-align: left;
 }
 
 .project-link {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     background-color: #2560ff;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    margin: 10px;
+    margin: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .carousel-controls {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
 }
 
 .carousel-controls button {
     background: none;
     border: none;
-    font-size: 20px;
-    margin: 0 10px;
+    font-size: 1.2rem; /* Adjusted font size for responsiveness */
+    margin: 0 0.5rem; /* Adjusted margin for responsiveness */
     cursor: pointer;
 }
 
 .testimonials {
-    padding: 50px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
     background-color: #f9f9f9;
     text-align: center;
 }
 
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem; /* Adjusted gap for responsiveness */
+    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .testimonial-item {
-    padding: 20px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
     border: 1px solid #ddd;
     border-radius: 8px;
     text-align: left;
@@ -1688,25 +1623,27 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .client-logos {
     display: flex;
     justify-content: space-around;
-    margin-top: 30px;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Adjusted gap for responsiveness */
+    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .client-logos img {
-    max-width: 150px;
+    max-width: 100px;
     height: auto;
     opacity: 0.7;
 }
 
 .blog-teaser {
-    padding: 50px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
     text-align: center;
 }
 
 .blog-posts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem; /* Adjusted gap for responsiveness */
+    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .blog-post {
@@ -1722,18 +1659,18 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .blog-post h3,
 .blog-post p {
-    padding: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     text-align: left;
 }
 
 .blog-post-link {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     background-color: #2560ff;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    margin: 10px;
+    margin: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .reveal {
@@ -1754,18 +1691,18 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
 .hero {
     text-align: center;
-    padding: 50px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
 }
 
 .cta-button {
     background-color: #2560ff;
     color: #fff;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s;
@@ -1776,18 +1713,18 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .services-snapshot {
-    padding: 50px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem; /* Adjusted gap for responsiveness */
 }
 
 .service-item {
     text-align: center;
-    padding: 20px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
     border: 1px solid #eee;
     border-radius: 8px;
     transition: transform 0.3s;
@@ -1798,22 +1735,22 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .service-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 1.5rem; /* Adjusted font size for responsiveness */
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .accordion {
-    margin-top: 20px;
+    margin-top: 1rem; /* Adjusted margin for responsiveness */
 }
 
 .accordion-item {
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .accordion-header {
-    padding: 15px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
     background-color: #f7f7f7;
     cursor: pointer;
     display: flex;
@@ -1822,7 +1759,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .accordion-content {
-    padding: 15px;
+    padding: 1rem; /* Adjusted padding for responsiveness */
     display: none;
 }
 
@@ -1833,19 +1770,19 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 /* .gradient-divider {
     height: 4px;
     background: linear-gradient(to right, #2560ff, #3700b3);
-    margin: 40px 0;
+    margin: 2rem 0;
 } */
 
 .tech-stack-carousel {
     display: flex;
     overflow-x: auto;
-    gap: 20px;
-    padding: 20px 0;
+    gap: 1rem; /* Adjusted gap for responsiveness */
+    padding: 1rem 0; /* Adjusted padding for responsiveness */
 }
 
 .tech-stack-item {
     flex: 0 0 auto;
-    width: 150px;
+    width: 100px; /* Adjusted width for responsiveness */
     text-align: center;
 }
 
@@ -1857,7 +1794,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .process-timeline {
     text-align: center;
-    padding: 50px 0;
+    padding: 3rem 0; /* Adjusted padding for responsiveness */
 }
 
 .process-timeline img {
@@ -1869,7 +1806,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     18. Slideshow Styles
     ================================================================*/
 
-    
+
 .slideshow-container {
     position: relative;
     max-width: 100%;
@@ -1883,7 +1820,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .mySlides img {
     width: 100%;
-    height: auto;
+    height: 30rem;
 }
 
 .fade {
@@ -1899,16 +1836,18 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .slideshow-dots {
     text-align: center;
     position: absolute;
-    bottom: 15px;
+    bottom: 1rem; /* Adjusted bottom for responsiveness */
     width: 100%;
 }
 
 .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
+    height: 10px; /* Adjusted height for responsiveness */
+    width: 10px; /* Adjusted width for responsiveness */
+
+margin: 0 0.25rem; /* Adjusted margin for responsiveness */
     background-color: #bbb;
-    border-radius: 50%;
+    
+border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
     cursor: pointer;
@@ -1926,7 +1865,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .chatbot-container {
     width: 100%;
     max-width: 400px;
-    margin: 20px auto;
+    margin: 1rem auto; /* Adjusted margin for responsiveness */
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -1934,23 +1873,23 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .chatbot-header {
-    margin-top: 5rem;
+    margin-top: 3rem; /* Adjusted margin for responsiveness */
     background-color: #2560ff;
     color: #fff;
-    padding: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     text-align: center;
 }
 
 .chatbot-body {
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 300px; /* Adjusted height for responsiveness */
     position: relative;
 }
 
 .chatbot-messages {
     flex: 1;
-    padding: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     overflow-y: auto;
     background-color: #f9f9f9;
 }
@@ -1962,7 +1901,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .chatbot-input input {
     flex: 1;
-    padding: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     border: none;
     outline: none;
 }
@@ -1971,7 +1910,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     background-color: #2560ff;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 0.5rem; /* Adjusted padding for responsiveness */
     cursor: pointer;
 }
 
@@ -1983,25 +1922,25 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .skeleton-screen {
     background-color: #e0e0e0;
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .skeleton-text {
-    height: 20px;
+    height: 15px; /* Adjusted height for responsiveness */
     width: 100%;
     background-color: #e0e0e0;
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
 .spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-top: 4px solid #2560ff;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 20px; /* Adjusted width for responsiveness */
+    height: 20px; /* Adjusted height for responsiveness */
     animation: spin 1s linear infinite;
-    margin: 20px auto;
+    margin: 1rem auto; /* Adjusted margin for responsiveness */
 }
 
 @keyframes spin {
@@ -2018,3 +1957,11 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+@media (max-width: 768px) {
+    .hero-visual {
+        width: 100%;
+        max-width: 50rem; /*added*/
+    }
+}
+
+
