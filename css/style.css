@@ -1278,9 +1278,16 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .location-map {
-    width: -webkit-fill-available;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 400px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
 }
 
 .collaboration-cta {
@@ -1313,7 +1320,12 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .contact-methods div {
+    display: inline-grid;
+        text-align: center;
+        justify-items: center;
+        align-content: space-between;
     text-align: center;
+    margin: 1px;
 }
 
 .contact-methods a {
