@@ -1448,7 +1448,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .hero-headline {
-    font-size: 2rem;
+    font-size: unset;
     margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
 }
 
