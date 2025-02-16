@@ -31,7 +31,7 @@
    ========================================================================== */
    body {
     font-family: Arial, sans-serif;
-    background: #fafafa;
+    background: #F0F4FA;
     color: #333;
     width: 100%; /* Changed to 100% for full width */
     margin: 0;
@@ -105,7 +105,7 @@
     left: 0; /* Ensure it stretches across the screen */
     width: 100%; /* Ensure it stretches across the screen */
     z-index: 1000;
-    background-color: #fff;
+    background-color:#ffffff;
     transition: box-shadow 0.3s ease, padding 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -308,8 +308,8 @@
    7. FOOTER
    ========================================================================== */
 footer {
-    background-color: #232f3e;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     padding: 2rem 0; /* Adjusted padding for responsiveness */
     font-size: 14px;
     line-height: 1.6;
@@ -343,7 +343,7 @@ footer {
     font-size: 1.1em; /* Adjusted font size for responsiveness */
     font-weight: bold;
     margin-bottom: 1rem; /* Adjusted margin for responsiveness */
-    color: #fff;
+    color: #07677f;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-align: center; /* Center the heading */
@@ -355,7 +355,7 @@ footer {
 }
 
 .contact-info a {
-    color: #fff; /* Make email and phone text white */
+    color: #000000; /* Make email and phone text white */
     text-decoration: none; /* Remove underline */
 }
 
@@ -401,7 +401,7 @@ footer {
     margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
     border: 1px solid #555;
     border-radius: 4px;
-    background-color: #37474f; /* Darker input background */
+    background-color: #f5fafd; /* Darker input background */
     color: #fff;
 }
 
@@ -1516,7 +1516,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .service-cta .cta-button {
     display: inline-block;
     padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
-    background-color: #2560ff;
+    background-color: #07677f;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
