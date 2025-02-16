@@ -182,7 +182,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(36, 94, 255);/*menu button animation background color*/
+    background-color: #07677f;/*menu button animation background color*/
     border-radius: 24px;
     z-index: -1;
     transform: scaleX(0);
@@ -196,7 +196,7 @@
 }
 
 .menu-items a.active {
-    background-color: rgb(36, 94, 255);/*menu active button color*/
+    background-color: #07677f;/*menu active button color*/
     color: #ffffff;/*menu active button text color*/
 }
 
@@ -204,7 +204,7 @@
    5. CTA BUTTON
    ========================================================================== */
 .cta-button {
-    background-color: #2560ff;
+    background-color: #07677f;
     color: #fff;
     padding: 0.6rem 1.2rem; /* Adjusted padding for responsiveness */
     border: none;
@@ -219,11 +219,13 @@
     transform: scale(0.95);
     opacity: 0;
     text-decoration: none;/*text decoration*/
+
 }
 
 .cta-button.animate-cta-button {
     transform: scale(1);
     opacity: 1;
+    
 }
 
 .cta-button::before {
@@ -241,6 +243,7 @@
 }
 
 .cta-button:hover::before {
+    
     opacity: 1;
     transform: scale(1.5);
 }
@@ -249,7 +252,7 @@
     background-color: #3700b3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
-    color:#2560ff;/* Text color on hover */
+    color:#07677f;/* Text color on hover */
     text-decoration:none;/* Text decoration on hover */
 }
 
@@ -309,7 +312,7 @@
    ========================================================================== */
 footer {
     background-color: #ffffff;
-    color: #000000;
+    /* color: #000000; */
     padding: 2rem 0; /* Adjusted padding for responsiveness */
     font-size: 14px;
     line-height: 1.6;
@@ -355,7 +358,7 @@ footer {
 }
 
 .contact-info a {
-    color: #000000; /* Make email and phone text white */
+    color: #3f484c; /* Make email and phone text white */
     text-decoration: none; /* Remove underline */
 }
 
@@ -368,7 +371,7 @@ footer {
     display: inline-block;
     margin: 0 0.5rem 0.5rem 0; /* Adjusted margin for responsiveness */
     font-size: 1.2em; /* Adjusted font size for responsiveness */
-    color: #fff;
+    color: #3f484c;
     transition: color 0.3s ease;
 }
 
@@ -386,7 +389,7 @@ footer {
 }
 
 .quick-links a {
-    color: #ddd;
+    color: #3f484c;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -406,7 +409,7 @@ footer {
 }
 
 .newsletter button {
-    background-color: #2560ff; /* Accent color for button */
+    background-color: #07677f; /* Accent color for button */
     color: #ffffff; /* Dark text for button */
     border: none;
     padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
@@ -419,7 +422,11 @@ footer {
 
 .newsletter button:hover {
     background-color: #ffffff; /* Lighter accent color on hover */
-    color: #2560ff;
+    color: #07677f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    color:#07677f;/* Text color on hover */
+    text-decoration:none;/* Text decoration on hover */
 }
 
 .footer-bottom {
@@ -590,7 +597,7 @@ footer {
     font-weight: 700;
     margin-bottom: 1rem; /* Adjusted margin for responsiveness */
     line-height: 1.2;
-    color: #424242;
+    color: #003c4b;
     
 }
 
@@ -917,7 +924,7 @@ footer {
     font-size: 1.1rem; /* Adjusted font size for responsiveness */
     font-weight: 600;
     margin: 1rem; /* Adjusted margin for responsiveness */
-    color: #424242;
+    color: #07677f;
 }
 
 .blog-post-excerpt {
@@ -984,8 +991,12 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 .filter-button:hover,
 .filter-button.active {
-    background: #007bff;
+    background: #07677f;
     color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    color:#fff;/* Text color on hover */
+    text-decoration:none;/* Text decoration on hover */
 }
 /* ----------------------------------------------
    Projects Grid / Gallery
@@ -1154,7 +1165,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .cta a {
-    background-color: #2560ff;
+    background-color: #07677f;
     color: #fff;
     padding: 0.6rem 1.2rem; /* Adjusted padding for responsiveness */
     border-radius: 24px;
@@ -1163,7 +1174,13 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .cta a:hover {
-    background-color: #3700b3;
+    background-color: #ffffff;
+    color: #07677f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    color:#07677f;/* Text color on hover */
+    text-decoration:none;/* Text decoration on hover */
+    
 }
 
 .contact-container {
@@ -1577,7 +1594,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .project-link {
     display: inline-block;
     padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
-    background-color: #2560ff;
+    background-color: #07677f;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -1664,7 +1681,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .blog-post-link {
     display: inline-block;
     padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
-    background-color: #2560ff;
+    background-color: #07677f;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -1699,7 +1716,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .cta-button {
-    background-color: #2560ff;
+    background-color: #07677f;
     color: #fff;
     padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
     border-radius: 5px;
