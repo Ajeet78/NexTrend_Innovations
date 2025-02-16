@@ -1722,6 +1722,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .service-item {
+    width: auto;
+    max-width: 100%;
     text-align: center;
     padding: 1rem; /* Adjusted padding for responsiveness */
     border: 1px solid #eee;
