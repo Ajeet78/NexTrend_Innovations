@@ -1447,10 +1447,10 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     z-index: 2;
 }
 
-.hero-headline {
+/* .hero-headline {
     font-size: unset;
     margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
-}
+} */
 
 .hero-subheadline {
     font-size: 1rem;
