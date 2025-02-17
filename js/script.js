@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const navLinks = document.querySelectorAll('.menu-items a');
 
         navLinks.forEach(link => {
-            if (link.getAttribute('href') === path) {
+            if (link.getAttribute('href') === path || (path === '' && link.getAttribute('href') === 'index.html')) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
@@ -283,7 +283,7 @@ function currentSlide(n) {
 }
 
 // popup message
-document.addEventListener('DOMContentLoaded', (event) => {
+/*document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById('development-modal');
     const closeButton = document.querySelector('.close-button');
 
@@ -301,4 +301,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
             modal.style.display = 'none';
         }
     }
-});
+});*/
