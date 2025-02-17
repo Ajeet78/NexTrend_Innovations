@@ -1755,7 +1755,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     border: 1px solid #eee;
     border-radius: 8px;
     transition: transform 0.3s;
-    
+    box-sizing: border-box;
+
 }
 
 .service-item:hover {
