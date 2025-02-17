@@ -281,3 +281,24 @@ function currentSlide(n) {
     slideIndex = n;
     showSlides();
 }
+
+// popup message
+document.addEventListener('DOMContentLoaded', (event) => {
+    const modal = document.getElementById('development-modal');
+    const closeButton = document.querySelector('.close-button');
+
+    // Display the modal when the page loads
+    modal.style.display = 'block';
+
+    // Close the modal when the close button is clicked
+    closeButton.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    // Close the modal when clicking outside of the modal content
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
