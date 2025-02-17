@@ -1448,15 +1448,19 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .usp-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax for responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax for responsiveness */
     gap: 1rem; /* Adjusted gap for responsiveness */
     margin-top: 1.5rem; /* Adjusted margin for responsiveness */
+
+    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+   /* gap: 1.5rem;*/ /* Adjusted gap for responsiveness */
 }
 
 .usp-item {
     padding: 1rem; /* Adjusted padding for responsiveness */
     border: 1px solid #ddd;
     border-radius: 8px;
+    text-align: center;
 }
 
 /* Additional inline styles for homepage sections (move to style.css for production) */
@@ -1554,19 +1558,6 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     background-color: #3700b3;
 }
 
-.usp-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem; /* Adjusted gap for responsiveness */
-    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
-}
-
-.usp-item {
-    padding: 1rem; /* Adjusted padding for responsiveness */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-}
 
 .featured-projects {
     padding: 3rem 0; /* Adjusted padding for responsiveness */
