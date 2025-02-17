@@ -1797,6 +1797,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     overflow-x: auto;
     gap: 1rem; /* Adjusted gap for responsiveness */
     padding: 1rem 0; /* Adjusted padding for responsiveness */
+    justify-content: center;
 }
 
 .tech-stack-item {
