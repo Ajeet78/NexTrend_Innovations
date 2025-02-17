@@ -1293,6 +1293,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     width: 90%;
     max-width: 1200px;
     margin: 1.5rem auto; /* Adjusted margin for responsiveness */
+    margin-top: 0rem;
     padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
