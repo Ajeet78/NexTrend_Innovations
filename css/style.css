@@ -317,7 +317,7 @@ footer {
     font-size: 14px;
     line-height: 1.6;
     text-align: center; /* Center align text by default */
-    border-top: 1px solid gray;
+    border-top: 1px solid #b5b5b5;
 }
 
 .footer-content {
@@ -433,7 +433,7 @@ footer {
 .footer-bottom {
     text-align: center;
     padding-top: 1rem; /* Adjusted padding for responsiveness */
-    border-top: 1px solid #37474f;
+    border-top: 1px solid #37464e26;
     margin-top: 1rem; /* Adjusted margin for responsiveness */
     color: #777;
     font-size: 0.9em;
@@ -1198,7 +1198,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .contact-form {
-    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
+    margin-bottom: 4.5rem; /* Adjusted margin for responsiveness */
+    margin-top: 4.5rem;
 }
 
 .form-group {
