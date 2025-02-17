@@ -1713,7 +1713,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .hero {
     text-align: center;
     padding: 3rem 0; /* Adjusted padding for responsiveness */
-    font-size: 1.5rem; /* Adjusted font size for responsiveness */
+    font-size: 1.3rem; /* Adjusted font size for responsiveness */
     /* padding-top:0%; */
 }
 
