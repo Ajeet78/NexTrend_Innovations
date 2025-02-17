@@ -1192,7 +1192,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     width: 90%;
     max-width: 1200px;
     margin:20px auto;
-  
+    margin-top: 0;
     padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
