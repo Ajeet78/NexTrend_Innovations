@@ -1669,7 +1669,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .blog-post img {
     width: 100%;
-    height: auto;
+    height: 15rem;
 }
 
 .blog-post h3,
