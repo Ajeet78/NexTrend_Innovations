@@ -1753,13 +1753,15 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .service-item {
     width: auto;
-    max-width: 100%;
+    max-width: 140%;
     text-align: center;
     padding: 1rem; /* Adjusted padding for responsiveness */
     border: 1px solid #eee;
     border-radius: 8px;
     transition: transform 0.3s;
     box-sizing: border-box;
+    justify-items: stretch;
+
 
 }
 
