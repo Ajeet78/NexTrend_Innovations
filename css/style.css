@@ -1090,6 +1090,11 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
+.section-title{
+    text-align: center;
+}
+
+
 .timeline {
     margin: 1.5rem 0; /* Adjusted margin for responsiveness */
     border-left: 2px solid #ddd;
