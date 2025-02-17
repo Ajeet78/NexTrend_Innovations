@@ -317,6 +317,7 @@ footer {
     font-size: 14px;
     line-height: 1.6;
     text-align: center; /* Center align text by default */
+    border-top: 1px solid gray;
 }
 
 .footer-content {
