@@ -1581,7 +1581,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .project-item img {
     width: 100%;
-    height: auto;
+    height: 12rem;
     border-bottom: 1px solid #ddd;
 }
 
