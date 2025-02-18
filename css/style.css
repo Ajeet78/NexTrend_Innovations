@@ -522,6 +522,7 @@ footer {
     /* Newsletter adjustments */
     .newsletter form {
         flex-direction: column;
+        box-sizing: border-box;
     }
 
     .newsletter input[type="email"] {
@@ -1089,6 +1090,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     width: 90%;
     max-width: 1200px;
     margin: auto;
+    box-sizing: border-box;
     padding: 1rem; /* Adjusted padding for responsiveness */
 }
 
@@ -1873,9 +1875,16 @@ border-radius: 50%;
     cursor: pointer;
 }
 
-/* .active, .dot:hover { */
-    /* background-color: #000000; */
-/* } */
+.dot.active {
+    background-color: #4a4a4a;
+}
+
+
+@media (max-width: 768px) {
+    .mySlides.fade {
+        height: 300px !important;
+    }
+}
 
 /* ==========================================================================
    19. CHATBOT STYLES
@@ -2185,3 +2194,9 @@ border-radius: 50%;
     text-decoration: none;
     cursor: pointer;
 }
+
+
+.newsletter-email{
+    box-sizing: border-box;
+}
+
