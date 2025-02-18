@@ -219,8 +219,18 @@
     transform: scale(0.95);
     opacity: 0;
     text-decoration: none;/*text decoration*/
+    display: block;
+    width: fit-content;
+    text-align: center;
 
-}
+   /* margin-top: 1rem;
+    width: auto; */
+    animation: scaleUp 0.6s ease-out forwards;
+        text-decoration: none;
+        /* transition: background-color 0.3s ease, transform 0.3s ease; */
+    }
+
+
 
 .cta-button.animate-cta-button {
     transform: scale(1);
@@ -505,12 +515,6 @@ footer {
 
     }
 
-    .cta-button {
-        margin-top: 1rem;
-        width: auto;
-        animation: scaleUp 0.6s ease-out forwards;
-    }
-
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -534,6 +538,12 @@ footer {
     .newsletter button {
         width: 80%;
     }
+
+    
+.newsletter-email{
+    box-sizing: border-box;
+}
+
     /* Remove staggering on mobile */
     .footer-content div:nth-child(n) {
         animation-delay: 0s;
@@ -1067,17 +1077,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     text-align: center;
     padding: 2rem 0; /* Adjusted padding for responsiveness */
 }
-.cta-button {
-    background-color: #2560ff;
-    color: #fff;
-    padding: 0.6rem 1.2rem; /* Adjusted padding for responsiveness */
-    border: none;
-    border-radius: 24px;
-    cursor: pointer;
-    font-size: 1rem; /* Adjusted font size for responsiveness */
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
+
 .cta-button:hover {
     background-color: #3700b3;
     transform: translateY(-2px);
@@ -1178,6 +1178,10 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     padding: 1rem; /* Adjusted padding for responsiveness */
     background: #f5f5f5;
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cta a {
@@ -1800,6 +1804,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     gap: 1rem; /* Adjusted gap for responsiveness */
     padding: 1rem 0; /* Adjusted padding for responsiveness */
     justify-content: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
 }
 
 .tech-stack-item {
@@ -1824,6 +1830,12 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     height: auto;
 }
 
+@media (max-width: 768px) {
+    .tech-stack-item {
+        width: 10%;
+        margin: 5px 5%;
+    }
+}
 /*================================================================
     18. Slideshow Styles
     ================================================================*/
@@ -2193,10 +2205,5 @@ border-radius: 50%;
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-
-
-.newsletter-email{
-    box-sizing: border-box;
 }
 
