@@ -2115,6 +2115,7 @@ border-radius: 50%;
       /* position: relative; Needed for the pseudo-element */
       /* margin: 20px 0;  Vertical margin for spacing, especially in mobile view */
   /* } */ 
+ 
   
   .arrow::before {
       content: '';
