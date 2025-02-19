@@ -2117,29 +2117,29 @@ border-radius: 50%;
   /* } */ 
  
   
-  .arrow::before {
+  /* .arrow::before {
       content: '';
       position: absolute;
-      top: -10px; /* Adjust based on arrow height */
+      top: -10px; 
       left: 0;
       width: 0;
       height: 0;
-      border-left: 10px solid transparent;  /* Half of arrow width */
-      border-right: 10px solid transparent; /* Half of arrow width */
-      border-bottom: 10px solid #4CAF50; /* Arrow point height, match the color */
-  }
+      border-left: 10px solid transparent;  
+      border-right: 10px solid transparent; 
+      border-bottom: 10px solid #4CAF50; 
+  } */
   
-  .arrow::after { /*create a filled triangle */
+  /* .arrow::after {
       content: '';
       position: absolute;
-      bottom: -10px; /* Adjust based on arrow height */
+      bottom: -10px; 
       left: 0;
       width: 0;
       height: 0;
-      border-left: 10px solid transparent;  /* Half of arrow width */
-      border-right: 10px solid transparent; /* Half of arrow width */
-      border-top: 10px solid #4CAF50; /* Arrow point height, match the color */
-  }
+      border-left: 10px solid transparent;  
+      border-right: 10px solid transparent; 
+      border-top: 10px solid #4CAF50;
+  } */
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .step-container {
@@ -2150,10 +2150,10 @@ border-radius: 50%;
       width: 100%; /* Full width cards on smaller screens*/
     }
   
-    .arrow {
+    /* .arrow {
           margin: 10px auto;
-          transform: rotate(90deg); /* Rotate the arrow for vertical layout*/
-      }
+          transform: rotate(90deg);
+      } */
   
   }
   
