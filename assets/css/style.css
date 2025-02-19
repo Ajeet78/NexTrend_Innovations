@@ -1805,7 +1805,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     padding: 1rem 0; /* Adjusted padding for responsiveness */
     justify-content: center;
     justify-content: flex-start;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .tech-stack-item {

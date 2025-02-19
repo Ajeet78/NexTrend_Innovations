@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    loadComponent('common/header.html', 'header-placeholder');
-    loadComponent('common/nav.html', 'nav-placeholder'); // Load nav into its own placeholder
-    loadComponent('common/footer.html', 'footer-placeholder');
+    loadComponent('includes/header.html', 'header-placeholder');
+    loadComponent('includes/nav.html', 'nav-placeholder'); // Load nav into its own placeholder
+    loadComponent('includes/footer.html', 'footer-placeholder');
 
     // --- Navigation Logic (moved inside a function) ---
     function initNavigation() {
