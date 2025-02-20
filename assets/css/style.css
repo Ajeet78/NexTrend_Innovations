@@ -2326,7 +2326,7 @@ border-radius: 50%;
     border: 1px solid #ccc;
     border-radius: 20px;
     font-size: 14px;
-    width: 150px; /* Adjust width as needed */
+    width: 100px; /* Adjust width as needed */
     transition: width 0.3s ease;
 }
 
