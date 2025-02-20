@@ -226,6 +226,95 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         return responses[message.toLowerCase()] || "I'm sorry, I don't have an answer for that. Please contact us for more information.";
     }
+
+    // --- Form Validation (Example) ---
+    function initFormValidation() {
+        const form = document.querySelector('form'); // Replace 'form' with your actual form selector
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+                const nameInput = form.querySelector('#name'); // Example: Assuming a name field
+                const emailInput = form.querySelector('#email'); // Example: Assuming an email field
+
+                if (nameInput && nameInput.value.trim() === '') {
+                    isValid = false;
+                    alert('Please enter your name.'); // Basic validation message
+                }
+
+                if (emailInput && !isValidEmail(emailInput.value.trim())) {
+                    isValid = false;
+                    alert('Please enter a valid email address.'); // Basic validation message
+                }
+
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission if validation fails
+                }
+            });
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        }
+    }
+
+    // --- Back to Top Button ---
+    function initBackToTop() {
+        const backToTopButton = document.createElement('button');
+        backToTopButton.id = 'back-to-top';
+        backToTopButton.innerHTML = '&uarr;'; // Up arrow character
+        document.body.appendChild(backToTopButton);
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // For smooth scrolling
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) { // Show after scrolling down 300px
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+    }
+
+    // --- Lazy Loading for Images ---
+    function initLazyLoading() {
+        const images = document.querySelectorAll('img[data-src]');
+
+        const lazyLoad = (image) => {
+            image.setAttribute('src', image.getAttribute('data-src'));
+            image.onload = () => {
+                image.removeAttribute('data-src');
+            };
+        };
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        lazyLoad(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+            images.forEach(image => {
+                observer.observe(image);
+            });
+        } else {
+            // Fallback for browsers that don't support Intersection Observer
+            images.forEach(image => lazyLoad(image));
+        }
+    }
+
+    // --- Initialize new features ---
+    initFormValidation();
+    initBackToTop();
+    initLazyLoading();
 });
  
 // ---  Load Page-specific Content ---
