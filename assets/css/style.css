@@ -22,6 +22,7 @@
    19. LAZY LOADING STYLES    - Styles for lazy loading images
    20. FOCUS STYLES           - Styles for focus states
    21. ARIA ROLES AND STATES  - Styles for ARIA roles and states
+   22. SEARCH BAR STYLES      - Styles for the search bar
    ========================================================================== */
 
 /* ==========================================================================
@@ -1886,13 +1887,12 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     gap: 1rem; /* Adjusted gap for responsiveness */
     padding: 1rem 0; /* Adjusted padding for responsiveness */
     justify-content: center;
-    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
 .tech-stack-item {
     flex: 0 0 auto;
-    width: 100px; /* Adjusted width for responsiveness */
+    width: 55px; /* Adjusted width for responsiveness */
     text-align: center;
 }
 
@@ -2313,7 +2313,7 @@ border-radius: 50%;
 
 
 /* ==========================================================================
-   21. SEARCH BAR STYLES
+   22. SEARCH BAR STYLES
    ========================================================================== */
 .search-container {
     display: flex;
