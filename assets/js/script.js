@@ -394,3 +394,47 @@ function currentSlide(n) {
 
 
 
+/*================================================================================
+                            Search Functionality
+================================================================================*/
+ const searchInput = document.getElementById('search-input');
+ const searchButton = document.getElementById('search-button');
+
+ if (searchButton && searchInput) {
+     searchButton.addEventListener('click', performSearch);
+     searchInput.addEventListener('keypress', function(event) {
+         if (event.key === 'Enter') {
+             performSearch();
+         }
+     });
+ }
+
+ function performSearch() {
+     const searchTerm = searchInput.value.trim().toLowerCase();
+     if (searchTerm) {
+         //  Implement your search logic here
+         //  For example, redirect to a search results page:
+         window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+         //  Or, filter content on the current page.
+         console.log(`Searching for: ${searchTerm}`);
+     }
+ }
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

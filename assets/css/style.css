@@ -2215,3 +2215,115 @@ border-radius: 50%;
     background-color: #555; /* Darker background on hover */
 }
 
+
+
+/* ==========================================================================
+   21. SEARCH BAR STYLES
+   ========================================================================== */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Adjust spacing as needed */
+}
+
+#search-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    width: 150px; /* Adjust width as needed */
+    transition: width 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #007bff; /* Highlight on focus */
+    width: 200px; /* Expand on focus */
+}
+
+#search-button {
+    background-color: #07677f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .search-container {
+        display: none; /* Hide on smaller screens, consider a different approach for mobile */
+    }
+}
+
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    /* Styles for phone screens */
+    .hero-search-container {
+        display: flex; /* Show on phone */
+        align-items: center;
+        margin-left: 20px;
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 1rem;
+        text-align: left;
+    }
+
+    #search-input {
+        width: 90px;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        background-color: white;
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        transition: width 0.3s ease;
+        display: inline-block;
+    }
+
+    #search-input:focus {
+        outline: none;
+        border-color: #007bff;
+        width: 200px;
+    }
+
+    #search-button {
+        background-color: #07677f;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-left: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    #search-button:hover {
+        background-color: #0056b3;
+    }
+
+    .search-container.active #search-input {
+        width: 150px;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        background-color: white;
+    }
+}
+
+
+/*  hide ONLY the hero search bar on desktop */
+@media (min-width: 769px) {
+    .hero-search-container {
+        display: none;
+    }
+}
