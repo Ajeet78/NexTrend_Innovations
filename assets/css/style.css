@@ -1,5 +1,3 @@
-/* css/style.css */
-
 /* ==========================================================================
    TABLE OF CONTENTS
    ==========================================================================
@@ -12,7 +10,7 @@
    7.  FOOTER                 - Styles for the site footer
    8.  RESPONSIVE DESIGN      - Media queries for different screen sizes
    9.  HERO SECTION           - Styles for the main landing section
- -  10. SERVICES SECTION       - Styles for the services listing
+   10. SERVICES SECTION       - Styles for the services listing
    11. FEATURED PROJECTS      - Styles for the project carousel
    12. TESTIMONIALS           - Styles for customer feedback section
    13. CLIENT LOGOS           - Styles for the client logos display
@@ -844,45 +842,142 @@ footer {
 /* ==========================================================================
    12. TESTIMONIALS
    ========================================================================== */
-.testimonials {
-    padding: 3rem 0; /* Adjusted padding for responsiveness */
+.testimonials-section {
+    padding: 3rem 0;
+    /* background: linear-gradient(135deg, #e0f7fa, #80deea, #26c6da); */
     background: #f5f5f5;
+    background-size: 300% 300%;
+    animation: backgroundShift 10s ease infinite;
+    position: relative;
+    overflow: visible;
+  }
+  
+  /* Container for Centering Content */
+  .testimonials-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Section Title */
+  .testimonials-section .section-title {
     text-align: center;
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for responsiveness */
-    gap: 1.5rem; /* Adjusted gap for responsiveness */
-    margin-top: 1.5rem; /* Adjusted margin for responsiveness */
-}
-
-.testimonial-item {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  /* Horizontal Carousel with Custom Scrollbar */
+  .testimonials-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+  
+  /* Custom Scrollbar Styling */
+  .testimonials-carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+  .testimonials-carousel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .testimonials-carousel::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
+  /* Testimonial Card */
+  .testimonial-card {
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem; /* Adjusted padding for responsiveness */
-    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-align: left;
-}
-
-.testimonial-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.testimonial-quote {
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 0 0 300px;
+    padding: 2rem;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Bring hovered card to the front */
+  }
+  
+  /* Testimonial Header with Circular Profile Image */
+  .testimonial-header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial-profile {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2196F3;
+  }
+  
+  /* Testimonial Content */
+  .testimonial-content {
+    text-align: center;
+  }
+  
+  .testimonial-text {
     font-style: italic;
     color: #555;
-    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
+    margin-bottom: 1rem;
     line-height: 1.5;
-}
-
-.testimonial-author {
+  }
+  
+  .testimonial-author {
     font-weight: 600;
     color: #424242;
-}
+    margin-bottom: 1rem;
+  }
+  
+  /* Star Rating */
+  .testimonial-rating i {
+    color: #FFD700; /* Gold */
+    margin: 0 2px;
+  }
+  
+  /* Background Animation */
+  @keyframes backgroundShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .testimonial-card {
+      flex: 0 0 250px;
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .testimonial-card {
+      flex: 0 0 200px;
+      padding: 1rem;
+    }
+    .testimonials-section .section-title {
+      font-size: 1.5rem;
+    }
+  }
 
 /* ==========================================================================
    13. CLIENT LOGOS
