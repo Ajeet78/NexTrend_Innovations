@@ -28,7 +28,11 @@
 /* ==========================================================================
    1. GENERAL STYLES
    ========================================================================== */
-   body {
+html {
+    font-size: 16px; /* Base font size for larger screens */
+}
+
+body {
     font-family: Arial, sans-serif;
     background: #F0F4FA;
     color: #003c4b;
@@ -39,6 +43,7 @@
     transition: background-color 0.5s ease, color 0.5s ease;
     overflow-x: hidden;
     min-height: 100vh;
+    font-size: 1rem; /* 16px - Desktop */
 }
 
 /* ==========================================================================
@@ -147,7 +152,7 @@
 }
 
 .logo a {
-    font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    font-size: 1.75rem; /* Adjusted font size for smaller screens */
     font-weight: 700;
     color: #6200ee;
     text-decoration: none;
@@ -500,6 +505,14 @@ footer {
    8. RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 768px) {
+    html {
+        font-size: 14px; /* Base font size for smaller screens */
+    }
+
+    body {
+        font-size: 0.875rem; /* 14px - Mobile */
+    }
+
     .container {
         padding: 0 1rem;
     }
@@ -540,6 +553,10 @@ footer {
         width: 100%;
         text-align: center;
 
+    }
+
+    .logo a {
+        font-size: 1.25rem; /* Adjusted font size for smaller screens */
     }
 
     .footer-content {
@@ -681,7 +698,7 @@ footer {
 
 @media (max-width: 768px) {
     h1.hero-headline {
-        font-size: 24px;
+        font-size: calc(3.6vw + 10px);;
     }
 }
 /* ==========================================================================
@@ -734,6 +751,7 @@ footer {
 
 .service-title {
     font-size: 1.3rem; /* Adjusted font size for responsiveness */
+    /* font-size: calc(3.6vw + 10px); */
     font-weight: 600;
     margin-bottom: 0.5rem; /* Adjusted margin for responsiveness */
     color: #07677f;
@@ -765,6 +783,28 @@ footer {
     color: #07677f;
 }
 
+@media screen and (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax for responsiveness */
+    }
+    .service-item {
+        padding: 1rem; /* Adjusted padding for responsiveness */
+    }
+    .service-icon {
+        font-size: 2rem; /* Adjusted font size for responsiveness */
+    }
+    .service-title {
+       /* font-size: 1.1rem;*/ /* Adjusted font size for responsiveness */
+        font-size: calc(2.2vw + 10px);
+    }
+    .service-description {
+        font-size: 0.9rem; /* Adjusted font size for responsiveness */
+    }
+    .service-cta .cta-button {
+        padding: 0.4rem 0.8rem; /* Adjusted padding for responsiveness */
+    }
+    
+}
 
 /* ----- Service Link Styles ----- */
 .service-link {
@@ -1819,6 +1859,89 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     opacity: 1;
     transform: translateY(0px);
 }
+@media screen and (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+    .hero-visual {
+        order: -1;
+    }
+    .hero-visual img {
+        width: 100%;
+    }
+    .carousel-controls button {
+        font-size: 1.5rem;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero-cta {
+        margin-top: 1rem;
+    }
+    .service-item {
+        width: 100%;
+    }
+    .service-icon {
+        font-size: 1.5rem;
+    }
+    .service-cta {
+        margin-top: 1rem;
+    }
+    .featured-projects {
+        padding: 2rem 0;
+    }
+    .projects-carousel {
+        gap: 1rem;
+    }
+    .project-item {
+        flex: 0 0 80%;
+        max-width: 300px;
+        margin-right: 0;
+    }
+    .project-item img {
+        height: 12rem;
+    }
+    .project-item h3,
+    .project-item p {
+        padding: 0.5rem;
+    }
+    .testimonials-grid {
+        gap: 1rem;
+    }
+    .testimonial-item {
+        padding: 1rem;
+    }
+    .client-logos {
+        gap: 1rem;
+    }
+    .client-logos img {
+        max-width: 80px;
+    }
+
+    .blog-posts-teaser{
+        height: 22rem;
+    }
+    .blog-posts {
+        gap: 1rem;
+    }
+    .blog-post img {
+        height: 10rem;
+    }
+    .blog-post h3{
+        font-size: 1.0rem;
+    }
+    .blog-post p {
+        /* padding: 0.5rem; */
+        font-size: 15px;
+    }
+    .blog-post-link {
+        padding: 0.5rem 1rem;
+        margin: 0.5rem;
+        font-size: 10px;
+    }
+    
+}
+
 
 /* ==========================================================================
    17. SERVICE PAGE STYLES
@@ -2391,7 +2514,6 @@ border-radius: 50%;
         position: relative;
         top: auto;
         right: auto;
-        margin-top: 1rem;
         text-align: left;
     }
 
