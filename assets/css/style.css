@@ -678,6 +678,12 @@ footer {
     transform: scale(1.05);
 }
 
+
+@media (max-width: 768px) {
+    h1.hero-headline {
+        font-size: 24px;
+    }
+}
 /* ==========================================================================
    10. SERVICES SECTION
    ========================================================================== */
@@ -1030,13 +1036,19 @@ footer {
 }
 
 .blog-posts-teaser {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for responsiveness */
     gap: 1.5rem; /* Adjusted gap for responsiveness */
     margin-top: 1.5rem; /* Adjusted margin for responsiveness */
+    display: flex;
+    flex-direction: row; 
+    overflow-x: auto; 
+    white-space: wrap; 
+    min-width: 0px; 
+    width: 100%;
+    padding: 5px;
 }
 
 .blog-post {
+    min-width: 300px; /* Adjusted min-width for responsiveness */
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1783,8 +1795,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .blog-post h3,
 .blog-post p {
-    padding: 0.5rem; /* Adjusted padding for responsiveness */
-    text-align: left;
+    /*padding: 0.5rem;*/ /* Adjusted padding for responsiveness */
+    text-align: justify;
 }
 
 .blog-post-link {
