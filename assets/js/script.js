@@ -315,7 +315,56 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
     initBackToTop();
     initLazyLoading();
+
+
+
+
+
+//for auto scroll in tech================================================================
+const carousel = document.querySelector('.tech-stack-carousel');
+
+function easeInOutQuad(t) {
+  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+}
+
+function startAutoScroll() {
+  const scrollWidth = carousel.scrollWidth;
+  const clientWidth = carousel.clientWidth;
+  const scrollAmount = scrollWidth - clientWidth;
+  let currentScroll = 0;
+  const startTime = performance.now();
+  const scrollDuration = 5000; // Adjust this value to change the speed (milliseconds)
+
+  function animateScroll(currentTime) {
+    const elapsedTime = currentTime - startTime;
+    const progress = elapsedTime / scrollDuration;
+
+    if (progress < 1) {
+      const easedProgress = easeInOutQuad(progress);
+      currentScroll = easedProgress * scrollAmount;
+      carousel.scrollLeft = currentScroll;
+      requestAnimationFrame(animateScroll);
+    } else {
+      carousel.scrollLeft = 0;
+      startAutoScroll();
+    }
+  }
+  requestAnimationFrame(animateScroll);
+}
+
+startAutoScroll();
+
+
+
+
+
+
+
 });
+
+
+
+
  
 // ---  Load Page-specific Content ---
 // --- Carousel Logic (Basic Example) ---
@@ -422,8 +471,40 @@ function currentSlide(n) {
                    
 
 
+// ==============================for texh icon scroll=========================
+/*const carousel = document.querySelector('.tech-stack-carousel');
 
+function easeInOutQuad(t) {
+  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+}
 
+function startAutoScroll() {
+  const scrollWidth = carousel.scrollWidth;
+  const clientWidth = carousel.clientWidth;
+  const scrollAmount = scrollWidth - clientWidth;
+  let currentScroll = 0;
+  const startTime = performance.now();
+  const scrollDuration = 5000; // Adjust this value to change the speed (milliseconds)
+
+  function animateScroll(currentTime) {
+    const elapsedTime = currentTime - startTime;
+    const progress = elapsedTime / scrollDuration;
+
+    if (progress < 1) {
+      const easedProgress = easeInOutQuad(progress);
+      currentScroll = easedProgress * scrollAmount;
+      carousel.scrollLeft = currentScroll;
+      requestAnimationFrame(animateScroll);
+    } else {
+      carousel.scrollLeft = 0;
+      startAutoScroll();
+    }
+  }
+  requestAnimationFrame(animateScroll);
+}
+
+startAutoScroll();
+*/
 
 
 
