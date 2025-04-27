@@ -2657,10 +2657,15 @@ border-radius: 50%;
 }  
 
 @media (max-width: 768px) {
-    .modal { width: 80%; /* Full width on smaller screens */ height: 90%; /* Full height on smaller screens */ margin: 0; /* Remove any default margin */
-        padding: 1rem; /* Less padding for smaller screens */ font-size: 0.8rem; /* Adjust font size for smaller screens */
-    } .modal-content {
-        width: 90%; /* Full width on smaller screens */
+    .modal { width: 92%; /* Full width on smaller screens */ 
+        height: 100%; /* Full height on smaller screens */ 
+        margin: 0; /* Remove any default margin */
+        padding: 1rem; /* Less padding for smaller screens */ 
+        font-size: 0.8rem; /* Adjust font size for smaller screens */ align-items: flex-start
+    } 
+    
+    .modal-content {
+        width: 100%; /* Full width on smaller screens */
         max-width: 100%; /* Ensure it doesn't exceed screen width */
     }
 } 
