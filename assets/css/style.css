@@ -2654,6 +2654,12 @@ border-radius: 50%;
     animation: fadeIn 0.5s ease-in-out; /* Add fade-in animation */
     backdrop-filter: blur(10px); /* Apply blur effect */
     -webkit-backdrop-filter: blur(10px); /* For Safari support */
+}  
+
+@media (max-width: 768px) {
+    .modal {
+        padding: 1rem; /* Less padding for smaller screens */ font-size: 0.8rem; /* Adjust font size for smaller screens */
+    }
 }
 
 .modal-content {
@@ -2664,8 +2670,8 @@ border-radius: 50%;
     top: auto; /* Reset top positioning */
     left: auto; /* Reset left positioning */
     transform: translate(0, 0); /* Ensure no offset */
-    background: #FF2400; /* Clean white background */
-    color: #ffffff; /* Google's text color */ font-size: 1.2rem; /* Adjust font size for readability */
+    background: #07677f85; /* Clean white background */
+    color: #ffffff; /* Google's text color */ font-size: 1.0rem; /* Adjust font size for readability */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06); /* Subtle shadow */
     border-radius: 8px; /* Slightly rounded corners */
     padding: 1.5rem; /* Adjust padding for better spacing */
