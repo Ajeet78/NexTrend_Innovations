@@ -2657,10 +2657,13 @@ border-radius: 50%;
 }  
 
 @media (max-width: 768px) {
-    .modal {
+    .modal { width: 80%; /* Full width on smaller screens */ height: 90%; /* Full height on smaller screens */ margin: 0; /* Remove any default margin */
         padding: 1rem; /* Less padding for smaller screens */ font-size: 0.8rem; /* Adjust font size for smaller screens */
+    } .modal-content {
+        width: 90%; /* Full width on smaller screens */
+        max-width: 100%; /* Ensure it doesn't exceed screen width */
     }
-}
+} 
 
 .modal-content {
     margin: 0; /* Remove any default margin */
@@ -2679,7 +2682,7 @@ border-radius: 50%;
     max-width: 600px; /* Limit max width */
     transform: translateY(-20px); /* Subtle slide-in effect */
     animation: slideIn 0.4s ease-out forwards, textPulse 2s infinite; /* Add text animation */
-}
+} 
 
 .close-button {
     font-size: 24px; /* Adjust size for a cleaner look */
