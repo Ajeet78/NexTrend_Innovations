@@ -321,12 +321,15 @@
     <script src="assets/js/script.js" defer></script>
 
      <!-- Modal Structure -->
-     <div id="development-modal" class="modal">
+     <div class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
             <p>Our website is currently under development. Stay tuned for updates!</p>
         </div>
     </div> 
+    <script>
+        // Disable interaction outside the modal
+        document.body.style.overflow = "hidden";
+    </script>
     
 </body>
 </html>

@@ -101,6 +101,17 @@ body {
     to { opacity: 1; }
 }
 
+@keyframes textPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
 /* ==========================================================================
    3. UTILITY CLASSES
    ========================================================================== */
@@ -1270,7 +1281,12 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
    ---------------------------------------------- */
 .project-filters {
     margin-bottom: 1rem; /* Adjusted margin for responsiveness */
-    text-align: center;
+    text-align: center;   
+    display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        box-sizing: border-box;
 }
 .filter-button {
     background: #f0f0f0;
@@ -2070,6 +2086,75 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 
+      
+/* Horizontal scrollable filter tab */
+.filter-tabs {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0.5rem 0;
+  background: #f9f9f9;
+  margin-bottom: 1rem;
+}
+.filter-tabs .filter-btn {
+  display: inline-block;
+  background: #eee;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+.filter-tabs .filter-btn:hover {
+  background: #ddd;
+}
+.filter-tabs .filter-btn.active {
+  background: #2560ff;
+  color: white;
+  border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* Latest posts section styling */
+.latest-posts {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.latest-posts h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.latest-posts .posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.latest-posts .blog-post {
+  border: none; /* Use card style if needed */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+.latest-posts .blog-post:hover {
+  transform: translateY(-5px);
+}
+.latest-posts .blog-post img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.latest-posts .post-content {
+  padding: 1rem;
+}
+
 /* ==========================================================================
    17. SERVICE PAGE STYLES
    ========================================================================== */
@@ -2413,6 +2498,7 @@ border-radius: 50%;
   /* Individual Step Card */
   .step-card {
     height: 14rem;
+    /* height: auto; */
     background: #fff;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
@@ -2425,6 +2511,14 @@ border-radius: 50%;
     position: relative;
     transition: transform 0.3s ease;
     margin-bottom: 20px; /* Add margin to the bottom for spacing when stacked */
+  }
+
+  @media screen and (max-width: 768px) {
+    .step-card {
+        width: 100%;
+        height: auto;
+    }
+    
   }
   
   .step-card:hover {
@@ -2543,39 +2637,88 @@ border-radius: 50%;
 
 /*------------------------------------------------- popup message----------------------- */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    position: fixed; /* Ensure it stays fixed on the screen */
+    inset: 0; /* Set top, right, bottom, and left to 0 for full coverage */
+    margin: 0; /* Remove any default margin */
+    padding: 1rem; /* Add padding for smaller screens */
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-    padding-top: 60px; 
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    animation: fadeIn 0.5s ease-in-out; /* Add fade-in animation */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
+    margin: 0; /* Remove any default margin */
+    justify-content: center;
+    align-items: center; /* Center items vertically */
+    position: relative; /* Ensure proper positioning */
+    top: auto; /* Reset top positioning */
+    left: auto; /* Reset left positioning */
+    transform: translate(0, 0); /* Ensure no offset */
+    background: #FF2400; /* Clean white background */
+    color: #ffffff; /* Google's text color */ font-size: 1.2rem; /* Adjust font size for readability */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+    border-radius: 8px; /* Slightly rounded corners */
+    padding: 1.5rem; /* Adjust padding for better spacing */
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Limit max width */
+    transform: translateY(-20px); /* Subtle slide-in effect */
+    animation: slideIn 0.4s ease-out forwards, textPulse 2s infinite; /* Add text animation */
 }
 
 .close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 24px; /* Adjust size for a cleaner look */
+    color: #5f6368; /* Subtle gray color */
+    position:absolute; /* Position in the top-right corner */
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+    color: #d93025; /* Google's red hover effect */
+    transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #back-to-top {
@@ -2725,3 +2868,181 @@ border-radius: 50%;
         box-sizing: border-box;
     
     }
+
+
+
+
+
+/* ==========================================================================
+blog*/
+
+/* --- Filter Tabs (Professional Look) --- */
+.filter-tabs {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 0 1rem;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+.filter-tabs .filter-btn {
+  background: none;
+  border: none;
+  margin: 0 1rem;
+  padding: 1rem 0;
+  font-size: 1rem;
+  color: #606060;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: color 0.3s ease;
+}
+.filter-tabs .filter-btn:hover {
+  color: #000;
+}
+.filter-tabs .filter-btn.active {
+  color: #000;
+  font-weight: bold;
+}
+.filter-tabs .filter-btn.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: #2560ff;
+  border-radius: 2px;
+}
+
+/* --- Latest Posts Section (Grid View) --- */
+.latest-posts {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.latest-posts h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.latest-posts .posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.latest-posts .blog-post {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+.latest-posts .blog-post:hover {
+  transform: translateY(-5px);
+}
+.latest-posts .blog-post img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.latest-posts .post-content {
+  padding: 1rem;
+}
+
+/* --- Older Posts Section (List View) --- */
+.older-posts {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+.older-posts h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.posts-list .blog-post {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+.posts-list .blog-post img {
+  width: 100px;
+  height: auto;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+.posts-list .post-content {
+  flex: 1;
+}
+.posts-list .post-title {
+  font-size: 1.1rem;
+  margin: 0;
+}
+.posts-list .post-snippet {
+  font-size: 0.9rem;
+  color: #666;
+}
+.posts-list .post-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* --- Content Wrapper for Main and Sidebar --- */
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  gap: 2rem;
+}
+.older-posts {
+  flex: 1 1 60%;
+}
+.sidebar {
+  flex: 1 1 30%;
+}
+/* --- Sidebar Widgets --- */
+.sidebar .widget {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.sidebar .widget h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.sidebar .widget ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.sidebar .widget ul li {
+  margin-bottom: 0.5rem;
+}
+.sidebar .widget ul li a {
+  text-decoration: none;
+  color: #2560ff;
+  transition: color 0.3s;
+}
+.sidebar .widget ul li a:hover {
+  color: #000;
+}

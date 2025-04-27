@@ -420,8 +420,8 @@ function currentSlide(n) {
     showSlides();
 }
 
-// popup message
-/*document.addEventListener('DOMContentLoaded', (event) => {
+//------------------------------------- popup message--------------------------------
+document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById('development-modal');
     const closeButton = document.querySelector('.close-button');
 
@@ -439,7 +439,7 @@ function currentSlide(n) {
             modal.style.display = 'none';
         }
     }
-});*/
+});
 
 
 
@@ -507,6 +507,30 @@ startAutoScroll();
 */
 
 
+/*=============================For blog filter=============================*/
+    document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const blogPosts = document.querySelectorAll(".article-listings .blog-post, .latest-posts .blog-post");
+
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        
+        const category = button.getAttribute("data-category");
+        
+          // Filter posts (both in Latest and Article Listings)
+        blogPosts.forEach(post => {
+            if (category === "all" || post.getAttribute("data-category") === category) {
+            post.style.display = "block";
+            } else {
+            post.style.display = "none";
+            }
+        });
+        });
+    });
+    });
 
 
 
