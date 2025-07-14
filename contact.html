@@ -35,17 +35,17 @@
                 <h3>Instant Chat</h3>
                 <a href="#">Live Chat (Coming Soon)</a>
             </div>
-            <div>
+            <!-- <div>
                 <h3>Schedule a Call</h3>
                 <a href="#calendly">Book a Call</a>
-            </div>
+            </div> -->
         <!-- </div> -->
         </section>
 
         <section id="contact-form" class="contact-form">
             <div class="container">
             <h2 class="section-title">Tell us about your project</h2>
-            <form action="#" method="post">
+            <form id="contactForm" action="/submit-form" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -104,20 +104,64 @@
                 
                 <button type="submit" class="cta-button">Send Inquiry</button>
             </form>
+
+            <div id="successPopup" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-button" onclick="closePopup()">&times;</span>
+                    <p>Your inquiry has been sent successfully!</p>
+                </div>
+            </div>
+
+            <script>
+                const form = document.getElementById('contactForm');
+                const successPopup = document.getElementById('successPopup');
+
+                form.addEventListener('submit', async (event) => {
+                    event.preventDefault(); // Prevent default form submission
+
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData.entries());
+
+                    try {
+                        const response = await fetch('/submit-form', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(data),
+                        });
+
+                        if (response.ok) {
+                            successPopup.style.display = 'flex'; // Show success popup
+                            form.reset(); // Reset the form
+                            setTimeout(closePopup, 3000); // Auto-hide popup after 3 seconds
+                        } else {
+                            alert('Failed to send inquiry. Please try again.');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+
+                function closePopup() {
+                    successPopup.style.display = 'none'; // Hide the popup
+                }
+            </script>
         </div>
         </section>
 
-        <section id="calendly" class="calendly-integration">
-            <div class="container">
-            <h2 class="section-title">Schedule a Strategy Call</h2>
+        <!-- Schedule a Strategy Call section -->
+        <!-- <section id="calendly" class="calendly-integration"> -->
+            <!-- <div class="container">
+            <h2 class="section-title">Schedule a Strategy Call</h2> -->
             <!-- *Replace with your Calendly embed code* -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/yourname/30min"
+            <!-- <div class="calendly-inline-widget" data-url="https://calendly.com/yourname/30min"
                 style="min-width:320px;height:400px;"></div>
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"
                 async></script>
         </div>
-        </section>
+        </section> -->
 
+        
         <section class="location-map">
             <div class="container">
             

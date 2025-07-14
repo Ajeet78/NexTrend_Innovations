@@ -19,9 +19,9 @@
 
         <div class="newsletter">
             <p class="footer-heading">Subscribe to Our Newsletter:</p>
-            <form id="newsletter-form">
+            <form id="newsletter-form" action="javascript:void(0);">
                 <input type="email" id="newsletter-email" placeholder="Enter your email" required class="newsletter-email">
-                <button type="submit">Subscribe</button>
+                <button type="submit" id="subscribe-button">Subscribe</button>
             </form>
             <p id="newsletter-message" class="newsletter-message"></p>
         </div>
@@ -37,9 +37,9 @@
         </div>
     </div>
 
-    <div class="dark-mode-toggle">
+    <!-- <div class="dark-mode-toggle">
         <button id="dark-mode-button" aria-label="Toggle Dark Mode">Toggle Dark Mode</button>
-    </div>
+    </div> -->
 
     <div class="footer-bottom">
         <p>&copy; 2025 NexTrend Innovations. All rights reserved.</p>
@@ -47,6 +47,63 @@
     </div>
 </footer>
 
+<div id="popup" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-button" onclick="closePopup()">&times;</span>
+        <p id="popup-message"></p>
+    </div>
+</div>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script>
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterEmail = document.getElementById('newsletter-email');
+    const subscribeButton = document.getElementById('subscribe-button');
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popup-message');
+
+    newsletterForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const email = newsletterEmail.value.trim();
+
+        if (!email || !email.includes('@')) {
+            popupMessage.textContent = 'Please enter a valid email address';
+            popup.style.display = 'flex';
+            return;
+        }
+
+        try {
+            subscribeButton.disabled = true;
+            subscribeButton.textContent = 'Subscribing...';
+
+            const response = await fetch('/subscribe-newsletter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                popupMessage.textContent = data.message || 'Thank you for subscribing!';
+                newsletterEmail.value = '';
+            } else {
+                popupMessage.textContent = data.message || 'Subscription failed. Please try again.';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            popupMessage.textContent = 'An error occurred. Please try again.';
+        } finally {
+            popup.style.display = 'flex';
+            subscribeButton.disabled = false;
+            subscribeButton.textContent = 'Subscribe';
+            setTimeout(closePopup, 3000);
+        }
+    });
+
+    function closePopup() {
+        popup.style.display = 'none';
+    }
+</script>
 
 

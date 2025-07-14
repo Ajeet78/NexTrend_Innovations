@@ -1566,7 +1566,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     flex-direction: row;
     align-items: normal;
     justify-content: space-around;
-    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
+    /* margin-bottom: 1.5rem;*/ /*Adjusted margin for responsiveness */
+    background: #ffffff;
 }
 
 .contact-methods div {
@@ -1574,7 +1575,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     text-align: center;
     justify-items: center;
     align-content: space-between;
-    margin: 0.5rem; /* Adjusted margin for responsiveness */
+    margin: 1.5rem; /* Adjusted margin for responsiveness */
 }
 
 .contact-methods a {
@@ -1792,6 +1793,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     justify-content: space-around;
     height: 100%;
     margin-top: 0.5rem;
+    background: #F0F4FA;
 
 }
 
