@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer'); // Ensure nodemailer is installed
 
 const app = express();
 const PORT = 3000;
@@ -12,6 +13,15 @@ app.use(bodyParser.json());
 
 // Serve static files (e.g., your HTML, CSS, and JS)
 app.use(express.static(path.join(__dirname)));
+
+// Configure nodemailer
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'info.nextrendinnovations@gmail.com', // Replace with your email
+        pass: 'ijxkazicfmklwogr'  // Replace with your Gmail app password
+    }
+});
 
 // Endpoint to handle form submission
 app.post('/submit-form', (req, res) => {
@@ -61,6 +71,69 @@ app.post('/subscribe-newsletter', async (req, res) => {
         console.error('Subscription error:', error);
         res.status(500).json({ message: 'Subscription failed' });
     }
+});
+
+// Blog posts file
+const BLOG_FILE = path.join(__dirname, 'blog-posts.json');
+
+// API to handle blog post submissions
+app.post('/api/blog-posts', (req, res) => {
+    const { title, snippet, category, image, date } = req.body;
+
+    // Validate the request body
+    if (!title || !snippet || !category || !image || !date) {
+        return res.status(400).json({ message: 'All fields are required.' });
+    }
+
+    // Read existing blog posts
+    let posts = [];
+    if (fs.existsSync(BLOG_FILE)) {
+        posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    }
+
+    // Add the new blog post
+    posts.push({ title, snippet, category, image, date });
+    fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
+
+    res.status(201).json({ message: 'Blog post added successfully.' });
+});
+
+// API to fetch all blog posts
+app.get('/api/blog-posts', (req, res) => {
+    if (!fs.existsSync(BLOG_FILE)) {
+        return res.json([]);
+    }
+
+    const posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    res.json(posts);
+});
+
+// API to handle form submissions and send email
+app.post('/api/send-enquiry', (req, res) => {
+    const { name, email, message } = req.body;
+
+    // Validate the request body
+    if (!name || !email || !message) {
+        return res.status(400).json({ message: 'All fields are required.' });
+    }
+
+    // Email options
+    const mailOptions = {
+        from: 'info.nextrendinnovations@gmail.com', // Your email
+        to: 'info.nextrendinnovations@gmail.com', // Your email
+        subject: `New Inquiry from ${name}`,
+        text: `You have received a new inquiry.\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+    };
+
+    // Send email
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            return res.status(500).json({ message: 'Failed to send email.' });
+        }
+        console.log('Email sent: ' + info.response);
+        res.status(200).json({ message: 'Enquiry sent successfully!' });
+    });
 });
 
 // Start the server

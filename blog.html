@@ -202,34 +202,8 @@
         <button data-filter="ai" class="filter-button">AI & ML</button>
         <button data-filter="professional" class="filter-button">Professional</button>
       </div>
-      <div class="posts-grid">
-        <!-- Latest Post 1 -->
-        <div class="blog-post" data-category="professional">
-          <img src="assets/img/3.jpg" alt="Latest Article 1">
-          <div class="post-content">
-            <h2 class="post-title">Professional Growth in Tech</h2>
-            <p class="post-snippet">How to grow your career as a tech professional.</p>
-            <p class="post-date">Published on January 20, 2025</p>
-          </div>
-        </div>
-        <!-- Latest Post 2 -->
-        <div class="blog-post" data-category="web">
-          <img src="assets/img/1.jpg" alt="Latest Article 2">
-          <div class="post-content">
-            <h2 class="post-title">The Future of Web Development</h2>
-            <p class="post-snippet">Explore emerging trends and technologies shaping the future of web development.</p>
-            <p class="post-date">Published on February 14, 2025</p>
-          </div>
-        </div>
-        <!-- Latest Post 3 -->
-        <div class="blog-post" data-category="mobile">
-          <img src="assets/img/2.jpg" alt="Latest Article 3">
-          <div class="post-content">
-            <h2 class="post-title">Mobile App Development Best Practices</h2>
-            <p class="post-snippet">Learn the best practices for building high-quality mobile applications.</p>
-            <p class="post-date">Published on January 28, 2025</p>
-          </div>
-        </div>
+      <div class="posts-grid" id="latest-posts-grid">
+        <!-- Blog posts will be loaded here -->
       </div>
     </section>
 
@@ -238,35 +212,8 @@
       <!-- Older Posts Section (List View) -->
       <section class="older-posts">
         <h2>Older Posts</h2>
-        <div class="posts-list">
-          <!-- Older Post 1 -->
-          <div class="blog-post" data-category="web">
-            <img src="assets/img/1.jpg" alt="Article 1">
-            <div class="post-content">
-              <h2 class="post-title">The Future of Web Development</h2>
-              <p class="post-snippet">Explore the emerging trends and technologies shaping the future of web development.</p>
-              <p class="post-date">Published on February 14, 2025</p>
-            </div>
-          </div>
-          <!-- Older Post 2 -->
-          <div class="blog-post" data-category="mobile">
-            <img src="assets/img/2.jpg" alt="Article 2">
-            <div class="post-content">
-              <h2 class="post-title">Mobile App Development Best Practices</h2>
-              <p class="post-snippet">Learn the best practices for building high-quality and user-friendly mobile applications.</p>
-              <p class="post-date">Published on January 28, 2025</p>
-            </div>
-          </div>
-          <!-- Older Post 3 (Professional) -->
-          <div class="blog-post" data-category="professional">
-            <img src="assets/img/4.jpg" alt="Article 3">
-            <div class="post-content">
-              <h2 class="post-title">Professional Tips for Career Advancement</h2>
-              <p class="post-snippet">Key strategies to excel and move up in your professional career.</p>
-              <p class="post-date">Published on February 5, 2025</p>
-            </div>
-          </div>
-          <!-- Add more older posts as needed -->
+        <div class="posts-list" id="older-posts-list">
+          <!-- Older blog posts will be loaded here -->
         </div>
       </section>
 
@@ -298,126 +245,67 @@
 
   <div id="footer-placeholder"></div>
 
-  <!-- JavaScript for Filter Functionality -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const filterButtons = document.querySelectorAll(".filter-button");
-      const blogPosts = document.querySelectorAll(".blog-post");
+    // Fetch and render blog posts
+    async function loadBlogPosts() {
+      const res = await fetch('/api/blog-posts');
+      const posts = await res.json();
 
-      filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
+      // Sort posts by date (latest first)
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // Split into latest and older
+      const latest = posts.slice(0, 3);
+      const older = posts.slice(3);
+
+      // Render latest posts
+      const latestGrid = document.getElementById('latest-posts-grid');
+      latestGrid.innerHTML = latest.map(post => `
+        <div class="blog-post" data-category="${post.category}">
+          <img src="${post.image}" alt="${post.title}">
+          <div class="post-content">
+            <h2 class="post-title">${post.title}</h2>
+            <p class="post-snippet">${post.snippet}</p>
+            <p class="post-date">Published on ${post.date}</p>
+          </div>
+        </div>
+      `).join('');
+
+      // Render older posts
+      const olderList = document.getElementById('older-posts-list');
+      olderList.innerHTML = older.map(post => `
+        <div class="blog-post" data-category="${post.category}">
+          <img src="${post.image}" alt="${post.title}">
+          <div class="post-content">
+            <h2 class="post-title">${post.title}</h2>
+            <p class="post-snippet">${post.snippet}</p>
+            <p class="post-date">Published on ${post.date}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Filtering logic (same as before)
+    document.addEventListener("DOMContentLoaded", () => {
+      loadBlogPosts();
+
+      const filterButtons = document.querySelectorAll(".filter-button");
+      // Use event delegation for dynamic posts
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('filter-button')) {
           filterButtons.forEach(btn => btn.classList.remove("active"));
-          button.classList.add("active");
-          
-          const category = button.getAttribute("data-filter");
-          blogPosts.forEach(post => {
+          e.target.classList.add("active");
+          const category = e.target.getAttribute("data-filter");
+          document.querySelectorAll(".blog-post").forEach(post => {
             if (category === "all" || post.getAttribute("data-category") === category) {
               post.style.display = "block";
             } else {
               post.style.display = "none";
             }
           });
-        });
+        }
       });
     });
   </script>
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html> 
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - NexTrend Innovations</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/dark-mode.css" id="dark-mode-stylesheet" disabled>
-    <script src="assets/js/script.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
-</head>
-
-<body>
-    <div id="header-placeholder"></div>
-
-    <main class="main-container">
-        <section class="hero">
-            <div class="container">
-            <h1>Insights & Resources</h1>
-            <p>Stay updated with the latest trends, case studies, and industry news.</p>
-            </div>
-        </section>
-
-        <section class="search-filter">
-            <!-- Search bar for phone view-->
-                <input type="text" id="search-input" placeholder="Search articles..." aria-label="Search">
-                <button id="search-button" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-        </section>
-
-        <section class="article-listings">
-            <!-- <div class="container">" -->
-            <!-- Article 1 -->
-            <div class="blog-post">
-                <img src="assets/img/1.jpg" alt="Article 1">
-                <div class="post-content">
-                    <h2 class="post-title">The Future of Web Development</h2>
-                    <p class="post-snippet">Explore the emerging trends and technologies shaping the future of web
-                        development.</p>
-                    <p class="post-date">Published on February 14, 2025</p>
-                </div>
-            </div>
-
-            <!-- Article 2 -->
-            <div class="blog-post">
-                <img src="assets/img/2.jpg" alt="Article 2">
-                <div class="post-content">
-                    <h2 class="post-title">Mobile App Development Best Practices</h2>
-                    <p class="post-snippet">Learn the best practices for building high-quality and user-friendly mobile
-                        applications.</p>
-                    <p class="post-date">Published on January 28, 2025</p>
-                </div>
-            </div>
-
-            <!-- Add more articles here -->
-            <!-- </div> -->
-        </section>
-
-        <!-- <section class="subscription-option">
-            <h3>Subscribe to Our Newsletter</h3>
-            <p>Get the latest insights and updates delivered to your inbox.</p>
-            <input type="email" placeholder="Enter your email address">
-            <button>Subscribe</button>
-        </section> -->
-    </main>
-
-    <div id="footer-placeholder"></div>
-</body>
-
 </html>

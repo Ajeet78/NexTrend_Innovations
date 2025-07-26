@@ -1567,7 +1567,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     align-items: normal;
     justify-content: space-around;
     /* margin-bottom: 1.5rem;*/ /*Adjusted margin for responsiveness */
-    background: #ffffff;
+    background: #f5f5f5;
 }
 
 .contact-methods div {
