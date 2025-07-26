@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Edit Blog Post | NexTrend Innovations</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+     <style>
+        .admin-blog-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            padding: 2rem 1.5rem;
+        }
+        .admin-blog-container h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: #07677f;
+        }
+        #edit-blog-post-form .form-group {
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        #edit-blog-post-form label {
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: #333;
+        }
+        #edit-blog-post-form input,
+        #edit-blog-post-form textarea,
+        #edit-blog-post-form select {
+            padding: 0.7rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f9f9f9;
+            resize: none;
+            transition: border-color 0.2s;
+        }
+        #edit-blog-post-form input:focus,
+        #edit-blog-post-form textarea:focus,
+        #edit-blog-post-form select:focus {
+            border-color: #07677f;
+            outline: none;
+        }
+        #edit-blog-post-form textarea {
+            min-height: 80px;
+            max-height: 200px;
+        }
+        #edit-blog-message {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+            min-height: 1.2em;
+        }
+         .back-button {
+            display: inline-block;
+            margin-bottom: 1rem;
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="admin-blog-container">
+             <a href="admin-blog-list.html" class="back-button">Back to Blog Posts</a>
+            <h1>Edit Blog Article</h1>
+            <form id="edit-blog-post-form" autocomplete="off">
+                <input type="hidden" id="post-id">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required placeholder="Enter blog title">
+                </div>
+                <div class="form-group">
+                    <label for="snippet">Snippet</label>
+                    <textarea id="snippet" required placeholder="Short summary of the article"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select category</option>
+                        <option value="web">Web Development</option>
+                        <option value="mobile">Mobile Apps</option>
+                        <option value="design">UI/UX Design</option>
+                        <option value="ai">AI & ML</option>
+                        <option value="professional">Professional</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input type="text" id="image" required placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" class="cta-button">
+                    Update Blog
+                </button>
+                <p id="edit-blog-message"></p>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', fetchBlogPostForEdit);
+
+        async function fetchBlogPostForEdit() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+
+            if (!postId) {
+                document.getElementById('edit-blog-message').textContent = 'No blog post ID provided.';
+                document.getElementById('edit-blog-message').style.color = 'red';
+                return;
+            }
+
+            try {
+                // We need a new endpoint in server.js to fetch a single blog post by ID
+                const res = await fetch(`http://localhost:3000/api/blog-posts/${postId}`);
+                if (!res.ok) {
+                    throw new Error(`Error fetching post: ${res.statusText}`);
+                }
+                const post = await res.json();
+                
+                // Pre-fill the form
+                document.getElementById('post-id').value = post.id;
+                document.getElementById('title').value = post.title;
+                document.getElementById('snippet').value = post.snippet;
+                document.getElementById('category').value = post.category;
+                document.getElementById('image').value = post.image;
+                document.getElementById('date').value = post.date;
+
+            } catch (error) {
+                console.error('Error fetching blog post for editing:', error);
+                document.getElementById('edit-blog-message').textContent = 'Error loading blog post.';
+                document.getElementById('edit-blog-message').style.color = 'red';
+            }
+        }
+
+        document.getElementById('edit-blog-post-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const postId = document.getElementById('post-id').value;
+            const updatedPost = {
+                id: postId, // Include the ID in the update payload
+                title: document.getElementById('title').value.trim(),
+                snippet: document.getElementById('snippet').value.trim(),
+                category: document.getElementById('category').value,
+                image: document.getElementById('image').value.trim(),
+                date: document.getElementById('date').value,
+            };
+
+            const msg = document.getElementById('edit-blog-message');
+
+             // Validate form fields
+            if (!updatedPost.title || !updatedPost.snippet || !updatedPost.category || !updatedPost.image || !updatedPost.date) {
+                msg.textContent = 'Please fill in all fields.';
+                msg.style.color = 'red';
+                return;
+            }
+
+            try {
+                // We need a new PUT endpoint in server.js to handle updates
+                const res = await fetch(`http://localhost:3000/api/blog-posts/${postId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedPost),
+                });
+
+                if (res.ok) {
+                    msg.textContent = 'Blog post updated successfully!';
+                    msg.style.color = 'green';
+                     // Optionally redirect back to the list page after a short delay
+                    setTimeout(() => {
+                        window.location.href = 'admin-blog-list.html';
+                    }, 2000);
+                } else {
+                    const errorData = await res.json();
+                    msg.textContent = errorData.message || 'Failed to update blog post.';
+                    msg.style.color = 'red';
+                }
+            } catch (error) {
+                console.error('Error updating blog post:', error);
+                msg.textContent = 'An error occurred. Please check the server or network.';
+                msg.style.color = 'red';
+            }
+             // Clear the message after 3 seconds if not redirecting
+            if(res && !res.ok) {
+                 setTimeout(() => {
+                    msg.textContent = '';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
