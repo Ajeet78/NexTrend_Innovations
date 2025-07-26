@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Blog Posts | NexTrend Innovations</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .blog-list-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+        }
+        .blog-list-container h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #07677f;
+        }
+        .blog-post-item {
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .blog-post-item:last-child {
+            border-bottom: none;
+        }
+        .post-details {
+            flex-grow: 1;
+            margin-right: 1rem;
+        }
+        .post-details h3 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+        .post-details p {
+            margin: 0.5rem 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .post-actions button {
+            margin-left: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .edit-button {
+            background-color: #28a745;
+            color: white;
+        }
+        .delete-button {
+            background-color: #dc3545;
+            color: white;
+        }
+         .back-button {
+            display: inline-block;
+            margin-bottom: 1rem;
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="blog-list-container">
+            <a href="admin-blog-post.html" class="back-button">Back to Post Blog</a>
+            <h1>All Blog Posts</h1>
+            <div id="blog-posts-list">
+                <!-- Blog posts will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', fetchBlogPosts);
+
+        async function fetchBlogPosts() {
+            try {
+                const res = await fetch('http://localhost:3000/api/blog-posts');
+                const posts = await res.json();
+                displayBlogPosts(posts);
+            } catch (error) {
+                console.error('Error fetching blog posts:', error);
+                document.getElementById('blog-posts-list').innerHTML = '<p>Error loading blog posts.</p>';
+            }
+        }
+
+        function displayBlogPosts(posts) {
+            const postsListDiv = document.getElementById('blog-posts-list');
+            postsListDiv.innerHTML = ''; // Clear existing list
+
+            if (posts.length === 0) {
+                postsListDiv.innerHTML = '<p>No blog posts found.</p>';
+                return;
+            }
+
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('blog-post-item');
+                postElement.innerHTML = `
+                    <div class="post-details">
+                        <h3>${post.title}</h3>
+                        <p>${post.snippet}</p>
+                        <p><strong>Category:</strong> ${post.category}</p>
+                        <p><strong>Date:</strong> ${post.date}</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="edit-button" data-id="${post.id}">Edit</button>
+                        <button class="delete-button" data-id="${post.id}">Delete</button>
+                    </div>
+                `;
+                postsListDiv.appendChild(postElement);
+            });
+
+            // Add event listeners for delete buttons
+            postsListDiv.querySelectorAll('.delete-button').forEach(button => {
+                button.addEventListener('click', handleDelete);
+            });
+
+            // Add event listeners for edit buttons
+            postsListDiv.querySelectorAll('.edit-button').forEach(button => {
+                button.addEventListener('click', handleEdit);
+            });
+        }
+
+        async function handleDelete(event) {
+            const postId = event.target.dataset.id;
+            if (confirm('Are you sure you want to delete this blog post?')) {
+                try {
+                    const res = await fetch(`http://localhost:3000/api/blog-posts/${postId}`, {
+                        method: 'DELETE',
+                    });
+
+                    if (res.ok) {
+                        alert('Blog post deleted successfully!');
+                        fetchBlogPosts(); // Refresh the list
+                    } else {
+                        const errorData = await res.json();
+                        alert(`Failed to delete blog post: ${errorData.message || res.statusText}`);
+                    }
+                } catch (error) {
+                    console.error('Error deleting blog post:', error);
+                    alert('An error occurred while deleting the blog post.');
+                }
+            }
+        }
+
+        function handleEdit(event) {
+            const postId = event.target.dataset.id;
+            window.location.href = `admin-blog-edit.html?id=${postId}`;
+        }
+    </script>
+</body>
+</html>
