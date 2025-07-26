@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Post Blog | NexTrend Innovations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .admin-blog-container {
+      max-width: 500px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      padding: 2rem 1.5rem;
+    }
+    .admin-blog-container h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #07677f;
+    }
+    #blog-post-form .form-group {
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    #blog-post-form label {
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    #blog-post-form input,
+    #blog-post-form textarea,
+    #blog-post-form select {
+      padding: 0.7rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #f9f9f9;
+      resize: none;
+      transition: border-color 0.2s;
+    }
+    #blog-post-form input:focus,
+    #blog-post-form textarea:focus,
+    #blog-post-form select:focus {
+      border-color: #07677f;
+      outline: none;
+    }
+    #blog-post-form textarea {
+      min-height: 80px;
+      max-height: 200px;
+    }
+    #blog-post-form .cta-button {
+      width: 100%;
+      padding: 0.9rem 0;
+      font-size: 1.1rem;
+      background: #07677f;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      margin-top: 0.5rem;
+      box-shadow: 0 2px 8px rgba(7, 103, 127, 0.08);
+    }
+    #blog-post-form .cta-button:hover,
+    #blog-post-form .cta-button:focus {
+      background: #2560ff;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(37, 96, 255, 0.13);
+    }
+    #admin-blog-message {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 1rem;
+      min-height: 1.2em;
+    }
+    @media (max-width: 600px) {
+      .admin-blog-container {
+        padding: 1rem 0.5rem;
+        max-width: 98vw;
+      }
+      #blog-post-form .cta-button {
+        font-size: 1rem;
+        padding: 0.8rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="admin-blog-container">
+      <h1>Post a New Blog Article</h1>
+      <form id="blog-post-form" autocomplete="off">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required placeholder="Enter blog title">
+        </div>
+        <div class="form-group">
+          <label for="snippet">Snippet</label>
+          <textarea id="snippet" required placeholder="Short summary of the article"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="">Select category</option>
+            <option value="web">Web Development</option>
+            <option value="mobile">Mobile Apps</option>
+            <option value="design">UI/UX Design</option>
+            <option value="ai">AI & ML</option>
+            <option value="professional">Professional</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL</label>
+          <input type="text" id="image" required placeholder="https://example.com/image.jpg">
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" required>
+        </div>
+        <button type="submit" class="cta-button">
+          Post Blog
+        </button>
+        <p id="admin-blog-message"></p>
+      </form>
+    </div>
+  </main>
+  <script>
+    document.getElementById('blog-post-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const post = {
+          title: document.getElementById('title').value.trim(),
+          snippet: document.getElementById('snippet').value.trim(),
+          category: document.getElementById('category').value,
+          image: document.getElementById('image').value.trim(),
+          date: document.getElementById('date').value,
+      };
+
+      const msg = document.getElementById('admin-blog-message');
+
+      // Validate form fields
+      if (!post.title || !post.snippet || !post.category || !post.image || !post.date) {
+          msg.textContent = 'Please fill in all fields.';
+          msg.style.color = 'red';
+          return;
+      }
+
+      try {
+          const res = await fetch('http://localhost:3000/api/blog-posts', { // Ensure the correct URL
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(post),
+          });
+
+          if (res.ok) {
+              msg.textContent = 'Blog post published successfully!';
+              msg.style.color = 'green';
+              this.reset(); // Clear the form
+          } else {
+              const errorData = await res.json();
+              msg.textContent = errorData.message || 'Failed to post blog.';
+              msg.style.color = 'red';
+          }
+      } catch (error) {
+          console.error('Error:', error);
+          msg.textContent = 'An error occurred. Please check the server or network.';
+          msg.style.color = 'red';
+      }
+
+      // Clear the message after 3 seconds
+      setTimeout(() => {
+          msg.textContent = '';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
