@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Contact Submissions | NexTrend Innovations</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .submissions-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .submissions-container h1 {
+            text-align: center;
+            color: #07677f;
+            margin-bottom: 2rem;
+        }
+        .submissions-list {
+            list-style: none;
+            padding: 0;
+        }
+        .submission-item {
+            background-color: #e9ecef;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #dee2e6;
+        }
+        .submission-item p {
+            margin: 0.5rem 0;
+            line-height: 1.4;
+        }
+         .submission-item strong {
+            color: #07677f;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1rem;
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="submissions-container">
+             <a href="admin-dashboard.html" class="back-button">Back to Dashboard</a>
+            <h1>Contact Form Submissions</h1>
+            <ul id="submissions-list" class="submissions-list">
+                <!-- Contact submissions will be loaded here -->
+            </ul>
+             <p id="submissions-message" style="text-align: center; color: #666;"></p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', fetchSubmissions);
+
+        async function fetchSubmissions() {
+            const submissionsList = document.getElementById('submissions-list');
+            const submissionsMessage = document.getElementById('submissions-message');
+            
+            submissionsMessage.textContent = 'Loading submissions...';
+
+            try {
+                const res = await fetch('http://localhost:3000/api/contact-submissions');
+                
+                if (!res.ok) {
+                    throw new Error(`Error fetching submissions: ${res.statusText}`);
+                }
+
+                const submissions = await res.json();
+                
+                if (submissions.length === 0) {
+                    submissionsMessage.textContent = 'No contact form submissions yet.';
+                    return;
+                }
+
+                // Sort submissions by date in descending order (most recent first)
+                submissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                submissionsList.innerHTML = ''; // Clear loading message
+
+                submissions.forEach(submission => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('submission-item');
+                    listItem.innerHTML = `
+                        <p><strong>Date:</strong> ${new Date(submission.timestamp).toLocaleString()}</p>
+                        <p><strong>Name:</strong> ${submission.name}</p>
+                        <p><strong>Email:</strong> ${submission.email}</p>
+                        <p><strong>Project Type:</strong> ${submission.projectType}</p>
+                        <p><strong>Development Type:</strong> ${submission.developmentType}</p>
+                        <p><strong>Budget:</strong> ${submission.budget}</p>
+                        <p><strong>Timeline:</strong> ${submission.timeline}</p>
+                        <p><strong>Details:</strong> ${submission.projectDetails}</p>
+                    `;
+                    submissionsList.appendChild(listItem);
+                });
+
+                submissionsMessage.textContent = ''; // Clear message if submissions are loaded
+
+            } catch (error) {
+                console.error('Error fetching contact submissions:', error);
+                submissionsMessage.textContent = 'Error loading submissions.';
+                 submissionsMessage.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
