@@ -5,7 +5,63 @@
   <title>Admin - Post Blog | NexTrend Innovations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
-  
+    <style>
+        /* Add the same admin-blog-container and form styling as in admin-blog-edit.html */
+        .admin-blog-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            padding: 2rem 1.5rem;
+        }
+        .admin-blog-container h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: #07677f;
+        }
+        #blog-post-form .form-group {
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        #blog-post-form label {
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: #333;
+        }
+        #blog-post-form input,
+        #blog-post-form textarea,
+        #blog-post-form select {
+            padding: 0.7rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f9f9f9;
+            resize: none;
+            transition: border-color 0.2s;
+        }
+        #blog-post-form input:focus,
+        #blog-post-form textarea:focus,
+        #blog-post-form select:focus {
+            border-color: #07677f;
+            outline: none;
+        }
+         /* Increase textarea size */
+        #blog-post-form textarea {
+            min-height: 200px;
+            max-height: 500px;
+            resize: vertical;
+        }
+        #admin-blog-message {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+            min-height: 1.2em;
+        }
+    </style>
+    <script src="https://cdn.tiny.cloud/1/pmoiu4xw5u0565r4gq73si2imvcmhm3n9t0m0y0glqkh3gp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
   <main>
@@ -19,6 +75,10 @@
         <div class="form-group">
           <label for="snippet">Snippet</label>
           <textarea id="snippet" required placeholder="Short summary of the article"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea id="content" required placeholder="Full content of the article"></textarea>
         </div>
         <div class="form-group">
           <label for="category">Category</label>
@@ -51,12 +111,21 @@
   </main>
 
   <script>
+    tinymce.init({
+        selector: '#content', // Select the textarea with the ID 'content'
+        plugins: 'advlist autolink lists link image charmap print preview anchor',
+        toolbar_mode: 'floating',
+        toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+        content_style: 'body { font-family:Arial,sans-serif; font-size:14px }'
+    });
+
     document.getElementById('blog-post-form').addEventListener('submit', async function (e) {
       e.preventDefault();
 
       const post = {
           title: document.getElementById('title').value.trim(),
           snippet: document.getElementById('snippet').value.trim(),
+          content: tinymce.get('content').getContent(), // Get content from TinyMCE editor
           category: document.getElementById('category').value,
           image: document.getElementById('image').value.trim(),
           date: document.getElementById('date').value,
@@ -65,7 +134,7 @@
       const msg = document.getElementById('admin-blog-message');
 
       // Validate form fields
-      if (!post.title || !post.snippet || !post.category || !post.image || !post.date) {
+      if (!post.title || !post.snippet || !post.content || !post.category || !post.image || !post.date) {
           msg.textContent = 'Please fill in all fields.';
           msg.style.color = 'red';
           return;
@@ -82,6 +151,7 @@
               msg.textContent = 'Blog post published successfully!';
               msg.style.color = 'green';
               this.reset(); // Clear the form
+              tinymce.get('content').setContent(''); // Clear TinyMCE editor content
           } else {
               const errorData = await res.json();
               msg.textContent = errorData.message || 'Failed to post blog.';

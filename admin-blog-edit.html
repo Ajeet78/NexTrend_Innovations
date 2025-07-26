@@ -67,6 +67,7 @@
             border-radius: 5px;
         }
     </style>
+    <script src="https://cdn.tiny.cloud/1/pmoiu4xw5u0565r4gq73si2imvcmhm3n9t0m0y0glqkh3gp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
     <main>
@@ -82,6 +83,10 @@
                 <div class="form-group">
                     <label for="snippet">Snippet</label>
                     <textarea id="snippet" required placeholder="Short summary of the article"></textarea>
+                </div>
+                 <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea id="content" required placeholder="Full content of the article"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
@@ -111,6 +116,14 @@
     </main>
 
     <script>
+        tinymce.init({
+            selector: '#content', // Select the textarea with the ID 'content'
+            plugins: 'advlist autolink lists link image charmap print preview anchor',
+            toolbar_mode: 'floating',
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            content_style: 'body { font-family:Arial,sans-serif; font-size:14px }'
+        });
+
         document.addEventListener('DOMContentLoaded', fetchBlogPostForEdit);
 
         async function fetchBlogPostForEdit() {
@@ -130,11 +143,13 @@
                     throw new Error(`Error fetching post: ${res.statusText}`);
                 }
                 const post = await res.json();
-                
+
                 // Pre-fill the form
                 document.getElementById('post-id').value = post.id;
                 document.getElementById('title').value = post.title;
                 document.getElementById('snippet').value = post.snippet;
+                // Set content using TinyMCE editor instance
+                tinymce.get('content').setContent(post.content);
                 document.getElementById('category').value = post.category;
                 document.getElementById('image').value = post.image;
                 document.getElementById('date').value = post.date;
@@ -154,6 +169,7 @@
                 id: postId, // Include the ID in the update payload
                 title: document.getElementById('title').value.trim(),
                 snippet: document.getElementById('snippet').value.trim(),
+                content: tinymce.get('content').getContent(), // Get content from TinyMCE editor
                 category: document.getElementById('category').value,
                 image: document.getElementById('image').value.trim(),
                 date: document.getElementById('date').value,
@@ -162,7 +178,7 @@
             const msg = document.getElementById('edit-blog-message');
 
              // Validate form fields
-            if (!updatedPost.title || !updatedPost.snippet || !updatedPost.category || !updatedPost.image || !updatedPost.date) {
+            if (!updatedPost.title || !updatedPost.snippet || !updatedPost.content || !updatedPost.category || !updatedPost.image || !updatedPost.date) {
                 msg.textContent = 'Please fill in all fields.';
                 msg.style.color = 'red';
                 return;

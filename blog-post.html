@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="
+viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | NexTrend Innovations</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css" id="dark-mode-stylesheet" disabled>
+    <script src="assets/js/script.js" defer></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/
+all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"> <!-- Added Roboto font -->
+    <style>
+        body {
+            font-family: 'Google Sans', 'Roboto', sans-serif; /* Prefer Google Sans if available, fallback to Roboto */
+            line-height: 1.6;
+            color: #202124; /* Dark gray for text */
+            background-color: #ffffff; /* White background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-container {
+            max-width: 960px; /* Wider container for content */
+            margin: 2rem auto;
+            padding: 0 24px; /* Horizontal padding */
+        }
+
+        .blog-post-container {
+            padding: 0; /* Remove padding as it's now on main-container */
+            background: none; /* Remove background */
+            box-shadow: none; /* Remove shadow */
+            border-radius: 0; /* Remove border radius */
+            overflow: hidden;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: #1a73e8; /* Google Blue for links */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #0b4ca2; /* Darker blue on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .blog-post-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px; /* Slightly rounded corners */
+            margin-bottom: 2rem;
+            display: block;
+            object-fit: cover;
+        }
+
+        .blog-post-container h1 {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            font-size: 3rem; /* Larger font size for title */
+            color: #202124; /* Dark gray for title */
+            margin-bottom: 1rem;
+            font-weight: 700; /* Bold font weight for title */
+            line-height: 1.2;
+        }
+
+        .blog-post-meta {
+            font-size: 0.9rem;
+            color: #5f6368; /* Google Gray */
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #dadce0; /* Subtle border */
+            padding-bottom: 1rem;
+        }
+
+        .blog-post-content p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #3c4043; /* Darker text color for content */
+            margin-bottom: 1.5rem;
+        }
+
+        /* Styles for other potential elements within post-content */
+        .blog-post-content h2 {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            font-size: 1.8rem;
+            color: #202124;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .blog-post-content h3 {
+             font-family: 'Google Sans', 'Roboto', sans-serif;
+            font-size: 1.4rem;
+            color: #202124;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .blog-post-content a {
+            color: #1a73e8; /* Google Blue for links */
+            text-decoration: none;
+        }
+
+        .blog-post-content a:hover {
+            text-decoration: underline;
+        }
+
+        .blog-post-content ul,
+        .blog-post-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 20px;
+        }
+
+         @media (max-width: 768px) {
+            .main-container {
+                margin: 1rem auto;
+                padding: 0 16px; /* Adjusted horizontal padding for mobile */
+            }
+            .blog-post-container h1 {
+                font-size: 2rem; /* Adjusted font size for mobile */
+            }
+             .blog-post-meta {
+                font-size: 0.85rem; /* Adjusted font size for mobile */
+            }
+            .blog-post-content p {
+                font-size: 1rem; /* Adjusted font size for mobile */
+            }
+            .back-button {
+                margin-bottom: 1rem; /* Adjusted margin for mobile */
+            }
+             .blog-post-content h2 {
+                font-size: 1.5rem; /* Adjusted font size for mobile */
+            }
+            .blog-post-content h3 {
+                font-size: 1.2rem; /* Adjusted font size for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-container">
+        <div class="blog-post-container">
+            <a href="blog.html" class="back-button">Back to Blog</a>
+            <h1 id="post-title"></h1>
+            <div class="blog-post-meta">
+                Published on <span id="post-date"></span> | Category: <span id="post-category"></span>
+            </div>
+            <img id="post-image" src="" alt="Blog Post Image">
+            <div id="post-content" class="blog-post-content">
+                <!-- Blog post content will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', fetchBlogPost);
+
+        async function fetchBlogPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+
+            if (!postId) {
+                document.getElementById('post-title').textContent = 'Error';
+                document.getElementById('post-content').innerHTML = '<p>No blog post ID provided.</p>';
+                return;
+            }
+
+            try {
+                const res = await fetch(`http://localhost:3000/api/blog-posts/${postId}`);
+                if (!res.ok) {
+                    throw new Error(`Error fetching post: ${res.statusText}`);
+                }
+                const post = await res.json();
+
+                document.getElementById('post-image').src = post.image;
+                document.getElementById('post-title').textContent = post.title;
+                document.getElementById('post-date').textContent = post.date;
+                document.getElementById('post-category').textContent = post.category;
+                document.getElementById('post-content').innerHTML = post.content; // Display the full content
+                document.title = `${post.title} | NexTrend Innovations`; // Update page title
+
+            } catch (error) {
+                console.error('Error fetching blog post:', error);
+                document.getElementById('post-title').textContent = 'Error Loading Post';
+                document.getElementById('post-content').innerHTML = '<p>Could not load the blog post.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

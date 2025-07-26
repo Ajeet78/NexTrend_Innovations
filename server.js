@@ -3,9 +3,11 @@ const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer'); // Ensure nodemailer is installed
+const { JSDOM } = require('jsdom'); // Import JSDOM for DOMPurify
+const createDOMPurify = require('dompurify'); // Import createDOMPurify
 
 const app = express();
-const PORT = 3000;
+const PORT = 3000; // Use a single PORT variable
 
 // Middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,7 +49,7 @@ app.post('/submit-form', (req, res) => {
 // Newsletter subscription endpoint
 app.post('/subscribe-newsletter', async (req, res) => {
     const { email } = req.body;
-    
+
     // Validate email
     if (!email || !email.includes('@')) {
         return res.status(400).json({ message: 'Invalid email address' });
@@ -56,17 +58,17 @@ app.post('/subscribe-newsletter', async (req, res) => {
     try {
         // Save to newsletter.json
         const filePath = path.join(__dirname, 'newsletter.json');
-        const subscribers = fs.existsSync(filePath) 
-            ? JSON.parse(fs.readFileSync(filePath)) 
+        const subscribers = fs.existsSync(filePath)
+            ? JSON.parse(fs.readFileSync(filePath))
             : [];
-        
+
         if (subscribers.includes(email)) {
             return res.status(400).json({ message: 'Already subscribed' });
         }
 
         subscribers.push(email);
         fs.writeFileSync(filePath, JSON.stringify(subscribers, null, 2));
-        
+
         res.status(200).json({ message: 'Successfully subscribed' });
     } catch (error) {
         console.error('Subscription error:', error);
@@ -77,14 +79,21 @@ app.post('/subscribe-newsletter', async (req, res) => {
 // Blog posts file
 const BLOG_FILE = path.join(__dirname, 'blog-posts.json');
 
+// Initialize DOMPurify
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
+
 // API to handle blog post submissions
 app.post('/api/blog-posts', (req, res) => {
-    const { title, snippet, category, image, date } = req.body;
+    const { title, snippet, content, category, image, date } = req.body;
 
     // Validate the request body
-    if (!title || !snippet || !category || !image || !date) {
+    if (!title || !snippet || !content || !category || !image || !date) {
         return res.status(400).json({ message: 'All fields are required.' });
     }
+
+    // Sanitize the HTML content for new posts
+    const sanitizedContent = DOMPurify.sanitize(content);
 
     // Read existing blog posts
     let posts = [];
@@ -92,13 +101,14 @@ app.post('/api/blog-posts', (req, res) => {
         posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
     }
 
-    // Add the new blog post with a unique ID
-    const newPost = { id: Date.now().toString(), title, snippet, category, image, date }; // Add a simple unique ID
+    // Add the new blog post with a unique ID and sanitized content
+    const newPost = { id: Date.now().toString(), title, snippet, content: sanitizedContent, category, image, date }; // Add a simple unique ID
     posts.push(newPost);
     fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
 
     res.status(201).json({ message: 'Blog post added successfully.' });
 });
+
 
 // API to fetch all blog posts
 app.get('/api/blog-posts', (req, res) => {
@@ -134,13 +144,17 @@ app.put('/api/blog-posts/:id', (req, res) => {
     const updatedPostData = req.body;
 
     // Validate the request body (basic validation)
-    if (!updatedPostData.title || !updatedPostData.snippet || !updatedPostData.category || !updatedPostData.image || !updatedPostData.date) {
+    if (!updatedPostData.title || !updatedPostData.snippet || !updatedPostData.content || !updatedPostData.category || !updatedPostData.image || !updatedPostData.date) {
          return res.status(400).json({ message: 'All fields are required.' });
     }
 
     if (!fs.existsSync(BLOG_FILE)) {
         return res.status(404).json({ message: 'Blog posts file not found.' });
     }
+
+    // Sanitize the HTML content for updated posts
+    const sanitizedContent = DOMPurify.sanitize(updatedPostData.content);
+    updatedPostData.content = sanitizedContent; // Replace with sanitized content
 
     let posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
     const postIndex = posts.findIndex(post => post.id === postId);
@@ -149,9 +163,9 @@ app.put('/api/blog-posts/:id', (req, res) => {
         return res.status(404).json({ message: 'Blog post not found.' });
     }
 
-    // Update the post data, ensuring the ID remains the same
+    // Update the post data, ensuring the ID remains the same and content is sanitized
     posts[postIndex] = { ...updatedPostData, id: postId };
-    
+
     fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
 
     res.status(200).json({ message: 'Blog post updated successfully.' });
