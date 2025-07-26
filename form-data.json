@@ -1,164 +1,31 @@
 [
   {
     "name": "Ajeet",
-    "email": "ajeetv@gmail.com",
+    "email": "ajeetvishwakarma9498@gmail.com",
     "projectType": "mvp",
     "developmentType": "web",
     "budget": "1k-10k",
-    "timeline": "1-3 months",
-    "projectDetails": "Welcome"
+    "timeline": "0-1 months",
+    "projectDetails": "test"
   },
   {
     "name": "Ajeet",
-    "email": "ajeetv@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "1-3 months",
-    "projectDetails": "Welcome"
-  },
-  {
-    "name": "Ajeet",
-    "email": "ajeetv@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "1-3 months",
-    "projectDetails": "Welcome"
-  },
-  {
-    "name": "Ajeet",
-    "email": "ajeetv@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "1-3 months",
-    "projectDetails": "Welcome"
-  },
-  {
-    "name": "Ajeet",
-    "email": "ajeet@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "1-3 months",
-    "projectDetails": "welcome"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "1-3 months",
-    "projectDetails": "welcome"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
+    "email": "ajeetvishwakarma9498@gmail.com",
     "projectType": "enterprise",
     "developmentType": "web",
     "budget": "1k-10k",
     "timeline": "0-1 months",
-    "projectDetails": "welcome"
+    "projectDetails": "test",
+    "timestamp": "2025-07-26T07:23:01.311Z"
   },
   {
     "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "0-1 months",
-    "projectDetails": ""
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "0-1 months",
-    "projectDetails": "fddf"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "10k-20k",
-    "timeline": "6-12 months",
-    "projectDetails": "test"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
+    "email": "ajeetvishwakarma9498@gmail.com",
     "projectType": "mvp",
     "developmentType": "web",
     "budget": "1k-10k",
     "timeline": "1-3 months",
-    "projectDetails": "node server.js"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "app",
-    "budget": "1k-10k",
-    "timeline": "0-1 months",
-    "projectDetails": "tt"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "app",
-    "budget": "1k-10k",
-    "timeline": "0-1 months",
-    "projectDetails": "test"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "app",
-    "budget": "1k-10k",
-    "timeline": "0-1 months",
-    "projectDetails": "test"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "0-1 months",
-    "projectDetails": "test"
-  },
-  {
-    "name": "Ajeet",
-    "email": "info.nextrendinnovations@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "1-3 months",
-    "projectDetails": "test"
-  },
-  {
-    "name": "Ajeet",
-    "email": "ajeetv508@gmail.com",
-    "projectType": "mvp",
-    "developmentType": "app",
-    "budget": "1k-10k",
-    "timeline": "3-6 months",
-    "projectDetails": "test"
-  },
-  {
-    "name": "Ajeet",
-    "email": "ajeetv508@gmail.com",
-    "projectType": "enterprise",
-    "developmentType": "web",
-    "budget": "1k-10k",
-    "timeline": "0-1 months",
-    "projectDetails": "test"
+    "projectDetails": "test2",
+    "timestamp": "2025-07-26T07:23:36.978Z"
   }
 ]

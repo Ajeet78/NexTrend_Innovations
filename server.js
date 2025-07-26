@@ -26,6 +26,7 @@ const transporter = nodemailer.createTransport({
 // Endpoint to handle form submission
 app.post('/submit-form', (req, res) => {
     const formData = req.body;
+    formData.timestamp = new Date(); // Add a timestamp
 
     // Save data to a JSON file
     const filePath = path.join(__dirname, 'form-data.json');
@@ -91,8 +92,9 @@ app.post('/api/blog-posts', (req, res) => {
         posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
     }
 
-    // Add the new blog post
-    posts.push({ title, snippet, category, image, date });
+    // Add the new blog post with a unique ID
+    const newPost = { id: Date.now().toString(), title, snippet, category, image, date }; // Add a simple unique ID
+    posts.push(newPost);
     fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
 
     res.status(201).json({ message: 'Blog post added successfully.' });
@@ -108,6 +110,90 @@ app.get('/api/blog-posts', (req, res) => {
     res.json(posts);
 });
 
+// API to fetch a single blog post by ID
+app.get('/api/blog-posts/:id', (req, res) => {
+    const postId = req.params.id;
+
+    if (!fs.existsSync(BLOG_FILE)) {
+        return res.status(404).json({ message: 'Blog posts file not found.' });
+    }
+
+    const posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    const post = posts.find(post => post.id === postId);
+
+    if (!post) {
+        return res.status(404).json({ message: 'Blog post not found.' });
+    }
+
+    res.json(post);
+});
+
+// API to handle PUT requests for updating blog posts
+app.put('/api/blog-posts/:id', (req, res) => {
+    const postId = req.params.id;
+    const updatedPostData = req.body;
+
+    // Validate the request body (basic validation)
+    if (!updatedPostData.title || !updatedPostData.snippet || !updatedPostData.category || !updatedPostData.image || !updatedPostData.date) {
+         return res.status(400).json({ message: 'All fields are required.' });
+    }
+
+    if (!fs.existsSync(BLOG_FILE)) {
+        return res.status(404).json({ message: 'Blog posts file not found.' });
+    }
+
+    let posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    const postIndex = posts.findIndex(post => post.id === postId);
+
+    if (postIndex === -1) {
+        return res.status(404).json({ message: 'Blog post not found.' });
+    }
+
+    // Update the post data, ensuring the ID remains the same
+    posts[postIndex] = { ...updatedPostData, id: postId };
+    
+    fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
+
+    res.status(200).json({ message: 'Blog post updated successfully.' });
+});
+
+
+// API to handle DELETE requests for blog posts
+app.delete('/api/blog-posts/:id', (req, res) => {
+    const postId = req.params.id;
+
+    if (!fs.existsSync(BLOG_FILE)) {
+        return res.status(404).json({ message: 'Blog posts file not found.' });
+    }
+
+    let posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    const initialLength = posts.length;
+
+    // Filter out the post with the matching ID
+    posts = posts.filter(post => post.id !== postId);
+
+    if (posts.length === initialLength) {
+        // If the length hasn't changed, the post with the given ID was not found
+        return res.status(404).json({ message: 'Blog post not found.' });
+    }
+
+    fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
+
+    res.status(200).json({ message: 'Blog post deleted successfully.' });
+});
+
+// API to fetch contact form submissions
+app.get('/api/contact-submissions', (req, res) => {
+    const filePath = path.join(__dirname, 'form-data.json');
+    if (!fs.existsSync(filePath)) {
+        return res.json([]);
+    }
+
+    const submissions = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    res.json(submissions);
+});
+
+
 // API to handle form submissions and send email
 app.post('/api/send-enquiry', (req, res) => {
     const { name, email, message } = req.body;
@@ -122,7 +208,11 @@ app.post('/api/send-enquiry', (req, res) => {
         from: 'info.nextrendinnovations@gmail.com', // Your email
         to: 'info.nextrendinnovations@gmail.com', // Your email
         subject: `New Inquiry from ${name}`,
-        text: `You have received a new inquiry.\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+        text: `You have received a new inquiry.
+
+Name: ${name}
+Email: ${email}
+Message: ${message}`
     };
 
     // Send email

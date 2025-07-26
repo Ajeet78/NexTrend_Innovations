@@ -3062,3 +3062,87 @@ blog*/
 .sidebar .widget ul li a:hover {
   color: #000;
 }
+
+
+/* Admin blog post style */
+    .admin-blog-container {
+      max-width: 500px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      padding: 2rem 1.5rem;
+    }
+    .admin-blog-container h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #07677f;
+    }
+    #blog-post-form .form-group {
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    #blog-post-form label {
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+    #blog-post-form input,
+    #blog-post-form textarea,
+    #blog-post-form select {
+      padding: 0.7rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #f9f9f9;
+      resize: none;
+      transition: border-color 0.2s;
+    }
+    #blog-post-form input:focus,
+    #blog-post-form textarea:focus,
+    #blog-post-form select:focus {
+      border-color: #07677f;
+      outline: none;
+    }
+    #blog-post-form textarea {
+      min-height: 80px;
+      max-height: 200px;
+    }
+    /* #blog-post-form .cta-button {
+      width: 100%;
+      padding: 0.9rem 0;
+      font-size: 1.1rem;
+      background: #07677f;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      margin-top: 0.5rem;
+      box-shadow: 0 2px 8px rgba(7, 103, 127, 0.08);
+    }
+    #blog-post-form .cta-button:hover,
+    #blog-post-form .cta-button:focus {
+      background: #2560ff;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(37, 96, 255, 0.13);
+    } */
+    #admin-blog-message {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 1rem;
+      min-height: 1.2em;
+    }
+    @media (max-width: 600px) {
+      .admin-blog-container {
+        padding: 1rem 0.5rem;
+        max-width: 98vw;
+      }
+      #blog-post-form .cta-button {
+        font-size: 1rem;
+        padding: 0.8rem 0;
+      }
+    }
