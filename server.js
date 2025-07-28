@@ -83,7 +83,7 @@ const BLOG_FILE = path.join(__dirname, 'blog-posts.json');
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 
-// API to handle blog post submissions
+// API to handle blog post submissions (POST)
 app.post('/api/blog-posts', (req, res) => {
     const { title, snippet, content, category, image, date } = req.body;
 
@@ -98,29 +98,48 @@ app.post('/api/blog-posts', (req, res) => {
     // Read existing blog posts
     let posts = [];
     if (fs.existsSync(BLOG_FILE)) {
-        posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+        try {
+            posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+        } catch (error) {
+            console.error('Error reading blog posts file:', error);
+            // Decide how to handle this error - maybe return a server error or proceed with empty array
+            // For now, we'll log and return a server error
+            return res.status(500).json({ message: 'Error processing blog data on the server.' });
+        }
     }
 
     // Add the new blog post with a unique ID and sanitized content
-    const newPost = { id: Date.now().toString(), title, snippet, content: sanitizedContent, category, image, date }; // Add a simple unique ID
-    posts.push(newPost);
-    fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
+    const newPost = { id: Date.now().toString(), title, snippet, content: sanitizedContent, category, image, date };
 
-    res.status(201).json({ message: 'Blog post added successfully.' });
+    posts.push(newPost);
+
+    // Write updated blog posts
+    try {
+        fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2), 'utf8');
+        res.status(201).json({ message: 'Blog post added successfully.' });
+    } catch (writeErr) {
+        console.error('Error writing blog posts file:', writeErr);
+        res.status(500).json({ message: 'Error saving blog post.' });
+    }
 });
 
 
-// API to fetch all blog posts
+// API to fetch all blog posts (GET)
 app.get('/api/blog-posts', (req, res) => {
     if (!fs.existsSync(BLOG_FILE)) {
         return res.json([]);
     }
 
-    const posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
-    res.json(posts);
+    try {
+        const posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+        res.json(posts);
+    } catch (error) {
+        console.error('Error reading blog posts file for GET request:', error);
+        res.status(500).json({ message: 'Error retrieving blog posts.' });
+    }
 });
 
-// API to fetch a single blog post by ID
+// API to fetch a single blog post by ID (GET)
 app.get('/api/blog-posts/:id', (req, res) => {
     const postId = req.params.id;
 
@@ -128,14 +147,19 @@ app.get('/api/blog-posts/:id', (req, res) => {
         return res.status(404).json({ message: 'Blog posts file not found.' });
     }
 
-    const posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
-    const post = posts.find(post => post.id === postId);
+    try {
+        const posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+        const post = posts.find(post => post.id === postId);
 
-    if (!post) {
-        return res.status(404).json({ message: 'Blog post not found.' });
+        if (!post) {
+            return res.status(404).json({ message: 'Blog post not found.' });
+        }
+
+        res.json(post);
+    } catch (error) {
+        console.error('Error reading blog posts file for single post GET request:', error);
+        res.status(500).json({ message: 'Error retrieving blog post.' });
     }
-
-    res.json(post);
 });
 
 // API to handle PUT requests for updating blog posts
@@ -156,7 +180,14 @@ app.put('/api/blog-posts/:id', (req, res) => {
     const sanitizedContent = DOMPurify.sanitize(updatedPostData.content);
     updatedPostData.content = sanitizedContent; // Replace with sanitized content
 
-    let posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    let posts = [];
+     try {
+        posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    } catch (error) {
+        console.error('Error reading blog posts file for PUT request:', error);
+         return res.status(500).json({ message: 'Error processing blog data on the server.' });
+    }
+
     const postIndex = posts.findIndex(post => post.id === postId);
 
     if (postIndex === -1) {
@@ -166,9 +197,13 @@ app.put('/api/blog-posts/:id', (req, res) => {
     // Update the post data, ensuring the ID remains the same and content is sanitized
     posts[postIndex] = { ...updatedPostData, id: postId };
 
-    fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
-
-    res.status(200).json({ message: 'Blog post updated successfully.' });
+    try {
+        fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2), 'utf8');
+        res.status(200).json({ message: 'Blog post updated successfully.' });
+    } catch (writeErr) {
+        console.error('Error writing blog posts file after PUT request:', writeErr);
+        res.status(500).json({ message: 'Error saving updated blog post.' });
+    }
 });
 
 
@@ -180,7 +215,15 @@ app.delete('/api/blog-posts/:id', (req, res) => {
         return res.status(404).json({ message: 'Blog posts file not found.' });
     }
 
-    let posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    let posts = [];
+    try {
+        posts = JSON.parse(fs.readFileSync(BLOG_FILE, 'utf8'));
+    } catch (error) {
+        console.error('Error reading blog posts file for DELETE request:', error);
+        return res.status(500).json({ message: 'Error processing blog data on the server.' });
+    }
+
+
     const initialLength = posts.length;
 
     // Filter out the post with the matching ID
@@ -191,9 +234,13 @@ app.delete('/api/blog-posts/:id', (req, res) => {
         return res.status(404).json({ message: 'Blog post not found.' });
     }
 
-    fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2));
-
-    res.status(200).json({ message: 'Blog post deleted successfully.' });
+    try {
+        fs.writeFileSync(BLOG_FILE, JSON.stringify(posts, null, 2), 'utf8');
+        res.status(200).json({ message: 'Blog post deleted successfully.' });
+    } catch (writeErr) {
+        console.error('Error writing blog posts file after DELETE request:', writeErr);
+        res.status(500).json({ message: 'Error deleting blog post.' });
+    }
 });
 
 // API to fetch contact form submissions
@@ -203,8 +250,13 @@ app.get('/api/contact-submissions', (req, res) => {
         return res.json([]);
     }
 
-    const submissions = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    res.json(submissions);
+    try {
+        const submissions = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        res.json(submissions);
+    } catch (error) {
+         console.error('Error reading contact submissions file:', error);
+        res.status(500).json({ message: 'Error retrieving contact submissions.' });
+    }
 });
 
 

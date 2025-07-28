@@ -1,13 +1,5 @@
 [
   {
-    "id": "1753514684724",
-    "title": "test",
-    "snippet": "test",
-    "category": "web",
-    "image": "https://images.pexels.com/photos/2325447/pexels-photo-2325447.jpeg",
-    "date": "2025-07-26"
-  },
-  {
     "id": "1753524855651",
     "title": "test2",
     "snippet": "dsd",
@@ -132,9 +124,18 @@
     "id": "1753552372778",
     "title": "Introducing Opal: describe, create, and share your AI mini-apps",
     "snippet": "It’s never been easier to harness the power of AI models, prompts, and tools into working AI applications. We’re excited to announce Opal, a new experimental tool from Google Labs that lets you build and share powerful AI mini apps that chain together prompts, models, and tools — all using simple natural language and visual editing. Opal is a great tool to accelerate prototyping AI ideas and workflows, demonstrate a proof of concept with a functional app, build custom AI apps to boost your productivity at work, and more. We’re launching it today and are so excited to see what you build.",
-    "content": "It’s never been easier to harness the power of AI models, prompts, and tools into working AI applications. We’re excited to announce Opal, a new experimental tool from Google Labs that lets you build and share powerful AI mini apps that chain together prompts, models, and tools — all using simple natural language and visual editing. Opal is a great tool to accelerate prototyping AI ideas and workflows, demonstrate a proof of concept with a functional app, build custom AI apps to boost your productivity at work, and more. We’re launching it today and are so excited to see what you build.\n\n\nNow available in public beta\nOpal is brand new and experimental. We’re launching today in a US-only public beta because we believe the best way to build a new product is with our community, right from the start.\n\n\nBring your prompts to life, no code required\nThough Opal is an experiment, it’s packed with powerful features designed to make your ideas a reality:\n\nCreate workflows\nWhen building software, the sequence of steps a user takes to accomplish a specific goal is called a workflow. Opal helps simplify and visualize these workflows, empowering you to build powerful, multi-step apps by chaining together prompts, AI model calls, and other tools. Just describe the logic, and Opal builds the visual workflow for you.\n\nMake edits\nOpal translates your instructions into a visual workflow, giving you fine-grained control without ever needing to see a line of code. You can build and remix your AI mini-apps using conversational natural language commands, a visual editor, or a combination of both. If you want to tweak a step’s prompt, add a new feature, or call a tool, you can edit in the visual editor, or just describe the change.\n\nShare your app\nOnce your app is ready, you can share it as an app for others to use immediately, using their own Google account.",
+    "content": "<p>It’s never been easier to harness the power of AI models, prompts, and tools into working AI applications. We’re excited to announce Opal, a new experimental tool from Google Labs that lets you build and share powerful AI mini apps that chain together prompts, models, and tools — all using simple natural language and visual editing. Opal is a great tool to accelerate prototyping AI ideas and workflows, demonstrate a proof of concept with a functional app, build custom AI apps to boost your productivity at work, and more. We’re launching it today and are so excited to see what you build.</p>\n<h2>Now available in public beta</h2>\n<p>Opal is brand new and experimental. We’re launching today in a US-only public beta because we believe the best way to build a new product is with our community, right from the start.</p>\n<h2><strong>Bring your prompts to life, no code required</strong></h2>\n<p>Though Opal is an experiment, it’s packed with powerful features designed to make your ideas a reality: Create workflows When building software, the sequence of steps a user takes to accomplish a specific goal is called a workflow. Opal helps simplify and visualize these workflows, empowering you to build powerful, multi-step apps by chaining together prompts, AI model calls, and other tools. Just describe the logic, and Opal builds the visual workflow for you. Make edits Opal translates your instructions into a visual workflow, giving you fine-grained control without ever needing to see a line of code. You can build and remix your AI mini-apps using conversational natural language commands, a visual editor, or a combination of both. If you want to tweak a step’s prompt, add a new feature, or call a tool, you can edit in the visual editor, or just describe the change. Share your app Once your app is ready, you can share it as an app for others to use immediately, using their own Google account.</p>",
     "category": "design",
     "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Banner_1600_x_476_px_Version_1_Purple_bg.original.png",
     "date": "2025-07-26"
+  },
+  {
+    "id": "1753642248603",
+    "title": "4656",
+    "snippet": "5635464edryrdy",
+    "content": "<p><strong>dryrdyrytututututfuftuftutfutfu</strong></p>\n<p><strong><em>ffugfujygiuygiyuhu</em></strong></p>",
+    "category": "web",
+    "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Banner_1600_x_476_px_Version_1_Purple_bg.original.png",
+    "date": "2025-07-28"
   }
 ]

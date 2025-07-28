@@ -530,9 +530,77 @@ startAutoScroll();
         });
         });
     });
-    });
+    
 
 
+
+
+
+
+
+  // --- Event listeners for the search bar in the header ---
+  const headerSearchInput = document.querySelector('header .search-container #search-input');
+  const headerSearchButton = document.querySelector('header .search-container #search-button');
+
+  if (headerSearchInput && headerSearchButton) {
+      // Listen for 'Enter' key in the input field
+      headerSearchInput.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+              event.preventDefault(); // Prevent form submission if it's within a form
+              const query = headerSearchInput.value.trim();
+              if (query) {
+                  performSearch(query);
+              }
+          }
+      });
+
+      // Listen for click on the search button
+      headerSearchButton.addEventListener('click', function() { // This is the listener for your button
+          const query = headerSearchInput.value.trim();
+          if (query) {
+              performSearch(query);
+          }
+      });
+
+      console.log('Header search bar event listeners added.');
+  } else {
+      console.warn('Header search bar elements not found.');
+  }
+
+  // --- Event listeners for the search bar in the hero section (index.html, often for mobile) ---
+  // Note: This assumes you want separate behavior or just need to capture input from this one too
+  const heroSearchInput = document.querySelector('.search-container #search-input');
+  const heroSearchButton = document.querySelector('.search-container #search-button');
+
+  if (heroSearchInput && heroSearchButton) {
+       // Listen for 'Enter' key in the input field
+       heroSearchInput.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+              event.preventDefault(); // Prevent form submission if it's within a form
+              const query = heroSearchInput.value.trim();
+              if (query) {
+                  performSearch(query); // Use the same search logic
+              }
+          }
+      });
+
+      // Listen for click on the search button
+      heroSearchButton.addEventListener('click', function() {
+          const query = heroSearchInput.value.trim();
+          if (query) {
+              performSearch(query); // Use the same search logic
+          }
+      });
+      console.log('Hero search bar event listeners added.');
+  } else {
+       console.warn('Hero search bar elements not found.');
+  }
+
+});
+
+
+
+    
 
 
 
