@@ -509,27 +509,214 @@ startAutoScroll();
 
 /*=============================For blog filter=============================*/
     document.addEventListener("DOMContentLoaded", () => {
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const blogPosts = document.querySelectorAll(".article-listings .blog-post, .latest-posts .blog-post");
+    // Fetch and render blog posts
+    async function loadBlogPosts(filterCategory = null) {
+      const res = await fetch('/api/blog-posts');
+      let posts = await res.json();
 
-    filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
-          // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-        
-        const category = button.getAttribute("data-category");
-        
-          // Filter posts (both in Latest and Article Listings)
-        blogPosts.forEach(post => {
-            if (category === "all" || post.getAttribute("data-category") === category) {
+      // Sort posts by date (latest first)
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // Filter posts by category if a filter is applied
+      if (filterCategory && filterCategory !== 'all') {
+        posts = posts.filter(post => post.category === filterCategory);
+      }
+
+      // Split into latest and older
+      const latest = posts.slice(0, 25); // Display the 25 most recent as "Latest"
+      const older = posts.slice(25);
+
+      // Render latest posts
+      const latestGrid = document.getElementById('latest-posts-grid');
+      latestGrid.innerHTML = latest.map(post => `
+        <a href="blog-post.html?id=${post.id}" class="blog-post-item" data-category="${post.category}">
+          <img src="${post.image}" alt="${post.title}">
+          <div class="post-content">
+            <h2 class="post-title">${post.title}</h2>
+            <p class="post-snippet">${post.snippet}</p>
+            <p class="post-date">Published on ${post.date}</p>
+          </div>
+        </a>
+      `).join('');
+
+      // Render older posts
+      const olderList = document.getElementById('older-posts-list');
+      olderList.innerHTML = older.map(post => `
+        <a href="blog-post.html?id=${post.id}" class="blog-post-item" data-category="${post.category}">
+          <img src="${post.image}" alt="${post.title}">
+          <div class="post-content">
+            <h2 class="post-title">${post.title}</h2>
+            <p class="post-snippet">${post.snippet}</p>
+            <p class="post-date">Published on ${post.date}</p>
+          </div>
+        </a>
+      `).join('');
+
+      // Populate Recent/Popular Posts sidebar (using recent for now)
+      const recentPopularList = document.getElementById('recent-popular-posts-list');
+      // Use the *original* posts array for recent posts, not the filtered one
+      const originalPosts = await (await fetch('/api/blog-posts')).json();
+       originalPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const recentPosts = originalPosts.slice(0, 3);
+
+      recentPopularList.innerHTML = recentPosts.map(post => `
+        <li><a href="blog-post.html?id=${post.id}">${post.title}</a></li>
+      `).join('');
+    }
+
+    // Filtering logic and initial load
+    // Check for category in URL on page load
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+
+    loadBlogPosts(category);
+
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const sidebarCategoryLinks = document.querySelectorAll("#categories-list a");
+
+    // Function to handle filtering and URL update
+    function applyFilter(filter) {
+        // Update URL with the selected filter
+        const newUrl = filter === 'all' ? 'blog.html' : `blog.html?category=${filter}`;
+        history.pushState({ category: filter }, '', newUrl);
+
+        // Filter the displayed posts
+        document.querySelectorAll(".blog-post-item").forEach(post => {
+          if (filter === "all" || post.getAttribute("data-category") === filter) {
             post.style.display = "block";
-            } else {
+          } else {
             post.style.display = "none";
+          }
+        });
+
+        // Update active state of filter buttons
+        filterButtons.forEach(btn => {
+            if (btn.getAttribute('data-filter') === filter) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
             }
         });
+         // Update active state of sidebar category links
+        sidebarCategoryLinks.forEach(link => {
+            if (link.getAttribute('data-category') === filter) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Scroll to the top of the main content area
+        document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Event listener for filter buttons
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('filter-button')) {
+        const filter = e.target.getAttribute("data-filter");
+        applyFilter(filter);
+      }
+    });
+
+     // Event listener for sidebar category links
+    sidebarCategoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior
+            const filter = this.getAttribute('data-category');
+            applyFilter(filter);
         });
     });
+
+     // Handle back/forward browser navigation
+    window.addEventListener('popstate', function(event) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const category = urlParams.get('category');
+      loadBlogPosts(category);
+      // Also update active state of filter buttons and sidebar links
+      filterButtons.forEach(btn => {
+          if (btn.getAttribute('data-filter') === (category || 'all')) {
+              btn.classList.add('active');
+          } else {
+              btn.classList.remove('active');
+          }
+      });
+       sidebarCategoryLinks.forEach(link => {
+          if (link.getAttribute('data-category') === category) {
+              link.classList.add('active');
+          } else {
+              link.classList.remove('active');
+          }
+      });
+       // Scroll to the top when using back/forward navigation with filters
+       document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Assuming you have a search input with id="search-input" and a button with id="search-button"
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const searchResultsContainer = document.getElementById('search-results-container'); // You'll need to add this container to your blog.html
+
+    searchButton.addEventListener('click', () => {
+      performSearch();
+    });
+
+    searchInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        performSearch();
+      }
+    });
+
+    function performSearch() {
+      const query = searchInput.value.trim();
+
+      if (query) {
+        // Prevent the default navigation (if the button is inside a form)
+        // event.preventDefault(); // You might need this depending on your HTML structure
+
+        // Clear previous results and show a loading message
+        searchResultsContainer.innerHTML = '<p>Searching...</p>';
+
+        // Make the fetch request to your backend
+        fetch(`/api/search/blog-posts?q=${encodeURIComponent(query)}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(results => {
+            displayResults(results);
+          })
+          .catch(error => {
+            console.error('Error fetching search results:', error);
+            searchResultsContainer.innerHTML = '<p>An error occurred while fetching search results.</p>';
+          });
+      } else {
+        // Handle empty query case (e.g., clear results or show a message)
+        searchResultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+      }
+    }
+
+    function displayResults(results) {
+      searchResultsContainer.innerHTML = ''; // Clear loading message
+
+      if (results && results.length > 0) {
+        results.forEach(result => {
+          // Create HTML elements to display each result (e.g., title, summary, link)
+          const resultElement = document.createElement('div');
+          resultElement.classList.add('search-result'); // You'll need to define this class in your CSS
+
+          resultElement.innerHTML = `
+            <h3>${result.title}</h3>
+            <p>${result.summary}</p>
+            <a href="${result.url}">Read More</a>
+          `;
+          searchResultsContainer.appendChild(resultElement);
+        });
+      } else {
+        searchResultsContainer.innerHTML = '<p class="no-results">No results found.</p>'; // You'll need to define this class in your CSS
+      }
+    }
     
 
 
