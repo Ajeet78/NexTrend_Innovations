@@ -1512,6 +1512,103 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.contact-form h1 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #202124;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.contact-form h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #202124;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Hero section styles */
+.hero {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #202124;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.hero-subheadline {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #3c4043;
+    max-width: 1000px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+/* Contact Information Section */
+.contact-info-section {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.contact-info-section .section-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 2rem;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.contact-info-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-info-item:hover {
+    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 1px 5px 2px rgba(60, 64, 67, 0.15);
+}
+
+.contact-info-item h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #202124;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.contact-info-item h3 i {
+    margin-right: 0.5rem;
+    color: #5f6368;
+}
+
+.contact-info-item p {
+    font-size: 1rem;
+    color: #3c4043;
+    margin: 0;
+    line-height: 1.5;
+}
+
 .form-group {
     margin-bottom: 1.5rem;
 }
