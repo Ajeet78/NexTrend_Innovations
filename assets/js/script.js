@@ -448,8 +448,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 ================================================================================*/
  const searchInput = document.getElementById('search-input');
  const searchButton = document.getElementById('search-button');
+ const searchResultsContainer = document.getElementById('search-results-container'); // Ensure this container exists in the HTML
 
- if (searchButton && searchInput) {
+ if (searchButton && searchInput && searchResultsContainer) {
      searchButton.addEventListener('click', performSearch);
      searchInput.addEventListener('keypress', function(event) {
          if (event.key === 'Enter') {
@@ -459,13 +460,51 @@ document.addEventListener('DOMContentLoaded', (event) => {
  }
 
  function performSearch() {
-     const searchTerm = searchInput.value.trim().toLowerCase();
-     if (searchTerm) {
-         //  Implement your search logic here
-         //  For example, redirect to a search results page:
-         window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
-         //  Or, filter content on the current page.
-         console.log(`Searching for: ${searchTerm}`);
+     const query = searchInput.value.trim();
+
+     if (query) {
+         // Clear previous results and show a loading message
+         searchResultsContainer.innerHTML = '<p>Searching...</p>';
+
+         // Make the fetch request to your backend
+         fetch(`/api/search/blog-posts?q=${encodeURIComponent(query)}`)
+             .then(response => {
+                 if (!response.ok) {
+                     throw new Error(`HTTP error! status: ${response.status}`);
+                 }
+                 return response.json();
+             })
+             .then(results => {
+                 displayResults(results);
+             })
+             .catch(error => {
+                 console.error('Error fetching search results:', error);
+                 searchResultsContainer.innerHTML = '<p>An error occurred while fetching search results.</p>';
+             });
+     } else {
+         // Handle empty query case (e.g., clear results or show a message)
+         searchResultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+     }
+ }
+
+ function displayResults(results) {
+     searchResultsContainer.innerHTML = ''; // Clear loading message
+
+     if (results && results.length > 0) {
+         results.forEach(result => {
+             // Create HTML elements to display each result (e.g., title, summary, link)
+             const resultElement = document.createElement('div');
+             resultElement.classList.add('search-result'); // You'll need to define this class in your CSS
+
+             resultElement.innerHTML = `
+                 <h3>${result.title}</h3>
+                 <p>${result.summary}</p>
+                 <a href="${result.url}">Read More</a>
+             `;
+             searchResultsContainer.appendChild(resultElement);
+         });
+     } else {
+         searchResultsContainer.innerHTML = '<p class="no-results">No results found.</p>'; // You'll need to define this class in your CSS
      }
  }
                    
