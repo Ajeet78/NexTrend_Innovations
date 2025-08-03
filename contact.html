@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -111,7 +111,8 @@ We’re here to bring your vision to life with smart, scalable, and budget-frien
                     </label>
                     <input type="file" id="upload" name="upload" style="display:none;">
                 </div>
-                
+                                <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+
                 <button type="submit" class="cta-button">SUBMIT</button>
             </form>
 
@@ -131,7 +132,13 @@ We’re here to bring your vision to life with smart, scalable, and budget-frien
                     form.addEventListener('submit', async (event) => {
                         event.preventDefault(); // Prevent default form submission
 
+                        if (grecaptcha.getResponse() === "") {
+                            alert("Please complete the CAPTCHA");
+                            return;
+                        }
+
                         const formData = new FormData(form);
+                        formData.append('g-recaptcha-response', grecaptcha.getResponse());
 
                         try {
                             const response = await fetch('/submit-form', {
@@ -142,6 +149,7 @@ We’re here to bring your vision to life with smart, scalable, and budget-frien
                             if (response.ok) {
                                 successPopup.style.display = 'flex'; // Show success popup
                                 form.reset(); // Reset the form
+                                grecaptcha.reset();
                                 uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
                                 setTimeout(closePopup, 3000); // Auto-hide popup after 3 seconds
                             } else {
