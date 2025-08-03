@@ -311,8 +311,10 @@ body {
 .cta-button.animate-cta-button {
     transform: scale(1);
     opacity: 1;
-    
+        margin-top: 2rem;
 }
+
+
 
 .cta-button::before {
     content: '';
@@ -731,63 +733,109 @@ footer {
    9. HERO SECTION
    ========================================================================== */
 .hero {
-    text-align: center;
-    padding: 2rem 0; /* Adjusted padding for responsiveness */
     position: relative;
     width: 100%;
-    height: auto; /* Changed to auto for responsiveness */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    
 }
 
-.hero .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    padding: 1rem;
-}
-
-.hero-content {
-    max-width: 100%;
-    z-index: 2;
-}
-
-.hero-headline {
-    font-size: 2rem; /* Adjusted font size for responsiveness */
-    font-weight: 700;
-    margin-bottom: 1rem; /* Adjusted margin for responsiveness */
-    line-height: 1.2;
-    color: #003c4b;
-    
-}
-
-.hero-subheadline {
-    font-size: 1rem; /* Adjusted font size for responsiveness */
-    margin-bottom: 1.5rem; /* Adjusted margin for responsiveness */
-    color: #3f484c;
-    
-}
-
-.hero-visual {
-    width: 100%; /* Make image responsive */
-    text-align: center;
-    position: relative;
+    height: 100%;
     z-index: 1;
 }
 
-.hero-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.mySlides {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slideshow-dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active {
+    background-color: #4a4a4a;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    color: #f0f0f0; /* Changed text color for better visibility on slideshow */
+    max-width: 800px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.hero-content.container .hero-cta {
+    background-color: #ffffff; /* Changed button background to white */
+    color: #2560ff; /* Changed button text color */
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    border: 2px solid #2560ff;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-content.container .hero-cta:hover {
+    background-color: #2560ff;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(37, 96, 255, 0.7);
+}
+
+.hero-headline {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #ffffff; /* White color for better visibility */
+}
+
+.hero-headline2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #ffffff; /* White color for better visibility */
+}
+
+.hero-subheadline {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #f0f0f0; /* Lighter gray for better contrast */
 }
 
 .hero-cta {
@@ -815,10 +863,72 @@ footer {
 }
 
 @media (max-width: 768px) {
-    h1.hero-headline {
-        font-size: calc(3.2vw + 10px);;
+    .hero {
+        height: 50vh;
     }
+    
+    .hero-headline {
+        font-size: 2rem;
+    }
+    
+    .hero-subheadline {
+        font-size: 1rem;
+    }
+
+    .hero-headline2 {
+    font-size: 1.5rem;
 }
+}
+
+/* ==========================================================================
+   9.5 INNOVATION SECTION (NEW SECTION AFTER HERO)
+   ========================================================================== */
+.innovation-section {
+    padding: 4rem 0;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.innovation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.innovation-item {
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.innovation-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.innovation-item h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #07677f;
+    margin-bottom: 0.5rem;
+}
+
+.innovation-item h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.innovation-item p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
 /* ==========================================================================
    10. SERVICES SECTION
    ========================================================================== */
@@ -1547,6 +1657,18 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     margin-bottom: 1rem;
 }
 
+.hero2 {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.hero2 h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #202124;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
 .hero-subheadline {
     font-size: 1.125rem;
     font-weight: 400;
@@ -1557,6 +1679,15 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     text-align: justify;
 }
 
+.hero-slideshow.subheadline {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #ffffff;
+    max-width: 1000px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.5;
+    text-align: justify;
+}
 /* Contact Information Section */
 .contact-info-section {
     padding: 3rem 0;
@@ -1930,12 +2061,12 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     height: 100%;
     margin-top: 0.5rem;
-    background: #F0F4FA;
 
 }
+
 
 .hero-content {
     max-width: fit-content;
@@ -2427,7 +2558,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     .cta-button {
         font-size: 0.9rem;
         height: 3rem;
-        width: -webkit-fill-available;
+        /* width: -webkit-fill-available; */
         margin-top: 1rem;
     }
     }
@@ -2440,6 +2571,17 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     .hero {
         font-size: 1rem;
     }
+
+    
+
+.hero-inner {
+    text-align: center;
+    max-width: 860px;
+    padding: 0 30px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
 
