@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Admin - Contact Submissions | NexTrend Innovations</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -26,6 +26,64 @@
             color: #07677f;
             margin-bottom: 2rem;
         }
+        .search-filter-container {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #07677f;
+        }
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .filter-button {
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .filter-button:hover {
+            background-color: #0056b3;
+        }
+        .filter-button.reset {
+            background-color: #6c757d;
+        }
+        .filter-button.reset:hover {
+            background-color: #545b62;
+        }
         .submissions-list {
             list-style: none;
             padding: 0;
@@ -41,7 +99,7 @@
             margin: 0.5rem 0;
             line-height: 1.4;
         }
-         .submission-item strong {
+        .submission-item strong {
             color: #07677f;
         }
         .back-button {
@@ -53,71 +111,246 @@
             text-decoration: none;
             border-radius: 5px;
         }
+        .submission-media {
+            margin-top: 1rem;
+        }
+        .submission-media img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submission-media a {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: #07677f;
+            text-decoration: underline;
+        }
+        .submission-media .file-info {
+            margin-top: 0.5rem;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .submission-media .download-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .submission-media .download-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <main>
         <div class="submissions-container">
-             <a href="admin-dashboard.html" class="back-button">Back to Dashboard</a>
+            <a href="admin-dashboard.html" class="back-button">Back to Dashboard</a>
             <h1>Contact Form Submissions</h1>
+            
+            <!-- Search and Filter Section -->
+            <div class="search-filter-container">
+                <input type="text" id="search-bar" class="search-bar" placeholder="Search submissions...">
+                
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <label for="filter-date">Date:</label>
+                        <input type="date" id="filter-date">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filter-name">Name:</label>
+                        <input type="text" id="filter-name" placeholder="Filter by name">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filter-budget">Budget:</label>
+                        <select id="filter-budget">
+                            <option value="">All Budgets</option>
+                            <option value="1k-10k">₹1,000 - ₹10,000</option>
+                            <option value="10k-20k">₹10,000 - ₹20,000</option>
+                            <option value="20k-50k">₹20,000 - ₹50,000</option>
+                            <option value="50k+">₹50,000+</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="filter-buttons">
+                    <button id="apply-filters" class="filter-button">Apply Filters</button>
+                    <button id="reset-filters" class="filter-button reset">Reset</button>
+                </div>
+            </div>
+            
             <ul id="submissions-list" class="submissions-list">
                 <!-- Contact submissions will be loaded here -->
             </ul>
-             <p id="submissions-message" style="text-align: center; color: #666;"></p>
+            <p id="submissions-message" style="text-align: center; color: #666;"></p>
         </div>
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', fetchSubmissions);
+        // Store all submissions for filtering
+        let allSubmissions = [];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for search and filter functionality
+            document.getElementById('search-bar').addEventListener('input', filterSubmissions);
+            document.getElementById('filter-date').addEventListener('change', filterSubmissions);
+            document.getElementById('filter-name').addEventListener('input', filterSubmissions);
+            document.getElementById('filter-budget').addEventListener('change', filterSubmissions);
+            document.getElementById('apply-filters').addEventListener('click', filterSubmissions);
+            document.getElementById('reset-filters').addEventListener('click', resetFilters);
+            
+            // Load submissions
+            fetchSubmissions();
+        });
 
         async function fetchSubmissions() {
             const submissionsList = document.getElementById('submissions-list');
             const submissionsMessage = document.getElementById('submissions-message');
-            
+
             submissionsMessage.textContent = 'Loading submissions...';
 
             try {
                 const res = await fetch('http://localhost:3000/api/contact-submissions');
-                
+
                 if (!res.ok) {
                     throw new Error(`Error fetching submissions: ${res.statusText}`);
                 }
 
-                const submissions = await res.json();
-                
-                if (submissions.length === 0) {
+                allSubmissions = await res.json();
+
+                if (allSubmissions.length === 0) {
                     submissionsMessage.textContent = 'No contact form submissions yet.';
                     return;
                 }
 
                 // Sort submissions by date in descending order (most recent first)
-                submissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                allSubmissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-                submissionsList.innerHTML = ''; // Clear loading message
-
-                submissions.forEach(submission => {
-                    const listItem = document.createElement('li');
-                    listItem.classList.add('submission-item');
-                    listItem.innerHTML = `
-                        <p><strong>Date:</strong> ${new Date(submission.timestamp).toLocaleString()}</p>
-                        <p><strong>Name:</strong> ${submission.name}</p>
-                        <p><strong>Email:</strong> ${submission.email}</p>
-                        <p><strong>Project Type:</strong> ${submission.projectType}</p>
-                        <p><strong>Development Type:</strong> ${submission.developmentType}</p>
-                        <p><strong>Budget:</strong> ${submission.budget}</p>
-                        <p><strong>Timeline:</strong> ${submission.timeline}</p>
-                        <p><strong>Details:</strong> ${submission.projectDetails}</p>
-                    `;
-                    submissionsList.appendChild(listItem);
-                });
-
+                // Display all submissions initially
+                displaySubmissions(allSubmissions);
                 submissionsMessage.textContent = ''; // Clear message if submissions are loaded
 
             } catch (error) {
                 console.error('Error fetching contact submissions:', error);
                 submissionsMessage.textContent = 'Error loading submissions.';
-                 submissionsMessage.style.color = 'red';
+                submissionsMessage.style.color = 'red';
             }
+        }
+        
+        function filterSubmissions() {
+            const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+            const filterDate = document.getElementById('filter-date').value;
+            const filterName = document.getElementById('filter-name').value.toLowerCase();
+            const filterBudget = document.getElementById('filter-budget').value;
+            
+            // Check if search term is a date (YYYY-MM-DD format)
+            let searchDate = null;
+            if (searchTerm.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                searchDate = searchTerm;
+            }
+            
+            const filteredSubmissions = allSubmissions.filter(submission => {
+                // Get local date for comparison (same as display)
+                let submissionLocalDate = null;
+                if (submission.timestamp) {
+                    const submissionDate = new Date(submission.timestamp);
+                    if (!isNaN(submissionDate.getTime())) {
+                        submissionLocalDate = submissionDate.toISOString().split('T')[0];
+                    }
+                }
+                
+                // Search term filter (checks name, email, project details, or date)
+                const matchesSearch = !searchTerm || 
+                    submission.name.toLowerCase().includes(searchTerm) ||
+                    submission.email.toLowerCase().includes(searchTerm) ||
+                    (submission.projectDetails && submission.projectDetails.toLowerCase().includes(searchTerm)) ||
+                    (searchDate && submissionLocalDate === searchDate);
+                
+                // Date filter
+                const matchesDate = !filterDate || 
+                    (submissionLocalDate && submissionLocalDate === filterDate);
+                
+                // Name filter
+                const matchesName = !filterName || 
+                    (submission.name && submission.name.toLowerCase().includes(filterName));
+                
+                // Budget filter
+                const matchesBudget = !filterBudget || 
+                    (submission.budget && submission.budget === filterBudget);
+                
+                return matchesSearch && matchesDate && matchesName && matchesBudget;
+            });
+            
+            displaySubmissions(filteredSubmissions);
+        }
+        
+        function resetFilters() {
+            // Clear all filter inputs
+            document.getElementById('search-bar').value = '';
+            document.getElementById('filter-date').value = '';
+            document.getElementById('filter-name').value = '';
+            document.getElementById('filter-budget').value = '';
+            
+            // Display all submissions
+            displaySubmissions(allSubmissions);
+        }
+        
+        function displaySubmissions(submissions) {
+            const submissionsList = document.getElementById('submissions-list');
+            
+            if (submissions.length === 0) {
+                submissionsList.innerHTML = '<p style="text-align: center;">No submissions match the current filters.</p>';
+                return;
+            }
+            
+            submissionsList.innerHTML = ''; // Clear existing submissions
+
+            submissions.forEach(submission => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('submission-item');
+
+                let mediaHtml = '';
+                if (submission.upload && submission.upload.filename) {
+                    const fileUrl = `/uploads/${submission.upload.filename}`;
+                    const originalName = submission.upload.originalname || submission.upload.filename;
+                    const fileSize = submission.upload.size ? `${(submission.upload.size / 1024).toFixed(2)} KB` : 'Unknown size';
+                    
+                    // Check if file is an image by extension
+                    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp'];
+                    const ext = originalName.toLowerCase().slice(-4);
+                    if (imageExtensions.some(e => ext.endsWith(e))) {
+                        mediaHtml = `
+                            <div class="submission-media">
+                                <img src="${fileUrl}" alt="Uploaded Media" />
+                                <div class="file-info">File: ${originalName} (${fileSize})</div>
+                                <a href="${fileUrl}" download="${originalName}" class="download-link">Download File</a>
+                            </div>`;
+                    } else {
+                        mediaHtml = `
+                            <div class="submission-media">
+                                <div class="file-info">File: ${originalName} (${fileSize})</div>
+                                <a href="${fileUrl}" target="_blank" rel="noopener noreferrer">View Uploaded File</a>
+                                <a href="${fileUrl}" download="${originalName}" class="download-link">Download File</a>
+                            </div>`;
+                    }
+                }
+
+                listItem.innerHTML = `
+                    <p><strong>Date:</strong> ${new Date(submission.timestamp).toLocaleString()}</p>
+                    <p><strong>Name:</strong> ${submission.name}</p>
+                    <p><strong>Email:</strong> ${submission.email}</p>
+                    <p><strong>Project Type:</strong> ${submission.projectType}</p>
+                    <p><strong>Development Type:</strong> ${submission.developmentType}</p>
+                    <p><strong>Budget:</strong> ${submission.budget}</p>
+                    <p><strong>Timeline:</strong> ${submission.timeline}</p>
+                    <p><strong>Details:</strong> ${submission.projectDetails}</p>
+                    ${mediaHtml}
+                `;
+                submissionsList.appendChild(listItem);
+            });
         }
     </script>
 </body>

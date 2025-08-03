@@ -157,6 +157,9 @@ body {
     animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s;
     opacity: 0;
     border-bottom: 1px solid #b5b5b5; /* Add the divider */
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .top-nav-wrapper.fixed {
