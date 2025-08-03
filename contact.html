@@ -20,30 +20,33 @@
     <main class="main-container">
         <section class="hero">
             <div class="container">
-            <h1>Contact &amp; Collaboration</h1>
-            <p>We'd love to hear from you! Reach out through any of the methods below to discuss your project.</p>
+            <h1>Contact Us</h1>
+            <p1>Got an idea? Need a website or an app that works like magic?
+We’re here to bring your vision to life with smart, scalable, and budget-friendly digital solutions.</p1>
         </div>
         </section>
 
-        <section class="contact-methods">
+        <!-- <section class="contact-methods"> -->
             <!-- <div class="container"> -->
-            <div>
+            <!-- <div>
                 <h3>Quick Inquiry</h3>
                 <a href="#contact-form">Use the Form</a>
             </div>
             <div>
                 <h3>Instant Chat</h3>
                 <a href="#">Live Chat (Coming Soon)</a>
-            </div>
+            </div> -->
             <!-- <div>
                 <h3>Schedule a Call</h3>
                 <a href="#calendly">Book a Call</a>
             </div> -->
         <!-- </div> -->
-        </section>
+        <!-- </section> -->
 
         <section id="contact-form" class="contact-form">
             <div class="container">
+            <h1 class="section-title">Get in touch to discuss your project, request a quote or even just to pick our brains.</h1>
+
             <h2 class="section-title">Tell us about your project</h2>
             <form id="contactForm" action="/submit-form" method="post">
                 <div class="form-group">
@@ -98,11 +101,18 @@
 
                 <div class="form-group">
                     <label for="projectDetails">Project Details</label>
-                    <textarea id="projectDetails" name="projectDetails" rows="4"
+                    <textarea id="projectDetails" name="projectDetails" rows="10"
                         placeholder="Describe your project"></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="upload" class="upload-label">
+                        <i class="fas fa-upload"></i> Browse to upload (optional)
+                    </label>
+                    <input type="file" id="upload" name="upload" style="display:none;">
+                </div>
                 
-                <button type="submit" class="cta-button">Send Inquiry</button>
+                <button type="submit" class="cta-button">SUBMIT</button>
             </form>
 
             <div id="successPopup" class="modal" style="display: none;">
@@ -112,40 +122,50 @@
                 </div>
             </div>
 
-            <script>
-                const form = document.getElementById('contactForm');
-                const successPopup = document.getElementById('successPopup');
+                <script>
+                    const form = document.getElementById('contactForm');
+                    const successPopup = document.getElementById('successPopup');
+                    const uploadInput = document.getElementById('upload');
+                    const uploadLabel = document.querySelector('label[for="upload"]');
 
-                form.addEventListener('submit', async (event) => {
-                    event.preventDefault(); // Prevent default form submission
+                    form.addEventListener('submit', async (event) => {
+                        event.preventDefault(); // Prevent default form submission
 
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData.entries());
+                        const formData = new FormData(form);
 
-                    try {
-                        const response = await fetch('/submit-form', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(data),
-                        });
+                        try {
+                            const response = await fetch('/submit-form', {
+                                method: 'POST',
+                                body: formData, // Send FormData directly
+                            });
 
-                        if (response.ok) {
-                            successPopup.style.display = 'flex'; // Show success popup
-                            form.reset(); // Reset the form
-                            setTimeout(closePopup, 3000); // Auto-hide popup after 3 seconds
-                        } else {
-                            alert('Failed to send inquiry. Please try again.');
+                            if (response.ok) {
+                                successPopup.style.display = 'flex'; // Show success popup
+                                form.reset(); // Reset the form
+                                uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
+                                setTimeout(closePopup, 3000); // Auto-hide popup after 3 seconds
+                            } else {
+                                const errorData = await response.json();
+                                alert(`Failed to send inquiry: ${errorData.message}`);
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert('An error occurred. Please try again.');
                         }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('An error occurred. Please try again.');
-                    }
-                });
+                    });
 
-                function closePopup() {
-                    successPopup.style.display = 'none'; // Hide the popup
-                }
-            </script>
+                    uploadInput.addEventListener('change', function() {
+                        if (uploadInput.files.length > 0) {
+                            uploadLabel.textContent = uploadInput.files[0].name;
+                        } else {
+                            uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
+                        }
+                    });
+
+                    function closePopup() {
+                        successPopup.style.display = 'none'; // Hide the popup
+                    }
+                </script>
         </div>
         </section>
 
