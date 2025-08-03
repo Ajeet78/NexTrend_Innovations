@@ -23,6 +23,7 @@
     "dompurify": "^3.2.6",
     "express": "^5.1.0",
     "jsdom": "^26.1.0",
+    "multer": "^2.0.2",
     "nodemailer": "^7.0.5"
   }
 }
