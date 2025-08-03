@@ -241,6 +241,7 @@ body {
     position: relative;
     overflow: hidden;
     font-weight: 500;
+    font-size: 14px;
     transform-style: preserve-3d;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease, background-color 0.3s ease;
 }
@@ -601,7 +602,7 @@ footer {
     .top-nav {
         flex-direction: column;
         align-items: flex-start;
-        padding: 1rem 0;
+        padding: 1.5rem 0;
     }
 
     /* .logo {
@@ -639,6 +640,8 @@ footer {
     /* object-fit: contain; */
     object-fit: cover;
     margin: 0;
+    max-width: 50px;
+    max-height: 50px;
 }
 
 #site-logo:hover {
