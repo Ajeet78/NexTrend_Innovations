@@ -2425,7 +2425,11 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     }
 
     .cta-button {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        height: 3rem;
+        width: -webkit-fill-available;
+        margin-top: 1rem;
+    }
     }
 
     .tech-stack-carousel {
