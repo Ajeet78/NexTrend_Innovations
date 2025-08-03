@@ -1,6 +1,14 @@
+const path = require('path');
+
+const multer = require('multer');
+
+// Configure multer storage
+const upload = multer({
+    dest: path.join(__dirname, 'uploads/')
+});
+
 const express = require('express');
 const fs = require('fs');
-const path = require('path');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer'); // Ensure nodemailer is installed
 const { JSDOM } = require('jsdom'); // Import JSDOM for DOMPurify
@@ -16,19 +24,26 @@ app.use(bodyParser.json());
 // Serve static files (e.g., your HTML, CSS, and JS)
 app.use(express.static(path.join(__dirname)));
 
+// Serve uploads folder statically for media files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'info.nextrendinnovations@gmail.com', // Replace with your email
-        pass: 'ijxkazicfmklwogr'  // Replace with your Gmail app password
+        pass: ''  // Replace with your Gmail app password
     }
 });
 
-// Endpoint to handle form submission
-app.post('/submit-form', (req, res) => {
+// Endpoint to handle form submission with file upload
+app.post('/submit-form', upload.single('upload'), (req, res) => {
     const formData = req.body;
     formData.timestamp = new Date(); // Add a timestamp
+
+    if (req.file) {
+        formData.upload = req.file; // Store the uploaded file info under 'upload'
+    }
 
     // Save data to a JSON file
     const filePath = path.join(__dirname, 'form-data.json');
