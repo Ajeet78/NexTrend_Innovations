@@ -3473,3 +3473,203 @@ blog*/
         padding: 0.8rem 0;
       }
     }
+
+    /* ---------------------------------Admin Blog Post--------------------------------------------------------- */
+    .admin-blog-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 2rem 1.5rem;
+}
+.admin-blog-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #07677f;
+}
+#blog-post-form .form-group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+#blog-post-form label {
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: #333;
+}
+#blog-post-form input,
+#blog-post-form textarea,
+#blog-post-form select {
+    padding: 0.7rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    resize: none;
+    transition: border-color 0.2s;
+}
+#blog-post-form input:focus,
+#blog-post-form textarea:focus,
+#blog-post-form select:focus {
+    border-color: #07677f;
+    outline: none;
+}
+
+#blog-post-form textarea {
+    min-height: 100px;
+    max-height: 500px;
+    resize: vertical;
+}
+#admin-blog-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1rem;
+    min-height: 1.2em;
+}
+
+/* Toggle Switch Styles */
+.toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal !important;
+    margin-bottom: 0 !important;
+}
+
+.toggle-label input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 24px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.toggle-slider:before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s;
+}
+
+.toggle-label input[type="checkbox"]:checked + .toggle-slider {
+    background-color: #07677f;
+}
+
+.toggle-label input[type="checkbox"]:checked + .toggle-slider:before {
+    transform: translateX(26px);
+    background-color: #054a5c;
+}
+
+/* Portfolio Display Styles */
+#portfolio-display-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+#portfolio-display-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #07677f;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-details {
+    padding: 1.5rem;
+}
+
+.project-details h3 {
+    margin-bottom: 0.5rem;
+    color: #07677f;
+}
+
+.project-details p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.project-link {
+    display: inline-block;
+    background: #07677f;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.project-link:hover {
+    background: #054a5c;
+}
+
+.content-type-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge-blog {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.badge-case-study {
+    background-color: #e8f5e8;
+    color: #388e3c;
+}
+
+/* Submit button style update */
+#blog-post-form button[type="submit"] {
+    background-color: #054a5c; /* Darker shade for button background */
+    color: #ffffff; /* White text color */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#blog-post-form button[type="submit"]:hover {
+    background-color: #07677f; /* Original brand color on hover */
+}
