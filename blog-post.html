@@ -180,7 +180,7 @@ all.min.css"
             }
 
             try {
-                const res = await fetch(`http://localhost:3000/api/blog-posts/${postId}`);
+                const res = await fetch(`/api/blog-posts/${postId}`);
                 if (!res.ok) {
                     throw new Error(`Error fetching post: ${res.statusText}`);
                 }
