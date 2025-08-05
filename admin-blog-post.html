@@ -51,19 +51,19 @@
           <input type="date" id="date" required>
         </div>
 
-        <!-- Toggle for Case Study -->
+        <!-- Post Type Selection Dropdown -->
         <div class="form-group">
-          <label for="addToPortfolio" class="toggle-label">
-            <input type="checkbox" id="addToPortfolio" name="addToPortfolio">
-            <span class="toggle-slider"></span>
-            Add as Case Study to Portfolio
-          </label>
-          <small style="display: block; margin-top: 5px; color: #666;">
-            When enabled, this blog post will also appear as a case study in the portfolio section
+          <label for="postType">Post Type</label>
+          <select id="postType" name="postType" required>
+            <option value="blog" selected>Blog</option>
+            <option value="caseStudy">Case Study</option>
+          </select>
+          <small id="postType-message" style="display: block; margin-top: 5px; color: #666;">
+            Select the type of post you are creating.
           </small>
         </div>
 
-        <button type="submit" class="cta-button animate-cta-button">
+        <button type="submit" class="cta-button animate-cta-button" id="submit-button">
           Post Blog
         </button>
         <p id="admin-blog-message"></p>
@@ -71,6 +71,24 @@
       <div class="form-group">
         <a href="admin-blog-list.html" class="cta-button animate-cta-button">View All Posts</a>
       </div>
+
+      <script>
+        // Update submit button text and message based on post type selection
+        const postTypeSelect = document.getElementById('postType');
+        const submitButton = document.getElementById('submit-button');
+        const postTypeMessage = document.getElementById('postType-message');
+
+        postTypeSelect.addEventListener('change', () => {
+          const selected = postTypeSelect.value;
+          if (selected === 'caseStudy') {
+            submitButton.textContent = 'Post Case Study';
+            postTypeMessage.textContent = 'You are creating a Case Study post.';
+          } else {
+            submitButton.textContent = 'Post Blog';
+            postTypeMessage.textContent = 'You are creating a Blog post.';
+          }
+        });
+      </script>
 
       <!-- Display Section for Blog Posts and Case Studies -->
       <div id="portfolio-display-section" style="margin-top: 3rem;">
@@ -220,8 +238,8 @@
         return;
       }
 
-      const addToPortfolio = document.getElementById('addToPortfolio').checked;
-      console.log('Add to Portfolio (caseStudy) checkbox value:', addToPortfolio);
+      const postType = document.getElementById('postType').value;
+      console.log('Selected post type:', postType);
 
       const post = {
         title: document.getElementById('title').value.trim(),
@@ -230,7 +248,7 @@
         category: document.getElementById('category').value,
         image: document.getElementById('image').value.trim(),
         date: document.getElementById('date').value,
-        caseStudy: addToPortfolio
+        postType: postType
       };
 
       if (!post.title || !post.snippet || !post.content || !post.category || !post.image || !post.date) {
@@ -249,7 +267,7 @@
         if (res.ok) {
           const responseData = await res.json();
           console.log('API response after posting blog:', responseData);
-          msg.textContent = 'Blog post published successfully!';
+          msg.textContent = postType === 'caseStudy' ? 'Case Study published successfully!' : 'Blog post published successfully!';
           msg.style.color = 'green';
           this.reset();
           const editor = tinymce.get('content');
