@@ -330,19 +330,8 @@
 <section class="blog-teaser reveal">
     <div class="container">
         <h2 class="section-title">Latest Insights</h2>
-        <div class="blog-posts-teaser">
-            <div class="blog-post">
-                <img src="assets/img/1.jpg" alt="Blog Post 1" class="blog-post-image">
-                <h3 class="blog-post-title">The Future of Web Development</h3>
-                <p class="blog-post-excerpt">Explore the emerging trends and technologies shaping the future of web development.</p>
-                <a href="blog.html" class="blog-post-link">Read More</a>
-            </div>
-            <div class="blog-post">
-                <img src="assets/img/2.jpg" alt="Blog Post 2" class="blog-post-image">
-                <h3 class="blog-post-title">Mobile App Development Best Practices</h3>
-                <p class="blog-post-excerpt">Learn the best practices for building high-quality and user-friendly mobile applications.</p>
-                <a href="blog.html" class="blog-post-link">Read More</a>
-            </div>
+        <div class="blog-posts-teaser" id="blog-posts-container">
+            <!-- Blog posts will be dynamically loaded here -->
         </div>
         <!--  view all post button-->
           </div> 
@@ -352,6 +341,35 @@
 
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const container = document.getElementById('blog-posts-container');
+    try {
+        const response = await fetch('/api/blog-posts');
+        if (!response.ok) throw new Error('Failed to fetch blog posts');
+        const posts = await response.json();
+
+        container.innerHTML = posts.map(post => `
+        <a href="blog-post.html?id=${post.id}" class="blog-post" data-category="${post.category}">
+    
+        <div>
+          <img src="${post.image}" alt="${post.title}">
+                <h3 class="blog-post-title">${post.title}</h3>
+                <!-- <p class="blog-post-excerpt">${post.snippet}</p> -->
+                <!-- <p class="blog-post-meta">Posted on <time datetime="${post.date}">${new Date(post.date).toLocaleDateString()}</time></span></p> -->
+                <!-- <a href="${post.url}" class="blog-post-link" aria-label="Read more about ${post.title}">Read More</a> -->
+            </div>
+
+            </a>
+        `).join('');
+    } catch (error) {
+        container.innerHTML = '<p>Unable to load latest blog posts at this time.</p>';
+        console.error(error);
+    }
+});
+</script>
+
 
     </main>
 
