@@ -1,68 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Admin - Post Blog | NexTrend Innovations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        /* Add the same admin-blog-container and form styling as in admin-blog-edit.html */
-        .admin-blog-container {
-            max-width: 500px;
-            margin: 2rem auto;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-            padding: 2rem 1.5rem;
-        }
-        .admin-blog-container h1 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            color: #07677f;
-        }
-        #blog-post-form .form-group {
-            margin-bottom: 1.2rem;
-            display: flex;
-            flex-direction: column;
-        }
-        #blog-post-form label {
-            font-weight: 500;
-            margin-bottom: 0.4rem;
-            color: #333;
-        }
-        #blog-post-form input,
-        #blog-post-form textarea,
-        #blog-post-form select {
-            padding: 0.7rem 1rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1rem;
-            background: #f9f9f9;
-            resize: none;
-            transition: border-color 0.2s;
-        }
-        #blog-post-form input:focus,
-        #blog-post-form textarea:focus,
-        #blog-post-form select:focus {
-            border-color: #07677f;
-            outline: none;
-        }
-        
-        #blog-post-form textarea {
-            min-height: 100px;
-            max-height: 500px;
-            resize: vertical;
-        }
-        #admin-blog-message {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 1rem;
-            min-height: 1.2em;
-        }
-    </style>
-    <script src="https://cdn.tiny.cloud/1/pmoiu4xw5u0565r4gq73si2imvcmhm3n9t0m0y0glqkh3gp5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script src="https://cdn.tiny.cloud/1/pmoiu4xw5u0565r4gq73si2imvcmhm3n9t0m0y0glqkh3gp5/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
 </head>
+
 <body>
   <main>
     <div class="admin-blog-container">
@@ -77,8 +24,9 @@
         <div class="form-group">
           <label for="snippet">Snippet</label>
           <textarea id="snippet" required placeholder="Short summary of the article"></textarea>
-          <small id="snippet-word-count" style="display: block; text-align: right; color: #666;">0 / 160 characters</small>
-      </div>
+          <small id="snippet-word-count" style="display: block; text-align: right; color: #666;">0 / 160
+            characters</small>
+        </div>
         <div class="form-group">
           <label for="content">Content</label>
           <textarea id="content" placeholder="Full content of the article"></textarea>
@@ -102,24 +50,46 @@
           <label for="date">Date</label>
           <input type="date" id="date" required>
         </div>
-        <button type="submit" class="cta-button">
+
+        <!-- Toggle for Case Study -->
+        <div class="form-group">
+          <label for="addToPortfolio" class="toggle-label">
+            <input type="checkbox" id="addToPortfolio" name="addToPortfolio">
+            <span class="toggle-slider"></span>
+            Add as Case Study to Portfolio
+          </label>
+          <small style="display: block; margin-top: 5px; color: #666;">
+            When enabled, this blog post will also appear as a case study in the portfolio section
+          </small>
+        </div>
+
+        <button type="submit" class="cta-button animate-cta-button">
           Post Blog
         </button>
         <p id="admin-blog-message"></p>
       </form>
-       <div class="form-group">
-            <a href="admin-blog-list.html" class="cta-button">View All Posts</a>
+      <div class="form-group">
+        <a href="admin-blog-list.html" class="cta-button animate-cta-button">View All Posts</a>
+      </div>
+
+      <!-- Display Section for Blog Posts and Case Studies -->
+      <div id="portfolio-display-section" style="margin-top: 3rem;">
+        <h2>Portfolio Content</h2>
+
+        <div class="projects-grid" id="portfolio-content-grid">
+          <!-- Dynamic content will be loaded here -->
         </div>
+      </div>
     </div>
   </main>
 
   <script>
     tinymce.init({
-        selector: '#content', // Select the textarea with the ID 'content'
-        plugins: 'advlist autolink lists link image charmap print preview anchor',
-        toolbar_mode: 'floating',
-        toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-        content_style: 'body { font-family:Arial,sans-serif; font-size:14px }'
+      selector: '#content', // Select the textarea with the ID 'content'
+      plugins: 'advlist autolink lists link image charmap print preview anchor',
+      toolbar_mode: 'floating',
+      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+      content_style: 'body { font-family:Arial,sans-serif; font-size:14px }'
     });
 
     document.getElementById('blog-post-form').addEventListener('submit', async function (e) {
@@ -133,32 +103,32 @@
       // Get content from TinyMCE editor
       let blogContent;
       try {
-          console.log('Attempting to get TinyMCE content.');
-          const editor = tinymce.get('content');
-          if (editor) {
-              blogContent = editor.getContent();
-              console.log('TinyMCE content retrieved successfully.');
-          } else {
-              console.error('TinyMCE editor instance not found.');
-               msg.textContent = 'Error: TinyMCE editor not ready.';
-               msg.style.color = 'red';
-               return; // Stop submission if editor not found
-          }
+        console.log('Attempting to get TinyMCE content.');
+        const editor = tinymce.get('content');
+        if (editor) {
+          blogContent = editor.getContent();
+          console.log('TinyMCE content retrieved successfully.');
+        } else {
+          console.error('TinyMCE editor instance not found.');
+          msg.textContent = 'Error: TinyMCE editor not ready.';
+          msg.style.color = 'red';
+          return; // Stop submission if editor not found
+        }
       } catch (error) {
-          console.error('Error getting TinyMCE content:', error);
-           msg.textContent = 'Error retrieving blog content.';
-           msg.style.color = 'red';
-           return; // Stop submission on error
+        console.error('Error getting TinyMCE content:', error);
+        msg.textContent = 'Error retrieving blog content.';
+        msg.style.color = 'red';
+        return; // Stop submission on error
       }
 
 
       const post = {
-          title: document.getElementById('title').value.trim(),
-          snippet: document.getElementById('snippet').value.trim(),
-          content: blogContent, // Use the content retrieved from TinyMCE
-          category: document.getElementById('category').value,
-          image: document.getElementById('image').value.trim(),
-          date: document.getElementById('date').value,
+        title: document.getElementById('title').value.trim(),
+        snippet: document.getElementById('snippet').value.trim(),
+        content: blogContent, // Use the content retrieved from TinyMCE
+        category: document.getElementById('category').value,
+        image: document.getElementById('image').value.trim(),
+        date: document.getElementById('date').value,
       };
 
       console.log('Post object created:', post);
@@ -166,65 +136,207 @@
 
       let postJson;
       try {
-          postJson = JSON.stringify(post);
-          console.log('Post object stringified successfully.');
+        postJson = JSON.stringify(post);
+        console.log('Post object stringified successfully.');
       } catch (error) {
-          console.error('Error stringifying post object:', error);
-          msg.textContent = 'Error preparing data for submission.';
-          msg.style.color = 'red';
-          return; // Stop submission on error
+        console.error('Error stringifying post object:', error);
+        msg.textContent = 'Error preparing data for submission.';
+        msg.style.color = 'red';
+        return; // Stop submission on error
       }
 
 
       // Validate form fields (including TinyMCE content check)
       if (!post.title || !post.snippet || !post.content || !post.category || !post.image || !post.date) {
-          msg.textContent = 'Please fill in all fields.';
-          msg.style.color = 'red';
-          console.warn('Form validation failed: Missing fields.');
-          return;
+        msg.textContent = 'Please fill in all fields.';
+        msg.style.color = 'red';
+        console.warn('Form validation failed: Missing fields.');
+        return;
       }
-       console.log('Form validation passed.');
+      console.log('Form validation passed.');
 
 
       try {
-          console.log('Attempting fetch request to:', 'http://localhost:3000/api/blog-posts');
-          const res = await fetch('http://localhost:3000/api/blog-posts', { // Ensure the correct URL
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: postJson, // Use the stringified JSON
-          });
+        console.log('Attempting fetch request to:', 'http://localhost:3000/api/blog-posts');
+        const res = await fetch('http://localhost:3000/api/blog-posts', { // Ensure the correct URL
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: postJson, // Use the stringified JSON
+        });
 
-          console.log('Fetch request completed with status:', res.status);
+        console.log('Fetch request completed with status:', res.status);
 
-          if (res.ok) {
-              console.log('Fetch request successful.');
-              msg.textContent = 'Blog post published successfully!';
-              msg.style.color = 'green';
-              this.reset(); // Clear the form
-              // Clear TinyMCE editor content
-              const editor = tinymce.get('content');
-              if (editor) {
-                  editor.setContent('');
-                   console.log('TinyMCE editor content cleared.');
-              }
-          } else {
-              console.warn('Fetch request failed with status:', res.status);
-              const errorData = await res.json();
-              msg.textContent = errorData.message || 'Failed to post blog.';
-              msg.style.color = 'red';
-              console.error('Server returned error:', errorData);
+        if (res.ok) {
+          console.log('Fetch request successful.');
+          msg.textContent = 'Blog post published successfully!';
+          msg.style.color = 'green';
+          this.reset(); // Clear the form
+          // Clear TinyMCE editor content
+          const editor = tinymce.get('content');
+          if (editor) {
+            editor.setContent('');
+            console.log('TinyMCE editor content cleared.');
           }
-      } catch (error) {
-          console.error('Error during fetch or response processing:', error);
-          msg.textContent = 'An error occurred. Please check the server or network.';
+        } else {
+          console.warn('Fetch request failed with status:', res.status);
+          const errorData = await res.json();
+          msg.textContent = errorData.message || 'Failed to post blog.';
           msg.style.color = 'red';
+          console.error('Server returned error:', errorData);
+        }
+      } catch (error) {
+        console.error('Error during fetch or response processing:', error);
+        msg.textContent = 'An error occurred. Please check the server or network.';
+        msg.style.color = 'red';
       }
 
       // Clear the message after 3 seconds
       setTimeout(() => {
-          msg.textContent = '';
+        msg.textContent = '';
       }, 3000);
     });
+
+    // Extend the form submission to include the toggle state
+    document.getElementById('blog-post-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const msg = document.getElementById('admin-blog-message');
+      msg.textContent = ''; // Clear previous messages
+
+      // Get content from TinyMCE editor
+      let blogContent;
+      try {
+        const editor = tinymce.get('content');
+        if (editor) {
+          blogContent = editor.getContent();
+        } else {
+          msg.textContent = 'Error: TinyMCE editor not ready.';
+          msg.style.color = 'red';
+          return;
+        }
+      } catch (error) {
+        msg.textContent = 'Error retrieving blog content.';
+        msg.style.color = 'red';
+        return;
+      }
+
+      const addToPortfolio = document.getElementById('addToPortfolio').checked;
+      console.log('Add to Portfolio (caseStudy) checkbox value:', addToPortfolio);
+
+      const post = {
+        title: document.getElementById('title').value.trim(),
+        snippet: document.getElementById('snippet').value.trim(),
+        content: blogContent,
+        category: document.getElementById('category').value,
+        image: document.getElementById('image').value.trim(),
+        date: document.getElementById('date').value,
+        caseStudy: addToPortfolio
+      };
+
+      if (!post.title || !post.snippet || !post.content || !post.category || !post.image || !post.date) {
+        msg.textContent = 'Please fill in all fields.';
+        msg.style.color = 'red';
+        return;
+      }
+
+      try {
+        const res = await fetch('http://localhost:3000/api/blog-posts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(post),
+        });
+
+        if (res.ok) {
+          const responseData = await res.json();
+          console.log('API response after posting blog:', responseData);
+          msg.textContent = 'Blog post published successfully!';
+          msg.style.color = 'green';
+          this.reset();
+          const editor = tinymce.get('content');
+          if (editor) {
+            editor.setContent('');
+          }
+          loadPortfolioContent(); // Refresh portfolio display
+        } else {
+          const errorData = await res.json();
+          msg.textContent = errorData.message || 'Failed to post blog.';
+          msg.style.color = 'red';
+        }
+      } catch (error) {
+        msg.textContent = 'An error occurred. Please check the server or network.';
+        msg.style.color = 'red';
+      }
+
+      setTimeout(() => {
+        msg.textContent = '';
+      }, 3000);
+    });
+
+    // Function to load and display portfolio content (blog posts and case studies)
+    async function loadPortfolioContent() {
+      const container = document.getElementById('portfolio-content-grid');
+      container.innerHTML = '<p>Loading portfolio content...</p>';
+
+      try {
+        const res = await fetch('http://localhost:3000/api/blog-posts');
+        if (!res.ok) throw new Error('Failed to fetch blog posts');
+        const posts = await res.json();
+
+        // Filter posts that are case studies or blog posts
+        const filteredPosts = posts.filter(post => post.caseStudy === true || post.caseStudy === false);
+
+        if (filteredPosts.length === 0) {
+          container.innerHTML = '<p>No portfolio content available.</p>';
+          return;
+        }
+
+        container.innerHTML = '';
+
+        filteredPosts.forEach(post => {
+          const projectItem = document.createElement('div');
+          projectItem.className = 'project-item';
+          projectItem.setAttribute('data-type', post.category);
+
+          const img = document.createElement('img');
+          img.src = post.image;
+          img.alt = post.title;
+          img.className = 'project-image';
+
+          const details = document.createElement('div');
+          details.className = 'project-details';
+
+          const title = document.createElement('h3');
+          title.textContent = post.title;
+
+          const snippet = document.createElement('p');
+          snippet.textContent = post.snippet;
+
+          const link = document.createElement('a');
+          link.href = `case-study-${post.id}.html`; // Assuming case study pages follow this pattern
+          link.className = 'project-link';
+          link.textContent = 'View Case Study';
+
+          const badge = document.createElement('span');
+          badge.className = 'content-type-badge ' + (post.caseStudy ? 'badge-case-study' : 'badge-blog');
+          badge.textContent = post.caseStudy ? 'Case Study' : 'Blog Post';
+
+          details.appendChild(badge);
+          details.appendChild(title);
+          details.appendChild(snippet);
+          details.appendChild(link);
+
+          projectItem.appendChild(img);
+          projectItem.appendChild(details);
+
+          container.appendChild(projectItem);
+        });
+      } catch (error) {
+        container.innerHTML = '<p>Error loading portfolio content.</p>';
+      }
+    }
+
+    // Load portfolio content on page load
+    document.addEventListener('DOMContentLoaded', loadPortfolioContent);
 
 
     // Add this JavaScript code for the snippet character limit
@@ -238,55 +350,56 @@
     const titleWordCount = document.getElementById('title-word-count');
     const maxTitleLength = 80; // Define your desired character limit for title (adjust as needed)
 
-    snippetTextarea.addEventListener('input', function() {
-        const currentLength = this.value.length;
+    snippetTextarea.addEventListener('input', function () {
+      const currentLength = this.value.length;
 
-        // Truncate the text if it exceeds the limit
-        if (currentLength > maxSnippetLength) {
-            this.value = this.value.substring(0, maxSnippetLength);
-            // Update the current length after truncation
-            const truncatedLength = this.value.length;
-            snippetWordCount.textContent = `${truncatedLength} / ${maxSnippetLength} characters (limit reached)`;
-            snippetWordCount.style.color = 'red'; // Indicate limit reached
-        } else {
-            snippetWordCount.textContent = `${currentLength} / ${maxSnippetLength} characters`;
-            snippetWordCount.style.color = '#666'; // Default color
-        }
+      // Truncate the text if it exceeds the limit
+      if (currentLength > maxSnippetLength) {
+        this.value = this.value.substring(0, maxSnippetLength);
+        // Update the current length after truncation
+        const truncatedLength = this.value.length;
+        snippetWordCount.textContent = `${truncatedLength} / ${maxSnippetLength} characters (limit reached)`;
+        snippetWordCount.style.color = 'red'; // Indicate limit reached
+      } else {
+        snippetWordCount.textContent = `${currentLength} / ${maxSnippetLength} characters`;
+        snippetWordCount.style.color = '#666'; // Default color
+      }
 
-        // Optional: You might want to add a visual indicator on the textarea itself
-        // if (currentLength >= maxSnippetLength) {
-        //     this.style.borderColor = 'red';
-        // } else {
-        //     this.style.borderColor = '#ccc'; // Reset to default
-        // }
+      // Optional: You might want to add a visual indicator on the textarea itself
+      // if (currentLength >= maxSnippetLength) {
+      //     this.style.borderColor = 'red';
+      // } else {
+      //     this.style.borderColor = '#ccc'; // Reset to default
+      // }
     });
 
-    titleInput.addEventListener('input', function() {
-        const currentLength = this.value.length;
+    titleInput.addEventListener('input', function () {
+      const currentLength = this.value.length;
 
-        // Truncate the text if it exceeds the limit
-        if (currentLength > maxTitleLength) {
-            this.value = this.value.substring(0, maxTitleLength);
-             // Update the current length after truncation
-            const truncatedLength = this.value.length;
-            titleWordCount.textContent = `${truncatedLength} / ${maxTitleLength} characters (limit reached)`;
-            titleWordCount.style.color = 'red'; // Indicate limit reached
-        } else {
-            titleWordCount.textContent = `${currentLength} / ${maxTitleLength} characters`;
-            titleWordCount.style.color = '#666'; // Default color
-        }
+      // Truncate the text if it exceeds the limit
+      if (currentLength > maxTitleLength) {
+        this.value = this.value.substring(0, maxTitleLength);
+        // Update the current length after truncation
+        const truncatedLength = this.value.length;
+        titleWordCount.textContent = `${truncatedLength} / ${maxTitleLength} characters (limit reached)`;
+        titleWordCount.style.color = 'red'; // Indicate limit reached
+      } else {
+        titleWordCount.textContent = `${currentLength} / ${maxTitleLength} characters`;
+        titleWordCount.style.color = '#666'; // Default color
+      }
     });
 
 
     // Initialize the counters on page load
     document.addEventListener('DOMContentLoaded', () => {
-        const initialSnippetLength = snippetTextarea.value.length;
-        snippetWordCount.textContent = `${initialSnippetLength} / ${maxSnippetLength} characters`;
+      const initialSnippetLength = snippetTextarea.value.length;
+      snippetWordCount.textContent = `${initialSnippetLength} / ${maxSnippetLength} characters`;
 
-        const initialTitleLength = titleInput.value.length;
-        titleWordCount.textContent = `${initialTitleLength} / ${maxTitleLength} characters`;
+      const initialTitleLength = titleInput.value.length;
+      titleWordCount.textContent = `${initialTitleLength} / ${maxTitleLength} characters`;
     });
 
   </script>
 </body>
+
 </html>
