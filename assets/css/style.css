@@ -1338,6 +1338,7 @@ footer {
 .blog-post-title {
     font-size: 1.1rem; /* Adjusted font size for responsiveness */
     font-weight: 600;
+    line-height: normal;
     margin: 1rem; /* Adjusted margin for responsiveness */
     color: #07677f;
 }
@@ -2278,20 +2279,20 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .blog-post img {
     width: 100%;
-    height: 15rem;
+    height: 10rem;
 }
 
 .blog-post h3,
 .blog-post p {
     /*padding: 0.5rem;*/ /* Adjusted padding for responsiveness */
-    text-align: justify;
+    text-align: left;
 }
 
 .blog-post-link {
     font-size: 0.85rem; /* Adjusted font size for responsiveness */
     display: inline-block;
     padding: 0.5rem 1rem; /* Adjusted padding for responsiveness */
-    background-color: #07677f;
+    /* background-color: #07677f; */
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -2300,8 +2301,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease;
+    transform: translateY(0px);
+    /* transition: all 1s ease; */
 }
 
 .reveal.active {
@@ -2435,8 +2436,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .latest-posts h2 {
-  text-align: center;
-  font-size: 1.8rem;
+  text-align: left;
+  /* font-size: 1.8rem; */
   margin-bottom: 1rem;
 }
 .latest-posts .posts-grid {
@@ -2462,6 +2463,10 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 .latest-posts .post-content {
   padding: 1rem;
+}
+
+a.blog-post {
+text-decoration: none;
 }
 
 /* ==========================================================================
@@ -3266,11 +3271,11 @@ blog*/
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.latest-posts h2 {
+/* .latest-posts h2 {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1rem;
-}
+} */
 .latest-posts .posts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
