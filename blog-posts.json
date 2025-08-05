@@ -1,61 +1,5 @@
 [
   {
-    "id": "1753524855651",
-    "title": "test2",
-    "snippet": "dsd",
-    "category": "web",
-    "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
-    "date": "2025-07-26"
-  },
-  {
-    "id": "1753524900166",
-    "title": "test3",
-    "snippet": "sfsdf",
-    "category": "mobile",
-    "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg",
-    "date": "2025-07-26"
-  },
-  {
-    "id": "1753524915872",
-    "title": "test4",
-    "snippet": "sfsdf",
-    "category": "design",
-    "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg",
-    "date": "2025-07-26"
-  },
-  {
-    "id": "1753524930984",
-    "title": "test5",
-    "snippet": "fsdfsd",
-    "category": "ai",
-    "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg",
-    "date": "2025-07-26"
-  },
-  {
-    "id": "1753524945780",
-    "title": "test6",
-    "snippet": "sfds",
-    "category": "ai",
-    "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg",
-    "date": "2025-07-26"
-  },
-  {
-    "id": "1753524961545",
-    "title": "test7",
-    "snippet": "fdf",
-    "category": "ai",
-    "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg",
-    "date": "2025-07-26"
-  },
-  {
-    "id": "1753544830369",
-    "title": "test9",
-    "snippet": "test9",
-    "category": "professional",
-    "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
-    "date": "2025-07-26"
-  },
-  {
     "id": "1753544969296",
     "title": "test10",
     "snippet": "jhsdgucsbsfjsfhjsdjksdjk",
@@ -104,32 +48,6 @@
     "date": "2025-07-26"
   },
   {
-    "id": "1753547166007",
-    "title": "fgfyhtgfy",
-    "snippet": "fhghygfghjk",
-    "category": "design",
-    "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
-    "date": "2025-07-26"
-  },
-  {
-    "id": "1753547854405",
-    "title": "gyytytuhjg",
-    "snippet": "hngfghfnhgfvnh",
-    "content": "bvhbvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",
-    "category": "design",
-    "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
-    "date": "2025-07-26"
-  },
-  {
-    "id": "1753552372778",
-    "title": "Introducing Opal: describe, create, and share your AI mini-apps",
-    "snippet": "It’s never been easier to harness the power of AI models, prompts, and tools into working AI applications. We’re excited to announce Opal, a new experimental tool from Google Labs that lets you build and share powerful AI mini apps that chain together prompts, models, and tools — all using simple natural language and visual editing. Opal is a great tool to accelerate prototyping AI ideas and workflows, demonstrate a proof of concept with a functional app, build custom AI apps to boost your productivity at work, and more. We’re launching it today and are so excited to see what you build.",
-    "content": "<p>It’s never been easier to harness the power of AI models, prompts, and tools into working AI applications. We’re excited to announce Opal, a new experimental tool from Google Labs that lets you build and share powerful AI mini apps that chain together prompts, models, and tools — all using simple natural language and visual editing. Opal is a great tool to accelerate prototyping AI ideas and workflows, demonstrate a proof of concept with a functional app, build custom AI apps to boost your productivity at work, and more. We’re launching it today and are so excited to see what you build.</p>\n<h2>Now available in public beta</h2>\n<p>Opal is brand new and experimental. We’re launching today in a US-only public beta because we believe the best way to build a new product is with our community, right from the start.</p>\n<h2><strong>Bring your prompts to life, no code required</strong></h2>\n<p>Though Opal is an experiment, it’s packed with powerful features designed to make your ideas a reality: Create workflows When building software, the sequence of steps a user takes to accomplish a specific goal is called a workflow. Opal helps simplify and visualize these workflows, empowering you to build powerful, multi-step apps by chaining together prompts, AI model calls, and other tools. Just describe the logic, and Opal builds the visual workflow for you. Make edits Opal translates your instructions into a visual workflow, giving you fine-grained control without ever needing to see a line of code. You can build and remix your AI mini-apps using conversational natural language commands, a visual editor, or a combination of both. If you want to tweak a step’s prompt, add a new feature, or call a tool, you can edit in the visual editor, or just describe the change. Share your app Once your app is ready, you can share it as an app for others to use immediately, using their own Google account.</p>",
-    "category": "design",
-    "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Banner_1600_x_476_px_Version_1_Purple_bg.original.png",
-    "date": "2025-07-26"
-  },
-  {
     "id": "1753642248603",
     "title": "4656",
     "snippet": "5635464edryrdy",
@@ -137,5 +55,14 @@
     "category": "web",
     "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Banner_1600_x_476_px_Version_1_Purple_bg.original.png",
     "date": "2025-07-28"
+  },
+  {
+    "id": "1754291317728",
+    "title": "Introducing Opal: describe, create, and share your AI mini-apps",
+    "snippet": "It’s never been easier to harness the power of AI models, prompts, and tools into working AI applications. We’re excited to announce Opal, a new experimental.",
+    "content": "<div class=\"inner-block-content rich-content\" style=\"margin: 70px 100px 0px; padding: 0px; box-sizing: border-box; color: #202124; font-family: 'Google Sans Text', Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 0.1px; background-color: #ffffff;\">\n<h2 id=\"now-available-in-public-beta\" style=\"margin: 1rem 0px; padding: 0px; box-sizing: border-box; font-size: 36px; font-weight: 400; line-height: 44px;\" data-block-key=\"a5jre\">Now available in public beta</h2>\n<p style=\"margin: 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"35s9u\">Opal is brand new and experimental. We’re launching today in a US-only public beta because we believe the best way to build a new product is with our community, right from the start.</p>\n<h2 id=\"bring-your-prompts-to-life-no-code-required\" style=\"margin: 1rem 0px; padding: 0px; box-sizing: border-box; font-size: 36px; font-weight: 400; line-height: 44px;\" data-block-key=\"l0xb3\"><span style=\"box-sizing: border-box; font-weight: bold;\"><br style=\"box-sizing: border-box;\"></span>Bring your prompts to life, no code required</h2>\n<p style=\"margin: 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"1p1tt\">Though Opal is an experiment, it’s packed with powerful features designed to make your ideas a reality:</p>\n<p style=\"margin: 16px 0px 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"b3umm\">&nbsp;</p>\n<ul style=\"margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; list-style-position: outside; margin-inline-start: 20px;\">\n<li style=\"margin: 0px; padding: 0px; box-sizing: border-box; font-size: 1rem; line-height: 1.5; letter-spacing: 0px;\" data-block-key=\"3fqm6\"><span style=\"box-sizing: border-box; font-weight: bold;\">Create workflows</span></li>\n</ul>\n<p style=\"margin: 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"ai4gs\">When building software, the sequence of steps a user takes to accomplish a specific goal is called a workflow. Opal helps simplify and visualize these workflows, empowering you to build powerful, multi-step apps by chaining together prompts, AI model calls, and other tools. Just describe the logic, and Opal builds the visual workflow for you.</p>\n<p style=\"margin: 16px 0px 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"49qpg\">&nbsp;</p>\n<ul style=\"margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; list-style-position: outside; margin-inline-start: 20px;\">\n<li style=\"margin: 0px; padding: 0px; box-sizing: border-box; font-size: 1rem; line-height: 1.5; letter-spacing: 0px;\" data-block-key=\"b6e0k\"><span style=\"box-sizing: border-box; font-weight: bold;\">Make edits</span></li>\n</ul>\n<p style=\"margin: 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"8nov5\">Opal translates your instructions into a visual workflow, giving you fine-grained control without ever needing to see a line of code. You can build and remix your AI mini-apps using conversational natural language commands, a visual editor, or a combination of both. If you want to tweak a step’s prompt, add a new feature, or call a tool, you can edit in the visual editor, or just describe the change.</p>\n<p style=\"margin: 16px 0px 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"dcoop\">&nbsp;</p>\n<ul style=\"margin: 0px 0px 20px; padding: 0px; box-sizing: border-box; list-style-position: outside; margin-inline-start: 20px;\">\n<li style=\"margin: 0px; padding: 0px; box-sizing: border-box; font-size: 1rem; line-height: 1.5; letter-spacing: 0px;\" data-block-key=\"7vk5f\"><span style=\"box-sizing: border-box; font-weight: bold;\">Share your app</span></li>\n</ul>\n<p style=\"margin: 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"eqj4i\">Once your app is ready, you can share it as an app for others to use immediately, using their own Google account.</p>\n</div>\n<div class=\"inner-block-content yt-video\" style=\"margin: 70px 100px 0px; padding: 0px; box-sizing: border-box; color: #202124; font-family: 'Google Sans Text', Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 0.1px; background-color: #ffffff;\">\n<div class=\"glue-video\" style=\"margin: 0px; padding: 0px; box-sizing: border-box; font-size: 19px; position: relative;\">\n<div id=\"youtube-player-184366\" class=\"glue-video__container glue-video__container--inline\" style=\"margin: 0px; padding: 0px 0px 444.369px; box-sizing: border-box; height: auto; opacity: 1; position: relative; transition: opacity 0.2s ease-in; width: 790px;\" data-glue-yt-video-vid=\"E0hrcDO3Noc\"></div>\n</div>\n</div>\n<div class=\"inner-block-content rich-content\" style=\"margin: 70px 100px 0px; padding: 0px; box-sizing: border-box; color: #202124; font-family: 'Google Sans Text', Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 0.1px; background-color: #ffffff;\">\n<h2 id=\"get-started-with-opal\" style=\"margin: 1rem 0px; padding: 0px; box-sizing: border-box; font-size: 36px; font-weight: 400; line-height: 44px;\" data-block-key=\"ytgq6\">Get started with Opal</h2>\n<p style=\"margin: 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"3o2r0\">To help you get started, Opal features a demo gallery with starter templates. You can use these pre-built AI apps as they are, or remix them to fit your exact needs.</p>\n</div>\n<div class=\"inner-block-content\" style=\"margin: 70px 100px 0px; padding: 0px; box-sizing: border-box; color: #202124; font-family: 'Google Sans Text', Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 0.1px; background-color: #ffffff;\">\n<div class=\"image-wrapper\" style=\"margin: 0px; padding: 0px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center;\"><img class=\"regular-image\" style=\"border: 0px; box-sizing: border-box; display: inline-block; height: auto; max-width: 100%; vertical-align: middle;\" src=\"https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Just_Gallery.original.png\" alt=\"Gallery of Opal templates\"></div>\n</div>\n<div class=\"inner-block-content rich-content\" style=\"margin: 70px 100px 0px; padding: 0px; box-sizing: border-box; color: #202124; font-family: 'Google Sans Text', Arial, Helvetica, sans-serif; font-size: 16px; letter-spacing: 0.1px; background-color: #ffffff;\">\n<p style=\"margin: 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"bejs6\">Opal introduces a new way to create with AI. It’s about empowering creators, innovators, and doers to build the tools they imagine by transforming simple prompts into powerful mini apps.</p>\n<p style=\"margin: 16px 0px 0px; padding: 0px; box-sizing: border-box; line-height: 26px; letter-spacing: 0.1px;\" data-block-key=\"3f8ch\">Ready to start building? Welcome to&nbsp;<a style=\"background: transparent; box-sizing: border-box; border-radius: 4px; color: #1a73e8; display: inline; overflow: hidden; text-decoration-line: none; transition: background-color 0.2s, color 0.2s;\" href=\"http://opal.withgoogle.com/\">Opal</a>.</p>\n</div>",
+    "category": "ai",
+    "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Banner_1600_x_476_px_Version_1_Purple_bg.original.png",
+    "date": "2025-08-04"
   }
 ]
