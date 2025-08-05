@@ -100,10 +100,10 @@ const DOMPurify = createDOMPurify(window);
 
 // API to handle blog post submissions (POST)
 app.post('/api/blog-posts', (req, res) => {
-    const { title, snippet, content, category, image, date } = req.body;
+    const { title, snippet, content, category, image, date, postType } = req.body;
 
     // Validate the request body
-    if (!title || !snippet || !content || !category || !image || !date) {
+    if (!title || !snippet || !content || !category || !image || !date || !postType) {
         return res.status(400).json({ message: 'All fields are required.' });
     }
 
@@ -123,8 +123,17 @@ app.post('/api/blog-posts', (req, res) => {
         }
     }
 
-    // Add the new blog post with a unique ID and sanitized content
-    const newPost = { id: Date.now().toString(), title, snippet, content: sanitizedContent, category, image, date };
+    // Add the new blog post with a unique ID, sanitized content, and postType
+    const newPost = { 
+        id: Date.now().toString(), 
+        title, 
+        snippet, 
+        content: sanitizedContent, 
+        category, 
+        image, 
+        date, 
+        postType 
+    };
 
     posts.push(newPost);
 
