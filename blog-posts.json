@@ -5,7 +5,8 @@
     "snippet": "jhsdgucsbsfjsfhjsdjksdjk",
     "category": "professional",
     "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
-    "date": "2025-07-26"
+    "date": "2025-07-26",
+    "postType": "caseStudy"
   },
   {
     "id": "1753544990255",
@@ -64,5 +65,133 @@
     "category": "ai",
     "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Banner_1600_x_476_px_Version_1_Purple_bg.original.png",
     "date": "2025-08-04"
+  },
+  {
+    "id": "1754385350379",
+    "title": "portfolio section test",
+    "snippet": "test",
+    "content": "<p>test</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754385350395",
+    "title": "portfolio section test",
+    "snippet": "dfdddddddddddddddddddddddddddddddddddddd",
+    "content": "<p>dfffffffffffffffffffffffffffffffffffffffffffffffffffff</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754389084178",
+    "title": "hfghgh",
+    "snippet": "hgfhgfhg",
+    "content": "<p>gfhgfhgfhgf</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754389084193",
+    "title": "hfghgh",
+    "snippet": "hgfhgfhg",
+    "content": "<p>gfhgfhgfhgf</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754389246516",
+    "title": "fefefe",
+    "snippet": "efrefe",
+    "content": "<p>efrefef</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754389246523",
+    "title": "fefefe",
+    "snippet": "efrefe",
+    "content": "<p>efrefef</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754389673139",
+    "title": "GGFGFGF",
+    "snippet": "FGFGFG",
+    "content": "<p>GFGFGFG</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754389673154",
+    "title": "GGFGFGF",
+    "snippet": "FGFGFG",
+    "content": "<p>GFGFGFG</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754389978950",
+    "title": "dfsdf",
+    "snippet": "fdfd",
+    "content": "<p>fdfdf</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754389978963",
+    "title": "dfsdf",
+    "snippet": "fdfd",
+    "content": "<p>fdfdf</p>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754390629738",
+    "title": "case study",
+    "snippet": "gfgfgfg",
+    "content": "<p>dfgfgf</p>",
+    "category": "mobile",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754390629749",
+    "title": "case study",
+    "snippet": "gfgfgfg",
+    "content": "<p>dfgfgf</p>",
+    "category": "mobile",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "id": "1754392204846",
+    "title": "ete",
+    "snippet": "fdfdf",
+    "content": "<p>dfdf</p>",
+    "category": "mobile",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05",
+    "postType": "caseStudy"
+  },
+  {
+    "id": "1754394741285",
+    "title": "Building a Scalable Data Platform for a Security-First Business",
+    "snippet": "As a global identity security platform, LastPass handles sensitive data across millions of users and enterprise accounts. As data volumes continue to g",
+    "content": "<p style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 1rem; font-family: 'Frutiger LT Pro'; line-height: 1.375; font-size: 16px; color: #666666; background-color: #ffffff;\"><span style=\"box-sizing: border-box; font-weight: bolder; color: inherit; font-family: inherit; font-size: 1.75rem;\">Context</span></p>\n<p style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 1rem; font-family: 'Frutiger LT Pro'; line-height: 1.375; font-size: 16px; color: #666666; background-color: #ffffff;\"><span style=\"box-sizing: border-box; font-size: 1rem;\">As a global identity security platform, LastPass handles sensitive data across millions of users and enterprise accounts. As data volumes continue to grow over time, the need for a scalable, high-performing data platform becomes critical. The existing data warehouse struggled with latency, compliance gaps, and limited usability, hindering reporting, forecasting, and operational agility. To support long-term business growth, the company partnered with us to launch a comprehensive data warehouse modernization initiative using Delta Lake, dbt, and Databricks.</span></p>\n<h3 style=\"box-sizing: border-box; margin: 50px 0px 16px; font-weight: 400; line-height: 1.5; color: #134a67; font-size: 1.75rem; padding: 0px; font-family: 'Circular Std'; background-color: #ffffff;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Challenges</span></h3>\n<ul style=\"box-sizing: border-box; padding: 0px; margin: 0px; list-style: none; color: #666666; font-family: 'Frutiger LT Pro'; font-size: 16px; background-color: #ffffff;\">\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px; margin: 0px 0px 8px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">Disconnected data sources created delays and inconsistencies across reports</p>\n</li>\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px; margin: 0px 0px 8px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">Incomplete or duplicated records lowered trust in dashboards and KPIs</p>\n</li>\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px; margin: 0px 0px 8px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">Real-time performance tracking was limited by pipeline lag</p>\n</li>\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px; margin: 0px 0px 8px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">Regulatory compliance was at risk due to gaps in PII handling</p>\n</li>\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">Reporting performance issues slowed key business decisions</p>\n</li>\n</ul>\n<h3 style=\"box-sizing: border-box; margin: 50px 0px 16px; font-weight: 400; line-height: 1.5; color: #134a67; font-size: 1.75rem; padding: 0px; font-family: 'Circular Std'; background-color: #ffffff;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Solution</span></h3>\n<p style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 1rem; font-family: 'Frutiger LT Pro'; line-height: 1.375; font-size: 16px; color: #666666; background-color: #ffffff;\">Our Data engineering team has restructured the warehouse using a Medallion architecture to organize data into Bronze (raw), Silver (validated), and Gold (analytics-ready) layers. Automated ingestion pipelines pull data from systems like Salesforce, Stripe, and AWS.</p>\n<p style=\"box-sizing: border-box; margin-top: 20px; margin-bottom: 1rem; font-family: 'Frutiger LT Pro'; line-height: 1.375; font-size: 16px; color: #666666; background-color: #ffffff;\">PII is flagged and handled at ingestion, and dbt powers modular transformations across Silver and Gold layers. Business-ready marts (e.g., Customer360, Revenue Reporting) now support self-service tools like Power BI and Tableau. The system is designed for security, scalability, and continuous integration, with role-based access control and full audit logging.</p>\n<h3 style=\"box-sizing: border-box; margin: 50px 0px 16px; font-weight: 400; line-height: 1.5; color: #134a67; font-size: 1.75rem; padding: 0px; font-family: 'Circular Std'; background-color: #ffffff;\"><span style=\"box-sizing: border-box; font-weight: bolder;\">Results</span></h3>\n<ul style=\"box-sizing: border-box; padding: 0px; margin: 0px; list-style: none; color: #666666; font-family: 'Frutiger LT Pro'; font-size: 16px; background-color: #ffffff;\">\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px; margin: 0px 0px 8px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">80% faster report loads, with dashboards now loading in under 10 seconds</p>\n</li>\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px; margin: 0px 0px 8px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">40% reduction in onboarding time for new datasets and pipelines</p>\n</li>\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px; margin: 0px 0px 8px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">70% team adoption of curated data marts for day-to-day reporting</p>\n</li>\n<li style=\"box-sizing: border-box; position: relative; padding-left: 25px;\">\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.375;\">Built-in PII governance ensures GDPR and CCPA compliance</p>\n</li>\n</ul>",
+    "category": "web",
+    "image": "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-1170x780.jpg",
+    "date": "2025-08-05",
+    "postType": "caseStudy"
   }
 ]
