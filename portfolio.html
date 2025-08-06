@@ -27,7 +27,7 @@
         <!-- Project Gallery Section -->
         <section id="projects" class="featured-projects">
             <div  class="container">
-            <h2>Featured Projects</h2>
+            <h2>Our Case Study</h2>
             <!-- Filters -->
             <div class="project-filters">
                 <button data-filter="all" class="filter-button active">All</button>
@@ -87,15 +87,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             snippet.textContent = post.snippet;
 
             const link = document.createElement('a');
-            link.href = `case-study-${post.id}.html`; // Assuming case study pages follow this pattern
-          
+            link.href = `case-study-template.html?id=${post.id}`;
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
 
             details.appendChild(title);
             details.appendChild(snippet);
-            details.appendChild(link);
 
-            projectItem.appendChild(img);
-            projectItem.appendChild(details);
+            link.appendChild(img);
+            link.appendChild(details);
+            projectItem.appendChild(link);
 
             container.appendChild(projectItem);
         });
