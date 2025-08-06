@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="case-study-title">Case Study - NexTrend Innovations</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/dark-mode.css" id="dark-mode-stylesheet" disabled />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" />
+    <style>
+        body {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #202124;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .main-container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 24px;
+        }
+        .blog-post-container {
+            padding: 0;
+            background: none;
+            box-shadow: none;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .back-button:hover {
+            color: #0b4ca2;
+            text-decoration: underline;
+        }
+        .blog-post-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            display: block;
+            object-fit: cover;
+        }
+        .blog-post-container h1 {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            font-size: 3rem;
+            color: #202124;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .blog-post-meta {
+            font-size: 0.9rem;
+            color: #5f6368;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #dadce0;
+            padding-bottom: 1rem;
+        }
+        .blog-post-content p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #3c4043;
+            margin-bottom: 1.5rem;
+        }
+        .blog-post-content h2 {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            font-size: 1.8rem;
+            color: #202124;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .blog-post-content h3 {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            font-size: 1.4rem;
+            color: #202124;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .blog-post-content a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .blog-post-content a:hover {
+            text-decoration: underline;
+        }
+        .blog-post-content ul,
+        .blog-post-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 20px;
+        }
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 1rem auto;
+                padding: 0 16px;
+            }
+            .blog-post-container h1 {
+                font-size: 2rem;
+            }
+            .blog-post-meta {
+                font-size: 0.85rem;
+            }
+            .blog-post-content p {
+                font-size: 1rem;
+            }
+            .back-button {
+                margin-bottom: 1rem;
+            }
+            .blog-post-content h2 {
+                font-size: 1.5rem;
+            }
+            .blog-post-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-container">
+        <div class="blog-post-container">
+            <a href="portfolio.html" class="back-button">Back to Portfolio</a>
+            <h1 id="post-title"></h1>
+            <div class="blog-post-meta">
+                Published on <span id="post-date"></span> | Category: <span id="post-category"></span>
+            </div>
+            <img id="post-image" src="" alt="Case Study Image" />
+            <div id="post-content" class="blog-post-content">
+                <!-- Case study content will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", fetchCaseStudy);
+
+        async function fetchCaseStudy() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get("id");
+
+            if (!postId) {
+                document.getElementById("post-title").textContent = "Error";
+                document.getElementById("post-content").innerHTML =
+                    "<p>No case study ID provided.</p>";
+                return;
+            }
+
+            try {
+                const res = await fetch(`/api/blog-posts/${postId}`);
+                if (!res.ok) {
+                    throw new Error(`Error fetching case study: ${res.statusText}`);
+                }
+                const post = await res.json();
+
+                if (post.postType !== "caseStudy") {
+                    document.body.innerHTML = "<h1>This is not a case study</h1>";
+                    return;
+                }
+
+                document.getElementById("post-image").src = post.image;
+                document.getElementById("post-title").textContent = post.title;
+                document.getElementById("post-date").textContent = post.date;
+                document.getElementById("post-category").textContent = post.category;
+                document.getElementById("post-content").innerHTML = post.content;
+                document.title = `${post.title} | NexTrend Innovations`;
+            } catch (error) {
+                console.error("Error fetching case study:", error);
+                document.getElementById("post-title").textContent =
+                    "Error Loading Case Study";
+                document.getElementById("post-content").innerHTML =
+                    "<p>Could not load the case study.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
