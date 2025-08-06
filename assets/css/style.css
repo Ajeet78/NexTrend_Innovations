@@ -463,7 +463,7 @@ footer {
 }
 
 .social-media a:hover {
-    color: #64b5f6; /* Hover color */
+    color: #07677f; /* Hover color */
 }
 
 .quick-links ul {
@@ -3618,6 +3618,7 @@ blog*/
 .project-details h3 {
     margin-bottom: 0.5rem;
     color: #07677f;
+    line-height: normal;
 }
 
 .project-details p {
