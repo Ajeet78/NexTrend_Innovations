@@ -1,0 +1,121 @@
+/* Updated Case Study Styles inspired by closeloop.com example */
+
+.case-study-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 0 1rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+}
+
+.case-study-hero-image {
+    display: none; /* Hide img tag, use background image instead */
+}
+
+.case-study-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.case-study-title-main {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.case-study-meta {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+.case-study-meta span {
+    margin: 0 1rem;
+}
+
+.case-study-content {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.case-study-summary {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.case-study-summary h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.case-study-details h2,
+.case-study-results h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.case-study-details {
+    margin-bottom: 3rem;
+}
+
+.case-study-results {
+    background: #e6f4ea;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
+}
+
+.case-study-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.case-study-cta .cta-button {
+    margin: 0 1rem;
+    padding: 0.75rem 2rem;
+    background: #0078d7;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.case-study-cta .cta-button:hover {
+    background: #005a9e;
+}
+
+@media (max-width: 768px) {
+    .case-study-hero {
+        height: 250px;
+        padding: 0 1rem;
+    }
+
+    .case-study-title-main {
+        font-size: 2rem;
+    }
+
+    .case-study-content {
+        margin: 2rem 1rem;
+    }
+}
