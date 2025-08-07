@@ -27,7 +27,7 @@
         <!-- Project Gallery Section -->
         <section id="projects" class="featured-projects">
             <div  class="container">
-            <h2>Featured Projects</h2>
+            <h2>Our Case Study</h2>
             <!-- Filters -->
             <div class="project-filters">
                 <button data-filter="all" class="filter-button active">All</button>
@@ -37,40 +37,75 @@
             </div>
 
             <!-- Gallery Grid -->
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-item" data-type="web">
-                    <img src="assets/img/1.jpg" alt="Project 1" class="project-image">
-                    <div class="project-details">
-                        <h3>Responsive Website</h3>
-                        <p>Discover how we built a sleek and responsive website for a growing business.</p>
-                        <a href="case-study-1.html" class="project-link">View Case Study</a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-item" data-type="mobile">
-                    <img src="assets/img/2.jpg" alt="Project 2" class="project-image">
-                    <div class="project-details">
-                        <h3>Mobile App Solution</h3>
-                        <p>Explore our process in creating a user-friendly mobile app.</p>
-                        <a href="case-study-2.html" class="project-link">View Case Study</a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-item" data-type="ai">
-                    <img src="assets/img/3.jpg" alt="Project 3" class="project-image">
-                    <div class="project-details">
-                        <h3>AI Integration</h3>
-                        <p>Learn about our AI solution that improved efficiency across operations.</p>
-                        <a href="case-study-3.html" class="project-link">View Case Study</a>
-                    </div>
-                </div>
-                <!-- Add more project items as needed -->
+            <div class="projects-grid" id="dynamic-projects-grid">
+                <!-- Dynamic project items will be loaded here -->
             </div>
             </div>
         </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const container = document.getElementById('dynamic-projects-grid');
+    container.innerHTML = '<p>Loading projects...</p>';
+
+    try {
+        const res = await fetch('http://localhost:3000/api/blog-posts');
+        if (!res.ok) throw new Error('Failed to fetch blog posts');
+        const posts = await res.json();
+
+        console.log('Fetched posts from API:', posts);
+
+        // Filter posts that are case studies
+        const caseStudies = posts.filter(post => post.postType === 'caseStudy');
+
+        console.log('Filtered case study posts:', caseStudies);
+
+        if (caseStudies.length === 0) {
+            container.innerHTML = '<p>No case studies available.</p>';
+            return;
+        }
+
+        container.innerHTML = '';
+
+        caseStudies.forEach(post => {
+            const projectItem = document.createElement('div');
+            projectItem.className = 'project-item';
+            projectItem.setAttribute('data-type', post.category);
+
+            const img = document.createElement('img');
+            img.src = post.image;
+            img.alt = post.title;
+            img.className = 'project-image';
+
+            const details = document.createElement('div');
+            details.className = 'project-details';
+
+            const title = document.createElement('h3');
+            title.textContent = post.title;
+
+            const snippet = document.createElement('p');
+            snippet.textContent = post.snippet;
+
+            const link = document.createElement('a');
+            link.href = `case-study-template.html?id=${post.id}`;
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+
+            details.appendChild(title);
+            details.appendChild(snippet);
+
+            link.appendChild(img);
+            link.appendChild(details);
+            projectItem.appendChild(link);
+
+            container.appendChild(projectItem);
+        });
+    } catch (error) {
+        container.innerHTML = '<p>Error loading projects.</p>';
+        console.error(error);
+    }
+});
+</script>
 
         <!-- Client Testimonials Section -->
         <section class="testimonials">
