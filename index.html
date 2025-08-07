@@ -193,22 +193,24 @@
         </section>
 
         <!-- Preview Portfolio Highlights -->
-        <section class="featured-projects reveal">
+       <section class="featured-projects reveal">
             <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="projects-carousel" id="featured-projects-container">
+               <h2 class="section-title">Featured Projects</h2>
+                 <div class="projects-carousel" id="featured-projects-container">
                     <!-- Featured case studies will be dynamically loaded here -->
-                </div>
+                 <!-- </div>
                 <div class="carousel-controls">
                     <button class="prev-button" aria-label="Previous Slide">
                         <i class="fas fa-chevron-left"></i>
                     </button>
                     <button class="next-button" aria-label="Next Slide">
                         <i class="fas fa-chevron-right"></i>
-                    </button>
+                    </button> -->
                 </div>
             </div>
-        </section>
+        </section> 
+
+      
 
         <script>
             document.addEventListener('DOMContentLoaded', async () => {
@@ -236,6 +238,12 @@
                         const projectItem = document.createElement('div');
                         projectItem.className = 'project-item';
 
+                        const link = document.createElement('a');
+                        link.href = `case-study-template.html?id=${post.id}`;
+                        link.style.textDecoration = 'none';
+                        link.style.color = 'inherit';
+                        link.style.display = 'block';
+
                         const img = document.createElement('img');
                         img.src = post.image;
                         img.alt = post.title;
@@ -249,16 +257,11 @@
                         excerpt.className = 'project-excerpt';
                         excerpt.textContent = post.snippet;
 
-                        const link = document.createElement('a');
-                        link.href = `case-study-template.html?id=${post.id}`;
-                        link.className = 'project-link';
-                        link.textContent = 'View Case Study';
+                        link.appendChild(img);
+                        link.appendChild(title);
+                        link.appendChild(excerpt);
 
-                        projectItem.appendChild(img);
-                        projectItem.appendChild(title);
-                        projectItem.appendChild(excerpt);
                         projectItem.appendChild(link);
-
                         container.appendChild(projectItem);
                     });
                 } catch (error) {
