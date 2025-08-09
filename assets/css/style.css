@@ -2605,7 +2605,7 @@ text-decoration: none;
 
     .cta-button {
         font-size: 0.9rem;
-        height: 3rem;
+        /* height: 3rem; */
         /* width: -webkit-fill-available; */
         margin-top: 1rem;
     }
