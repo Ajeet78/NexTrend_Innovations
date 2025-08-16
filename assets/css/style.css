@@ -342,8 +342,8 @@ body {
 
 ul.menu-items {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    /* padding: 0;
+    margin: 0; */
 }
 
 .menu-items a:hover {
@@ -3858,4 +3858,26 @@ blog*/
 .nav-item.dropdown:hover .dropdown-arrow,
 .nav-item.dropdown.show .dropdown-arrow {
     transform: rotate(180deg) translateY(-1px);
+}
+
+@media screen and (max-width: 768px) {
+    .dropdown-menu {
+        position: static; /* Change to static for mobile */
+        width: 100%; /* Full width on mobile */
+        box-shadow: none; /* Remove shadow for mobile */
+        border-radius: 0; /* Remove border radius for mobile */
+        transform: none; /* Reset transform for mobile */
+    }
+
+    .nav-item.dropdown:hover > .dropdown-menu,
+    .nav-item.dropdown:focus-within > .dropdown-menu,
+    .nav-item.dropdown.show > .dropdown-menu {
+        display: block; /* Always show on mobile */
+        opacity: 1;
+        pointer-events: auto;
+        position: static;
+        margin: auto;
+        width: 10rem;
+    }
+    
 }
