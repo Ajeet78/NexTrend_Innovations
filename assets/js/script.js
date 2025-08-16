@@ -9,21 +9,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.text();
             })
             .then(data => {
-                document.getElementById(elementId).innerHTML = data;
-                // After loading, initialize event listeners (important!)
-                if (elementId === 'header-placeholder') {
-                    initNavigation();
-                    animateHeader(); // Call animation function after header loads
-                    highlightActiveLink(); // Call highlightActiveLink AFTER header is loaded
-                }
-                // FIX: Call initDarkMode() AFTER the footer is loaded!
-                if (elementId === 'footer-placeholder') {
-                    initDarkMode();
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.innerHTML = data;
+                    // After loading, initialize event listeners (important!)
+                    if (elementId === 'header-placeholder') {
+                        initNavigation();
+                        animateHeader(); // Call animation function after header loads
+                        highlightActiveLink(); // Call highlightActiveLink AFTER header is loaded
+                    }
+                    // FIX: Call initDarkMode() AFTER the footer is loaded!
+                    if (elementId === 'footer-placeholder') {
+                        initDarkMode();
+                    }
                 }
             })
             .catch(error => {
                 console.error('Error loading component:', error);
-                document.getElementById(elementId).innerHTML = '<p>Error loading content.</p>';
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.innerHTML = '<p>Error loading content.</p>';
+                }
             });
     }
 
@@ -58,6 +64,106 @@ document.addEventListener('DOMContentLoaded', function() {
                         spans[1].style.opacity = '1';
                         spans[2].style.transform = '';
                         hamburger.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        }
+
+        // Dropdown toggle handling (improves mobile accessibility)
+        const dropdownToggles = document.querySelectorAll('.nav-link.dropdown-toggle');
+        if (dropdownToggles.length) {
+            // Helper: clamp value
+            function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+            // Helper: position a dropdown to avoid clipping. Uses fixed positioning so it stays visible.
+            function positionDropdown(toggle, dropdown) {
+                if (!toggle || !dropdown) return;
+
+                // Temporarily show dropdown if hidden to measure size
+                const computed = window.getComputedStyle(dropdown);
+                const wasHidden = computed.display === 'none';
+                const prevDisplay = dropdown.style.display;
+                const prevVisibility = dropdown.style.visibility;
+                if (wasHidden) {
+                    dropdown.style.display = 'block';
+                    dropdown.style.visibility = 'hidden';
+                }
+
+                const triggerRect = toggle.getBoundingClientRect();
+                const ddRect = dropdown.getBoundingClientRect();
+                const vw = document.documentElement.clientWidth || window.innerWidth;
+                const margin = 8; // keep gap from edges
+
+                // Calculate left so dropdown is centered under trigger but clamped to viewport
+                // const desiredLeft = triggerRect.left + (triggerRect.width / 2) - (ddRect.width / 2);
+                // const left = clamp(desiredLeft, margin, vw - ddRect.width - margin);
+
+                // Place dropdown slightly below trigger
+                const top = triggerRect.bottom + 0.1; // 8px gap
+
+                // Use fixed positioning so scrolling doesn't affect placement
+                dropdown.style.position = 'center';
+                // dropdown.style.left = Math.round(left) + 'px';
+                dropdown.style.top = Math.round(top) + 'px';
+                dropdown.style.transform = 'none';
+
+                // restore hidden state if needed
+                if (wasHidden) {
+                    dropdown.style.display = prevDisplay;
+                    dropdown.style.visibility = prevVisibility;
+                }
+            }
+
+            // Throttled reposition for resize/scroll
+            let repositionTimer = null;
+            function repositionOpenDropdowns() {
+                if (repositionTimer) clearTimeout(repositionTimer);
+                repositionTimer = setTimeout(() => {
+                    document.querySelectorAll('.nav-item.dropdown.show, .nav-item.dropdown:hover').forEach(parent => {
+                        const toggleEl = parent.querySelector('.nav-link.dropdown-toggle');
+                        const menuEl = parent.querySelector('.dropdown-menu');
+                        positionDropdown(toggleEl, menuEl);
+                    });
+                }, 60);
+            }
+            window.addEventListener('resize', repositionOpenDropdowns);
+            window.addEventListener('scroll', repositionOpenDropdowns, { passive: true });
+            dropdownToggles.forEach(toggle => {
+                const parent = toggle.closest('.nav-item.dropdown');
+                // Ensure aria attribute exists
+                if (!toggle.hasAttribute('aria-expanded')) toggle.setAttribute('aria-expanded', 'false');
+
+                toggle.addEventListener('click', function(e) {
+                    // On small screens, prevent navigation and toggle menu
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!isExpanded));
+                        parent.classList.toggle('show', !isExpanded);
+                        // position the dropdown when opening
+                        if (!isExpanded) {
+                            const menu = parent.querySelector('.dropdown-menu');
+                            positionDropdown(toggle, menu);
+                        }
+                    }
+                });
+
+                // Position on hover for desktop so dropdown doesn't clip
+                parent.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 768) {
+                        const menu = parent.querySelector('.dropdown-menu');
+                        positionDropdown(toggle, menu);
+                    }
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                dropdownToggles.forEach(toggle => {
+                    const parent = toggle.closest('.nav-item.dropdown');
+                    if (!parent.contains(e.target)) {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        parent.classList.remove('show');
                     }
                 });
             });
@@ -279,12 +385,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 backToTopButton.style.display = 'none';
             }
         });
-    }
-
-    // --- Lazy Loading for Images ---
-    function initLazyLoading() {
-        const images = document.querySelectorAll('img[data-src]');
-
         const lazyLoad = (image) => {
             image.setAttribute('src', image.getAttribute('data-src'));
             image.onload = () => {
