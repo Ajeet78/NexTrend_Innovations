@@ -157,6 +157,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
+            // Make the arrow icon toggle the dropdown on mobile without following the parent link
+            const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+            dropdownArrows.forEach(arrow => {
+                arrow.addEventListener('click', function(e) {
+                    // Prevent the parent anchor's navigation and stop bubbling so the link click handler doesn't trigger
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const toggle = this.closest('.nav-link.dropdown-toggle');
+                    if (!toggle) return;
+                    const parent = toggle.closest('.nav-item.dropdown');
+
+                    if (window.innerWidth <= 768) {
+                        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!isExpanded));
+                        parent.classList.toggle('show', !isExpanded);
+                        if (!isExpanded) {
+                            const menu = parent.querySelector('.dropdown-menu');
+                            positionDropdown(toggle, menu);
+                        }
+                    } else {
+                        // Desktop: just position/open for accessibility when arrow is clicked
+                        const menu = parent.querySelector('.dropdown-menu');
+                        positionDropdown(toggle, menu);
+                    }
+                });
+            });
+
             // Close dropdowns when clicking outside
             document.addEventListener('click', function(e) {
                 dropdownToggles.forEach(toggle => {
