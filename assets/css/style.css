@@ -3078,8 +3078,8 @@ border-radius: 50%;
     overflow: auto;
     background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
     animation: fadeIn 0.5s ease-in-out; /* Add fade-in animation */
-    backdrop-filter: blur(10px); /* Apply blur effect */
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    -webkit-backdrop-filter: blur(10px); /* Apply blur effect */
+    backdrop-filter: blur(10px); /* For Safari support */
 }  
 
 @media (max-width: 768px) {
@@ -3784,6 +3784,11 @@ blog*/
     cursor: pointer;
 }
 
+/* Ensure dropdown parent is positioned so absolute child centers correctly */
+.nav-item.dropdown {
+    position: relative;
+}
+
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -3795,6 +3800,10 @@ blog*/
     z-index: 1000;
     min-width: 200px;
     padding: 0.5rem 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(6px);
+    transition: opacity 180ms ease, transform 200ms ease;
 }
 
 .dropdown-menu a {
@@ -3802,13 +3811,36 @@ blog*/
     padding: 0.5rem 1rem;
     color: #424242;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.18s ease;
 }
 
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
 }
 
-.dropdown:hover .dropdown-menu {
+/* Show when hovering or when JS toggles the .show class */
+.dropdown:hover > .dropdown-menu,
+.nav-item.dropdown:focus-within > .dropdown-menu,
+.nav-item.dropdown.show > .dropdown-menu {
     display: block;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Dropdown arrow animation */
+.nav-item .dropdown-arrow {
+    display: inline-block;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    transform: rotate(0deg);
+    transition: transform 0.22s cubic-bezier(0.2,0,0,1);
+    color: #424242; /* stroke color via currentColor */
+    transform-origin: center;
+}
+
+.nav-item.dropdown .nav-link[aria-expanded="true"] .dropdown-arrow,
+.nav-item.dropdown:hover .dropdown-arrow,
+.nav-item.dropdown.show .dropdown-arrow {
+    transform: rotate(180deg) translateY(-1px);
 }
