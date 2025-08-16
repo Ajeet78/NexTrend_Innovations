@@ -331,6 +331,12 @@ body {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease, background-color 0.3s ease;
 }
 
+ul.menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .menu-items a:hover {
     animation: subtleRotate 0.4s ease forwards;
     color: #ffffff;/* menu button text animation color*/
