@@ -9,21 +9,25 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<script src="assets/js/script.js" defer></script>
 		<style>
-		/* Sitemap specific styles */
-		.sitemap-wrapper{ background: linear-gradient(180deg,#f7fbff,#ffffff); padding:32px; border-radius:12px; box-shadow:0 6px 30px rgba(20,30,60,0.06); }
-		.sitemap-search{ max-width:640px; margin:0 auto 18px; }
-		#sitemap-search{ width:100%; padding:12px 16px; border-radius:999px; border:1px solid #e6eef8; box-shadow:0 2px 6px rgba(16,24,40,0.03); font-size:1rem; }
-		.sitemap-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:12px; }
-		.sitemap-column{ background:#fff; padding:18px; border-radius:10px; box-shadow:0 6px 18px rgba(13,38,76,0.06); transform:translateY(18px); opacity:0; transition:transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s ease; }
-		.sitemap-wrapper.reveal.active .sitemap-column{ transform:none; opacity:1; }
-		.sitemap-column h3{ font-size:1.05rem; margin-bottom:12px; display:flex; align-items:center; gap:10px; color:#0b2340; }
-		.sitemap-column h3 i{ color:#1e88e5; font-size:1.05rem; }
-		.sitemap-list{ list-style:none; padding:0; margin:0; }
-		.sitemap-list li{ margin:8px 0; }
-		.sitemap-list a{ color:#0b2a53; text-decoration:none; padding:8px 10px; display:inline-block; border-radius:6px; transition:background .18s, transform .12s; }
-		.sitemap-list a:hover, .sitemap-list a:focus{ background:rgba(30,136,229,0.06); transform:translateX(6px); outline:none; }
-		.sitemap-note{ margin-top:20px; text-align:center; color:#46637a; }
-		@media (prefers-reduced-motion: reduce){ .sitemap-column{ transition:none; } }
+		/* Minimal, Google-like sitemap styles */
+		:root{ --link:#1a0dab; --muted:#70757a; }
+		body{ background:#fff; color:#202124; }
+		.container{ max-width:980px; margin:0 auto; padding:28px 18px; }
+		.hero{ padding:20px 0 8px; }
+		h1{ font-weight:400; font-size:1.5rem; margin:0 0 6px; color:#202124; }
+		.section-description{ color:var(--muted); margin:0 0 18px; font-size:0.95rem; }
+		.sitemap-wrapper{ padding:8px 0 28px; }
+		.sitemap-search{ max-width:640px; margin:6px 0 20px; }
+		#sitemap-search{ width:100%; padding:10px 12px; border-radius:4px; border:1px solid #e0e0e0; font-size:14px; color:#202124; }
+		.sitemap-grid{ display:flex; gap:40px; flex-wrap:wrap; }
+		.sitemap-column{ flex:1 1 220px; min-width:200px; }
+		.sitemap-column h3{ font-size:14px; font-weight:500; color:#202124; margin:6px 0 10px; }
+		.sitemap-list{ list-style:none; padding:0; margin:0; border-top:1px solid #e8eaed; }
+		.sitemap-list li{ padding:10px 0; border-bottom:1px solid #e8eaed; }
+		.sitemap-list a{ color:var(--link); text-decoration:none; font-size:13px; }
+		.sitemap-list a:hover{ text-decoration:underline; }
+		.sitemap-note{ margin-top:22px; color:var(--muted); font-size:13px; }
+		@media (max-width:640px){ .sitemap-grid{ gap:18px; } .sitemap-column{ min-width:160px; flex-basis:100%; } }
 		</style>
 	</head>
 
@@ -43,9 +47,9 @@
 						<label for="sitemap-search" class="sr-only">Search sitemap</label>
 						<input id="sitemap-search" placeholder="Search pages, e.g. 'web', 'contact'..." aria-label="Search sitemap">
 					</div>
-					<div class="sitemap-grid">
-						<div class="sitemap-column">
-							<h3><i class="fas fa-home" aria-hidden="true"></i> Primary Pages</h3>
+						<div class="sitemap-grid">
+							<div class="sitemap-column">
+								<h3>Primary Pages</h3>
 						<ul class="sitemap-list">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="services.html">Services</a></li>
@@ -56,8 +60,8 @@
 						</ul>
 					</div>
 
-						<div class="sitemap-column">
-							<h3><i class="fas fa-concierge-bell" aria-hidden="true"></i> Services</h3>
+							<div class="sitemap-column">
+								<h3>Services</h3>
 						<ul class="sitemap-list">
 							<li><a href="web-development.html">Web Development</a></li>
 							<li><a href="app-development.html">App Development</a></li>
@@ -69,8 +73,8 @@
 						</ul>
 					</div>
 
-						<div class="sitemap-column">
-							<h3><i class="fas fa-shield-alt" aria-hidden="true"></i> Policies & Support</h3>
+							<div class="sitemap-column">
+								<h3>Policies & Support</h3>
 						<ul class="sitemap-list">
 							<li><a href="privacy-policy.html">Privacy Policy</a></li>
 							<li><a href="terms-of-service.html">Terms of Service</a></li>
@@ -79,8 +83,8 @@
 						</ul>
 					</div>
 
-						<div class="sitemap-column">
-							<h3><i class="fas fa-ellipsis-h" aria-hidden="true"></i> Extras</h3>
+							<div class="sitemap-column">
+								<h3>Extras</h3>
 						<ul class="sitemap-list">
 							<li><a href="case-study-template.html">Case Study Template</a></li>
 							<li><a href="portfolio-enhancement-suggestions.md">Portfolio Suggestions (notes)</a></li>
@@ -89,35 +93,19 @@
 					</div>
 
 				<script>
-				// Stagger reveal when element enters viewport and simple search filter
+				// Simple search/filter for the sitemap (minimal, Google-like behavior)
 				(function(){
-					const wrapper = document.querySelector('.sitemap-wrapper');
-					const cols = document.querySelectorAll('.sitemap-column');
 					const input = document.getElementById('sitemap-search');
-
-					// Intersection observer for reveal
-					const obs = new IntersectionObserver(entries=>{
-						entries.forEach(entry=>{
-							if(entry.isIntersecting){
-								wrapper.classList.add('active');
-								cols.forEach((c,i)=>{ c.style.transitionDelay = (i*80)+'ms'; });
-								obs.disconnect();
-							}
+					if(!input) return;
+					input.addEventListener('input', function(){
+						const q = this.value.trim().toLowerCase();
+						const items = document.querySelectorAll('.sitemap-list li');
+						items.forEach(li=>{
+							const a = li.querySelector('a');
+							const text = a ? a.textContent.trim().toLowerCase() : '';
+							li.style.display = q === '' || text.includes(q) ? '' : 'none';
 						});
-					},{ threshold: 0.12 });
-					obs.observe(wrapper);
-
-					// Search/filter
-					if(input){
-						input.addEventListener('input', function(){
-							const q = this.value.trim().toLowerCase();
-							const links = document.querySelectorAll('.sitemap-list a');
-							links.forEach(a=>{
-								const text = a.textContent.trim().toLowerCase();
-								a.parentNode.style.display = text.includes(q) || q === '' ? '' : 'none';
-							});
-						});
-					}
+					});
 				})();
 				</script>
 				</div>
