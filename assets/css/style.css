@@ -133,6 +133,15 @@ body {
     transform: translateY(0);
 }
 
+/* Terms / Policy helpers */
+.toc-column{ max-width:260px; margin-left:0; float:right; }
+.policy{ max-width:720px; }
+.clear-both{ clear: both; }
+.quick-links{ list-style:none; padding:10px 0; margin:0; }
+.quick-links li{ margin:8px 0; }
+.quick-links a{ color:#0b2a53; text-decoration:none; font-size:0.95rem; }
+.quick-links a:hover{ text-decoration:underline; }
+
 /* FAQ Section Styles */
 .faq-section {
     padding: 3rem 0;
