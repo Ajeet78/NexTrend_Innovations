@@ -4,8 +4,9 @@
   "description": "In development phase",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+  "test": "node tests/puppeteer/run-tests.js",
+  "start": "node server.js",
+  "test:debug": "node --inspect-brk tests/puppeteer/run-tests.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,9 @@
     "jsdom": "^26.1.0",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.5"
+  }
+  ,
+  "devDependencies": {
+    "puppeteer": "^20.8.0"
   }
 }
