@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             function repositionOpenDropdowns() {
                 if (repositionTimer) clearTimeout(repositionTimer);
                 repositionTimer = setTimeout(() => {
-                    document.querySelectorAll('.nav-item.dropdown.show, .nav-item.dropdown:hover').forEach(parent => {
+                    document.querySelectorAll('.nav-item.dropdown.show').forEach(parent => {
                         const toggleEl = parent.querySelector('.nav-link.dropdown-toggle');
                         const menuEl = parent.querySelector('.dropdown-menu');
                         positionDropdown(toggleEl, menuEl);
@@ -134,27 +134,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!toggle.hasAttribute('aria-expanded')) toggle.setAttribute('aria-expanded', 'false');
 
                 toggle.addEventListener('click', function(e) {
-                    // On small screens, prevent navigation and toggle menu
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-                        toggle.setAttribute('aria-expanded', String(!isExpanded));
-                        parent.classList.toggle('show', !isExpanded);
-                        // position the dropdown when opening
-                        if (!isExpanded) {
-                            const menu = parent.querySelector('.dropdown-menu');
-                            positionDropdown(toggle, menu);
-                        }
-                    }
-                });
-
-                // Position on hover for desktop so dropdown doesn't clip
-                parent.addEventListener('mouseenter', function() {
-                    if (window.innerWidth > 768) {
+                    // Prevent navigation and toggle menu on all screen sizes
+                    e.preventDefault();
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    toggle.setAttribute('aria-expanded', String(!isExpanded));
+                    parent.classList.toggle('show', !isExpanded);
+                    // position the dropdown when opening
+                    if (!isExpanded) {
                         const menu = parent.querySelector('.dropdown-menu');
                         positionDropdown(toggle, menu);
                     }
                 });
+
+                // Positioning is handled on click
             });
 
             // Make the arrow icon toggle the dropdown on mobile without following the parent link
