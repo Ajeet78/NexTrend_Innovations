@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Enhanced Dropdown Menu Styles (User-Friendly Version)
+   ========================================================================== */
+
+/* Base dropdown container */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Enhanced dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    min-width: 220px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.25s ease;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: #424242;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+    color: #07677f;
+}
+
+/* Show dropdown on focus/click */
+.dropdown:focus-within > .dropdown-menu,
+.dropdown.show > .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: fixed;
+        top: 60px; /* Below the fixed header */
+        left: 0;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        background: #fff;
+        border: none;
+        border-radius: 0;
+        z-index: 9999;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .nav-item.dropdown.show .dropdown-menu {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .dropdown-menu a {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 1rem;
+    }
+
+    .dropdown-menu a:last-child {
+        border-bottom: none;
+    }
+}
