@@ -137,14 +137,50 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Prevent navigation and toggle menu on all screen sizes
                     e.preventDefault();
                     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                    // Close other open dropdowns first
+                    dropdownToggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            const otherParent = otherToggle.closest('.nav-item.dropdown');
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                            otherParent.classList.remove('show');
+                        }
+                    });
+
                     toggle.setAttribute('aria-expanded', String(!isExpanded));
                     parent.classList.toggle('show', !isExpanded);
+
                     // position the dropdown when opening
                     if (!isExpanded) {
                         const menu = parent.querySelector('.dropdown-menu');
                         positionDropdown(toggle, menu);
                     }
                 });
+
+                // Add touch event support for mobile devices
+                toggle.addEventListener('touchstart', function(e) {
+                    // Prevent double-tap zoom on mobile
+                    e.preventDefault();
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                    // Close other open dropdowns first
+                    dropdownToggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            const otherParent = otherToggle.closest('.nav-item.dropdown');
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                            otherParent.classList.remove('show');
+                        }
+                    });
+
+                    toggle.setAttribute('aria-expanded', String(!isExpanded));
+                    parent.classList.toggle('show', !isExpanded);
+
+                    // position the dropdown when opening
+                    if (!isExpanded) {
+                        const menu = parent.querySelector('.dropdown-menu');
+                        positionDropdown(toggle, menu);
+                    }
+                }, { passive: false });
 
                 // Positioning is handled on click
             });
