@@ -785,19 +785,28 @@ footer {
     }
       
     /* Newsletter adjustments */
+    .newsletter {
+        margin: 0.5rem 0;
+        padding: 1rem;
+    }
+
     .newsletter form {
         flex-direction: column;
-        box-sizing: border-box;
+        gap: 0.5rem;
     }
 
-    .newsletter input[type="email"] {
+    .newsletter input[type="email"],
+    .newsletter .newsletter-email {
         width: 100%;
-        margin-right: 0;
-        margin-bottom: 1rem;
+        margin: 0;
+        padding: 1rem;
     }
 
-    .newsletter button {
-        width: 80%;
+    .newsletter button,
+    #subscribe-button {
+        width: 100%;
+        height: auto;
+        min-width: auto;
     }
 
     
@@ -1719,8 +1728,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .contact-form {
-    margin-bottom: 4.5rem; /* Adjusted margin for responsiveness */
-    margin-top: 4.5rem;
+    /* margin-bottom: 4.5rem; Adjusted margin for responsiveness */
+    /* margin-top: 4.5rem; */
     background: #ffffff;
     padding: 2rem;
     border-radius: 8px;
@@ -1959,7 +1968,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     .form-group input, 
     .form-group select, 
     .form-group textarea {
-       font-size: 0.75rem;
+    font-size: 1rem;
     }
     .contact-form h1 {
     font-size: 22px;
@@ -3940,3 +3949,5 @@ blog*/
         display: none;
     }
 }
+
+/* For newsletter Button */
