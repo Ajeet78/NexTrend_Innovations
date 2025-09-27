@@ -1720,7 +1720,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .contact-form {
     margin-bottom: 4.5rem; /* Adjusted margin for responsiveness */
     margin-top: 4.5rem;
-    background: #f5f5f5;
+    background: #ffffff;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -1792,7 +1792,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 /* Contact Information Section */
 .contact-info-section {
     padding: 3rem 0;
-    background-color: #f8f9fa;
+    background-color: #f0f4fa;
     text-align: center;
 }
 
@@ -2184,14 +2184,13 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 }
 
 .usp-item {
-    padding: 1rem; /* Adjusted padding for responsiveness */
+    padding: 1rem; 
     border: 1px solid #dcd8d8;
     border-radius: 8px;
     text-align: center;
     background: #ffffff
 }
 
-/* Additional inline styles for homepage sections (move to style.css for production) */
 .hero {
     position: relative;
     width: 100%;
@@ -2275,7 +2274,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .featured-projects {
     padding: 3rem 0; /* Adjusted padding for responsiveness */
     text-align: center;
-    background: #f5f5f5;
+    background: #ffffff;
 }
 
 .projects-carousel {
@@ -2420,6 +2419,11 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
         height: 20rem;
 
     }
+
+    .hero .container{
+        justify-content: normal;
+    }
+    
     .hero-visual {
         order: -1;
     }
@@ -2431,6 +2435,8 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
     }
     .hero-content {
         text-align: center;
+        margin-top: 3rem;
+
     }
     .hero-cta {
         margin-top: 1rem;
@@ -2589,7 +2595,7 @@ text-decoration: none;
 
 .hero {
     text-align: center;
-    padding: 3rem 0; /* Adjusted padding for responsiveness */
+    padding: 3.8rem 0; /* Adjusted padding for responsiveness */
     font-size: 1.3rem; /* Adjusted font size for responsiveness */
     /* padding-top:0%; */
 }
