@@ -118,8 +118,9 @@ body {
 .container {
     width: 90%;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
     padding: 1rem; /* Adjusted padding for better responsiveness */
+    box-sizing: border-box;
 }
 
 .reveal {
@@ -3950,4 +3951,15 @@ blog*/
     }
 }
 
-/* For newsletter Button */
+
+/* ==========================================================================
+   24. RECAPTCHA
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+   .g-recaptcha {
+    transform: scale(0.77);
+    -webkit-transform: scale(0.77);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+}
+}
