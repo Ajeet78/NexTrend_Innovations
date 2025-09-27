@@ -176,7 +176,7 @@ body {
 }
 
 .faq-item {
-    background-color: #F0F4FA;
+    background-color: #e6e9ff;
     border-radius: 12px;
     padding: 1rem 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -2170,7 +2170,9 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 
 .intro {
     padding: 3rem 0;
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
+    background-color: #f5f5f5;
+
 }
 
 .usp-grid {
