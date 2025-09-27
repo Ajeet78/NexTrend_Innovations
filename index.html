@@ -11,7 +11,10 @@
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/intlTelInput.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body>
@@ -59,7 +62,7 @@
                     We build cutting-edge web and mobile solutions that accelerate growth
                 </p>
                 <!-- <button id="open-contact-modal" class="cta-button hero-cta">Contact Us</button> -->
-            <p><a href="contact.html" class="cta-button  hero-cta">Contact Us</a></p>
+                <p><a href="contact.html" class="cta-button  hero-cta">Contact Us</a></p>
 
             </div>
         </section>
@@ -135,31 +138,36 @@
                     <div class="service-item">
                         <i class="fas fa-code service-icon"></i>
                         <h3 class="service-title">Web Development</h3>
-                        <p class="service-description">Custom CMS, eCommerce, Progressive Web Apps (PWA), Landing Pages, API Integrations, SEO-Optimized Websites, and Ongoing Maintenance.</p>
+                        <p class="service-description">Custom CMS, eCommerce, Progressive Web Apps (PWA), Landing Pages,
+                            API Integrations, SEO-Optimized Websites, and Ongoing Maintenance.</p>
                         <a href="web-development.html" class="service-link">Learn More</a>
                     </div>
                     <div class="service-item">
                         <i class="fas fa-mobile-alt service-icon"></i>
                         <h3 class="service-title">App Development</h3>
-                        <p class="service-description">iOS/Android, Cross-Platform (Flutter, React Native), App UI/UX, Backend APIs, Maintenance & Deployment, 3rd Party Integration, and MVP Development.</p>
+                        <p class="service-description">iOS/Android, Cross-Platform (Flutter, React Native), App UI/UX,
+                            Backend APIs, Maintenance & Deployment, 3rd Party Integration, and MVP Development.</p>
                         <a href="app-development.html" class="service-link">Learn More</a>
                     </div>
                     <div class="service-item">
                         <i class="fas fa-paint-brush service-icon"></i>
                         <h3 class="service-title">UI/UX Design</h3>
-                        <p class="service-description">Wireframing, Prototyping, User Flows, User Testing, Responsive & Accessible Design, and Design Systems for Scalable Products.</p>
+                        <p class="service-description">Wireframing, Prototyping, User Flows, User Testing, Responsive &
+                            Accessible Design, and Design Systems for Scalable Products.</p>
                         <a href="ui-ux-design.html" class="service-link">Learn More</a>
                     </div>
                     <div class="service-item">
                         <i class="fas fa-robot service-icon"></i>
                         <h3>Emerging Tech</h3>
-                        <p>AI Automation & Chatbots, AR/VR Experiences, Blockchain Solutions (DApps, NFTs, Smart Contracts), and Custom R&D for Innovation-Driven Products.</p>
+                        <p>AI Automation & Chatbots, AR/VR Experiences, Blockchain Solutions (DApps, NFTs, Smart
+                            Contracts), and Custom R&D for Innovation-Driven Products.</p>
                         <a href="emerging-tech.html" class="service-link">Learn More</a>
                     </div>
                     <div class="service-item">
                         <i class="fas fa-building service-icon"></i>
                         <h3 class="service-title">Enterprise Solutions</h3>
-                        <p class="service-description">Custom ERP & CRM Systems, SaaS Platforms, Workflow Automation, Data Dashboards, and Legacy System Integrations to Empower Enterprise Operations.
+                        <p class="service-description">Custom ERP & CRM Systems, SaaS Platforms, Workflow Automation,
+                            Data Dashboards, and Legacy System Integrations to Empower Enterprise Operations.
                         </p>
                         <a href="enterprise-solutions.html" class="service-link">Learn More</a>
                     </div>
@@ -175,7 +183,9 @@
                     <div class="service-item">
                         <i class="fas fa-shopping-cart service-icon"></i>
                         <h3 class="service-title">eCommerce Development</h3>
-                        <p class="service-description">Custom Storefronts, Shopify & WooCommerce Solutions, Payment Integration, Multi-Vendor Marketplaces, and Conversion-Focused Features to Grow Your Online Business.</p>
+                        <p class="service-description">Custom Storefronts, Shopify & WooCommerce Solutions, Payment
+                            Integration, Multi-Vendor Marketplaces, and Conversion-Focused Features to Grow Your Online
+                            Business.</p>
                         <a href="ecommerce-development.html" class="service-link">Learn More</a>
                     </div>
 
@@ -352,161 +362,11 @@
 
     </main>
 
-    <!-- FAQ Section -->
-    <section class="faq-section reveal">
+    <!-- Contact form Section-->
+    <section id="contact-form" class="contact-form">
         <div class="container">
-            <div class="faq-header">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="faq-subtitle">Everything you need to know about our services and development process</p>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-column">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
-                            <span>How much does it cost to develop a mobile app or website?</span>
-                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
-                        </button>
-                        <div class="faq-answer" id="faq1" hidden>
-                            <p>The cost of developing a mobile app or website depends on several factors including:</p>
-                            <ul>
-                                <li>Complexity and features required</li>
-                                <li>Platform (iOS, Android, Web, or cross-platform)</li>
-                                <li>Design requirements and user experience</li>
-                                <li>Integration with third-party services</li>
-                                <li>Timeline and urgency</li>
-                            </ul>
-                            <p>Project costs align with your selected budget range: Basic solutions (₹1,000-₹10,000) include simple landing pages or MVPs, mid-range projects (₹10,000-₹50,000) cover feature-rich websites or apps, while premium solutions (₹50,000+) deliver complex enterprise-grade applications. <a href="contact.html">Contact us</a> for a detailed quote tailored to your specific requirements.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
-                            <span>How long does it take to build an app or website?</span>
-                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
-                        </button>
-                        <div class="faq-answer" id="faq2" hidden>
-                            <p>Development timelines vary based on project scope:</p>
-                            <ul>
-                                <li><strong>Simple MVP:</strong> 4-8 weeks</li>
-                                <li><strong>Medium complexity:</strong> 3-6 months</li>
-                                <li><strong>Complex enterprise solutions:</strong> 6-12+ months</li>
-                            </ul>
-                            <p>We use agile development methodology to deliver working features incrementally, allowing you to see progress and provide feedback throughout the process.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
-                            <span>What technologies do you specialize in?</span>
-                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
-                        </button>
-                        <div class="faq-answer" id="faq3" hidden>
-                            <p>We work with cutting-edge technologies across multiple platforms:</p>
-                            <ul>
-                                <li><strong>Mobile:</strong> React Native, Flutter, Swift (iOS), Kotlin (Android)</li>
-                                <li><strong>Web:</strong> React.js, Next.js, Vue.js, Node.js, Python/Django</li>
-                                <li><strong>Backend:</strong> Node.js, Python, PHP, .NET, cloud services (AWS, Azure, Google Cloud)</li>
-                                <li><strong>Databases:</strong> PostgreSQL, MongoDB, MySQL, Redis</li>
-                                <li><strong>Emerging Tech:</strong> AI/ML, Blockchain, AR/VR, IoT</li>
-                            </ul>
-                            <p>We choose the best technology stack based on your specific requirements and long-term goals.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
-                            <span>Do you provide ongoing support and maintenance?</span>
-                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
-                        </button>
-                        <div class="faq-answer" id="faq4" hidden>
-                            <p>Yes, we offer comprehensive post-launch support including:</p>
-                            <ul>
-                                <li>Bug fixes and performance optimization</li>
-                                <li>Security updates and patches</li>
-                                <li>Feature enhancements and new functionality</li>
-                                <li>Server monitoring and maintenance</li>
-                                <li>24/7 technical support</li>
-                            </ul>
-                            <p>We provide flexible maintenance packages tailored to your needs, ensuring your application remains secure, fast, and up-to-date.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-column">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq5">
-                            <span>Can you help with app store submission and approval?</span>
-                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
-                        </button>
-                        <div class="faq-answer" id="faq5" hidden>
-                            <p>Absolutely! We provide complete app store submission services including:</p>
-                            <ul>
-                                <li>App store optimization (ASO) for better visibility</li>
-                                <li>Creating compelling app descriptions and screenshots</li>
-                                <li>Preparing all required metadata and assets</li>
-                                <li>Guiding you through the approval process</li>
-                                <li>Addressing any feedback from app store reviewers</li>
-                            </ul>
-                            <p>We have a 100% success rate with app store submissions and ensure your app meets all platform guidelines.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq6">
-                            <span>How do you ensure the security of my app/website?</span>
-                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
-                        </button>
-                        <div class="faq-answer" id="faq6" hidden>
-                            <p>Security is our top priority. We implement multiple layers of protection:</p>
-                            <ul>
-                                <li>Secure coding practices and code reviews</li>
-                                <li>Data encryption (at rest and in transit)</li>
-                                <li>Authentication and authorization systems</li>
-                                <li>Regular security audits and penetration testing</li>
-                                <li>Compliance with GDPR, HIPAA, and other regulations</li>
-                                <li>Secure cloud infrastructure configuration</li>
-                            </ul>
-                            <p>We also provide security training and best practices documentation for your team.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq7">
-                            <span>Will I own the source code and intellectual property?</span>
-                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
-                        </button>
-                        <div class="faq-answer" id="faq7" hidden>
-                            <p>Yes, you will have complete ownership of the source code and intellectual property. Upon project completion and final payment, we transfer all rights to you including:</p>
-                            <ul>
-                                <li>Complete source code</li>
-                                <li>Design files and assets</li>
-                                <li>Documentation and technical specifications</li>
-                                <li>Database schemas and configurations</li>
-                            </ul>
-                            <p>We also provide a smooth handover process and can train your internal team if needed.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq8">
-                            <span>How do we communicate and track progress during development?</span>
-                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
-                        </button>
-                        <div class="faq-answer" id="faq8" hidden>
-                            <p>We maintain transparent communication throughout the project:</p>
-                            <ul>
-                                <li>Dedicated project manager as your single point of contact</li>
-                                <li>Weekly progress reports and demos</li>
-                                <li>Real-time project tracking via tools like Jira, Trello, or Asana</li>
-                                <li>Regular video calls and meetings</li>
-                                <li>Slack/Teams channels for instant communication</li>
-                                <li>Access to staging environments for testing</li>
-                            </ul>
-                            <p>You'll always know exactly where your project stands and can provide feedback at every stage.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-        <section id="contact-form" class="contact-form">
-            <div class="container">
-            <h1 class="section-title">Get in touch to discuss your project, request a quote or even just to pick our brains.</h1>
+            <h1 class="section-title">Get in touch to discuss your project, request a quote or even just to pick our
+                brains.</h1>
 
             <h2 class="section-title">Tell us about your project</h2>
             <form id="contactForm" action="/submit-form" method="post">
@@ -553,14 +413,205 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="timeline">Timeline</label>
-                    <select id="timeline" name="timeline">
-                        <option value="Select">Select</option>
-                        <option value="0-1 months">0-1 months</option>
-                        <option value="1-3 months">1-3 months</option>
-                        <option value="3-6 months">3-6 months</option>
-                        <option value="6-12 months">6-12 months</option>
-                        <option value="12+ months">12+ months</option>
+                    <label for="country">Country</label>
+                    <select id="country" name="country" required>
+                        <option value="">Select Country</option>
+                        <option value="Afghanistan">Afghanistan</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="Andorra">Andorra</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Armenia">Armenia</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Azerbaijan">Azerbaijan</option>
+                        <option value="Bahamas">Bahamas</option>
+                        <option value="Bahrain">Bahrain</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Barbados">Barbados</option>
+                        <option value="Belarus">Belarus</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Belize">Belize</option>
+                        <option value="Benin">Benin</option>
+                        <option value="Bhutan">Bhutan</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Brunei">Brunei</option>
+                        <option value="Bulgaria">Bulgaria</option>
+                        <option value="Burkina Faso">Burkina Faso</option>
+                        <option value="Burundi">Burundi</option>
+                        <option value="Cabo Verde">Cabo Verde</option>
+                        <option value="Cambodia">Cambodia</option>
+                        <option value="Cameroon">Cameroon</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Central African Republic">Central African Republic</option>
+                        <option value="Chad">Chad</option>
+                        <option value="Chile">Chile</option>
+                        <option value="China">China</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Congo (Congo-Brazzaville)">Congo (Congo-Brazzaville)</option>
+                        <option value="Costa Rica">Costa Rica</option>
+                        <option value="Croatia">Croatia</option>
+                        <option value="Cuba">Cuba</option>
+                        <option value="Cyprus">Cyprus</option>
+                        <option value="Czechia (Czech Republic)">Czechia (Czech Republic)</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Dominica">Dominica</option>
+                        <option value="Dominican Republic">Dominican Republic</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="El Salvador">El Salvador</option>
+                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Estonia">Estonia</option>
+                        <option value="Eswatini (fmr. Swaziland)">Eswatini (fmr. Swaziland)</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Fiji">Fiji</option>
+                        <option value="Finland">Finland</option>
+                        <option value="France">France</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="Gambia">Gambia</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Greece">Greece</option>
+                        <option value="Grenada">Grenada</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="Guinea">Guinea</option>
+                        <option value="Guinea-Bissau">Guinea-Bissau</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Haiti">Haiti</option>
+                        <option value="Holy See">Holy See</option>
+                        <option value="Honduras">Honduras</option>
+                        <option value="Hungary">Hungary</option>
+                        <option value="Iceland">Iceland</option>
+                        <option value="India" selected>India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Iran">Iran</option>
+                        <option value="Iraq">Iraq</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Jamaica">Jamaica</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Kazakhstan">Kazakhstan</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Kiribati">Kiribati</option>
+                        <option value="Kosovo">Kosovo</option>
+                        <option value="Kuwait">Kuwait</option>
+                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                        <option value="Laos">Laos</option>
+                        <option value="Latvia">Latvia</option>
+                        <option value="Lebanon">Lebanon</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Liberia">Liberia</option>
+                        <option value="Libya">Libya</option>
+                        <option value="Liechtenstein">Liechtenstein</option>
+                        <option value="Lithuania">Lithuania</option>
+                        <option value="Luxembourg">Luxembourg</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Maldives">Maldives</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Malta">Malta</option>
+                        <option value="Marshall Islands">Marshall Islands</option>
+                        <option value="Mauritania">Mauritania</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Micronesia">Micronesia</option>
+                        <option value="Moldova">Moldova</option>
+                        <option value="Monaco">Monaco</option>
+                        <option value="Mongolia">Mongolia</option>
+                        <option value="Montenegro">Montenegro</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Mozambique">Mozambique</option>
+                        <option value="Myanmar (formerly Burma)">Myanmar (formerly Burma)</option>
+                        <option value="Namibia">Namibia</option>
+                        <option value="Nauru">Nauru</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="Nicaragua">Nicaragua</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="North Korea">North Korea</option>
+                        <option value="North Macedonia (formerly Macedonia)">North Macedonia (formerly Macedonia)
+                        </option>
+                        <option value="Norway">Norway</option>
+                        <option value="Oman">Oman</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Palau">Palau</option>
+                        <option value="Palestine State">Palestine State</option>
+                        <option value="Panama">Panama</option>
+                        <option value="Papua New Guinea">Papua New Guinea</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Qatar">Qatar</option>
+                        <option value="Romania">Romania</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                        <option value="Saint Lucia">Saint Lucia</option>
+                        <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                        <option value="Samoa">Samoa</option>
+                        <option value="San Marino">San Marino</option>
+                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Serbia">Serbia</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Sierra Leone">Sierra Leone</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Slovakia">Slovakia</option>
+                        <option value="Slovenia">Slovenia</option>
+                        <option value="Solomon Islands">Solomon Islands</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="South Sudan">South Sudan</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Syria">Syria</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Tajikistan">Tajikistan</option>
+                        <option value="Tanzania">Tanzania</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Timor-Leste">Timor-Leste</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Tonga">Tonga</option>
+                        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                        <option value="Tunisia">Tunisia</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Turkmenistan">Turkmenistan</option>
+                        <option value="Tuvalu">Tuvalu</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States of America">United States of America</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Uzbekistan">Uzbekistan</option>
+                        <option value="Vanuatu">Vanuatu</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Yemen">Yemen</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                 </div>
 
@@ -576,7 +627,7 @@
                     </label>
                     <input type="file" id="upload" name="upload" style="display:none;">
                 </div>
-                                <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+                <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
 
                 <button type="submit" class="cta-button">SUBMIT</button>
             </form>
@@ -588,59 +639,240 @@
                 </div>
             </div>
 
-                <script>
-                    const form = document.getElementById('contactForm');
-                    const successPopup = document.getElementById('successPopup');
-                    const uploadInput = document.getElementById('upload');
-                    const uploadLabel = document.querySelector('label[for="upload"]');
+            <script>
+                // Initialize international phone input
+                const phoneInputField = document.querySelector("#phone");
+                const iti = window.intlTelInput(phoneInputField, {
+                    initialCountry: "in",
+                    preferredCountries: ["in", "us", "gb", "ca", "au"],
+                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/utils.js"
+                });
 
-                    form.addEventListener('submit', async (event) => {
-                        event.preventDefault(); // Prevent default form submission
+                const form = document.getElementById('contactForm');
+                const successPopup = document.getElementById('successPopup');
+                const uploadInput = document.getElementById('upload');
+                const uploadLabel = document.querySelector('label[for="upload"]');
 
-                        if (grecaptcha.getResponse() === "") {
-                            alert("Please complete the CAPTCHA");
-                            return;
-                        }
+                form.addEventListener('submit', async (event) => {
+                    event.preventDefault(); // Prevent default form submission
 
-                        const formData = new FormData(form);
-                        formData.append('g-recaptcha-response', grecaptcha.getResponse());
-
-                        try {
-                            const response = await fetch('/submit-form', {
-                                method: 'POST',
-                                body: formData, // Send FormData directly
-                            });
-
-                            if (response.ok) {
-                                successPopup.style.display = 'flex'; // Show success popup
-                                form.reset(); // Reset the form
-                                grecaptcha.reset();
-                                uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
-                                setTimeout(closePopup, 3000); // Auto-hide popup after 3 seconds
-                            } else {
-                                const errorData = await response.json();
-                                alert(`Failed to send inquiry: ${errorData.message}`);
-                            }
-                        } catch (error) {
-                            console.error('Error:', error);
-                            alert('An error occurred. Please try again.');
-                        }
-                    });
-
-                    uploadInput.addEventListener('change', function() {
-                        if (uploadInput.files.length > 0) {
-                            uploadLabel.textContent = uploadInput.files[0].name;
-                        } else {
-                            uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
-                        }
-                    });
-
-                    function closePopup() {
-                        successPopup.style.display = 'none'; // Hide the popup
+                    if (grecaptcha.getResponse() === "") {
+                        alert("Please complete the CAPTCHA");
+                        return;
                     }
-                </script>
+
+                    // Validate phone
+                    if (!iti.isValidNumber()) {
+                        alert("Please enter a valid phone number");
+                        return;
+                    }
+
+                    const formData = new FormData(form);
+                    // Get full international phone number
+                    const fullPhone = iti.getNumber(window.intlTelInputUtils.numberFormat.E164);
+                    formData.set('phone', fullPhone);
+                    formData.append('g-recaptcha-response', grecaptcha.getResponse());
+
+                    try {
+                        const response = await fetch('/submit-form', {
+                            method: 'POST',
+                            body: formData, // Send FormData directly
+                        });
+
+                        if (response.ok) {
+                            successPopup.style.display = 'flex'; // Show success popup
+                            form.reset(); // Reset the form
+                            iti.setNumber(""); // Clear phone input
+                            grecaptcha.reset();
+                            uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
+                            setTimeout(closePopup, 3000); // Auto-hide popup after 3 seconds
+                        } else {
+                            const errorData = await response.json();
+                            alert(`Failed to send inquiry: ${errorData.message}`);
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+
+                uploadInput.addEventListener('change', function () {
+                    if (uploadInput.files.length > 0) {
+                        uploadLabel.textContent = uploadInput.files[0].name;
+                    } else {
+                        uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
+                    }
+                });
+
+                function closePopup() {
+                    successPopup.style.display = 'none'; // Hide the popup
+                }
+            </script>
         </div>
-        </section>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section reveal">
+        <div class="container">
+            <div class="faq-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="faq-subtitle">Everything you need to know about our services and development process</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+                            <span>How much does it cost to develop a mobile app or website?</span>
+                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq1" hidden>
+                            <p>The cost of developing a mobile app or website depends on several factors including:</p>
+                            <ul>
+                                <li>Complexity and features required</li>
+                                <li>Platform (iOS, Android, Web, or cross-platform)</li>
+                                <li>Design requirements and user experience</li>
+                                <li>Integration with third-party services</li>
+                                <li>Timeline and urgency</li>
+                            </ul>
+                            <p>Project costs align with your selected budget range: Basic solutions (₹1,000-₹10,000)
+                                include simple landing pages or MVPs, mid-range projects (₹10,000-₹50,000) cover
+                                feature-rich websites or apps, while premium solutions (₹50,000+) deliver complex
+                                enterprise-grade applications. <a href="contact.html">Contact us</a> for a detailed
+                                quote tailored to your specific requirements.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+                            <span>How long does it take to build an app or website?</span>
+                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq2" hidden>
+                            <p>Development timelines vary based on project scope:</p>
+                            <ul>
+                                <li><strong>Simple MVP:</strong> 4-8 weeks</li>
+                                <li><strong>Medium complexity:</strong> 3-6 months</li>
+                                <li><strong>Complex enterprise solutions:</strong> 6-12+ months</li>
+                            </ul>
+                            <p>We use agile development methodology to deliver working features incrementally, allowing
+                                you to see progress and provide feedback throughout the process.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+                            <span>What technologies do you specialize in?</span>
+                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq3" hidden>
+                            <p>We work with cutting-edge technologies across multiple platforms:</p>
+                            <ul>
+                                <li><strong>Mobile:</strong> React Native, Flutter, Swift (iOS), Kotlin (Android)</li>
+                                <li><strong>Web:</strong> React.js, Next.js, Vue.js, Node.js, Python/Django</li>
+                                <li><strong>Backend:</strong> Node.js, Python, PHP, .NET, cloud services (AWS, Azure,
+                                    Google Cloud)</li>
+                                <li><strong>Databases:</strong> PostgreSQL, MongoDB, MySQL, Redis</li>
+                                <li><strong>Emerging Tech:</strong> AI/ML, Blockchain, AR/VR, IoT</li>
+                            </ul>
+                            <p>We choose the best technology stack based on your specific requirements and long-term
+                                goals.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+                            <span>Do you provide ongoing support and maintenance?</span>
+                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq4" hidden>
+                            <p>Yes, we offer comprehensive post-launch support including:</p>
+                            <ul>
+                                <li>Bug fixes and performance optimization</li>
+                                <li>Security updates and patches</li>
+                                <li>Feature enhancements and new functionality</li>
+                                <li>Server monitoring and maintenance</li>
+                                <li>24/7 technical support</li>
+                            </ul>
+                            <p>We provide flexible maintenance packages tailored to your needs, ensuring your
+                                application remains secure, fast, and up-to-date.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+                            <span>Can you help with app store submission and approval?</span>
+                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq5" hidden>
+                            <p>Absolutely! We provide complete app store submission services including:</p>
+                            <ul>
+                                <li>App store optimization (ASO) for better visibility</li>
+                                <li>Creating compelling app descriptions and screenshots</li>
+                                <li>Preparing all required metadata and assets</li>
+                                <li>Guiding you through the approval process</li>
+                                <li>Addressing any feedback from app store reviewers</li>
+                            </ul>
+                            <p>We have a 100% success rate with app store submissions and ensure your app meets all
+                                platform guidelines.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq6">
+                            <span>How do you ensure the security of my app/website?</span>
+                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq6" hidden>
+                            <p>Security is our top priority. We implement multiple layers of protection:</p>
+                            <ul>
+                                <li>Secure coding practices and code reviews</li>
+                                <li>Data encryption (at rest and in transit)</li>
+                                <li>Authentication and authorization systems</li>
+                                <li>Regular security audits and penetration testing</li>
+                                <li>Compliance with GDPR, HIPAA, and other regulations</li>
+                                <li>Secure cloud infrastructure configuration</li>
+                            </ul>
+                            <p>We also provide security training and best practices documentation for your team.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq7">
+                            <span>Will I own the source code and intellectual property?</span>
+                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq7" hidden>
+                            <p>Yes, you will have complete ownership of the source code and intellectual property. Upon
+                                project completion and final payment, we transfer all rights to you including:</p>
+                            <ul>
+                                <li>Complete source code</li>
+                                <li>Design files and assets</li>
+                                <li>Documentation and technical specifications</li>
+                                <li>Database schemas and configurations</li>
+                            </ul>
+                            <p>We also provide a smooth handover process and can train your internal team if needed.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq8">
+                            <span>How do we communicate and track progress during development?</span>
+                            <i class="fa fa-chevron-circle-down	 faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq8" hidden>
+                            <p>We maintain transparent communication throughout the project:</p>
+                            <ul>
+                                <li>Dedicated project manager as your single point of contact</li>
+                                <li>Weekly progress reports and demos</li>
+                                <li>Real-time project tracking via tools like Jira, Trello, or Asana</li>
+                                <li>Regular video calls and meetings</li>
+                                <li>Slack/Teams channels for instant communication</li>
+                                <li>Access to staging environments for testing</li>
+                            </ul>
+                            <p>You'll always know exactly where your project stands and can provide feedback at every
+                                stage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 
     <div id="footer-placeholder"></div>
