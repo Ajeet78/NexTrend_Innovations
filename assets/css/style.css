@@ -1720,7 +1720,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .contact-form {
     margin-bottom: 4.5rem; /* Adjusted margin for responsiveness */
     margin-top: 4.5rem;
-    background: #f5f5f5;
+    background: #ffffff;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -1792,7 +1792,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 /* Contact Information Section */
 .contact-info-section {
     padding: 3rem 0;
-    background-color: #f8f9fa;
+    background-color: #f0f4fa;
     text-align: center;
 }
 
@@ -2274,7 +2274,7 @@ body, .top-nav, .menu-items a, .cta-button, .hamburger-menu,  .social-media a, .
 .featured-projects {
     padding: 3rem 0; /* Adjusted padding for responsiveness */
     text-align: center;
-    background: #f5f5f5;
+    background: #ffffff;
 }
 
 .projects-carousel {
