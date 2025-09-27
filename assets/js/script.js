@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         animateHeader(); // Call animation function after header loads
                         highlightActiveLink(); // Call highlightActiveLink AFTER header is loaded
                     }
-                    // FIX: Call initDarkMode() AFTER the footer is loaded!
                     if (elementId === 'footer-placeholder') {
                         initDarkMode();
                     }
