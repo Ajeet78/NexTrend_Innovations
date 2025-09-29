@@ -22,9 +22,18 @@
    19. Slideshow Styles     - Styles for image slideshows
    20. CHATBOT STYLES         - Styles for the chatbot
    21. LAZY LOADING STYLES    - Styles for lazy loading images
+   22. MINDMAP STYLES         - Styles for mindmap visualizations
+   23. MODAL STYLES           - Styles for modal dialogs
+   24. SEARCH BAR STYLES      - Styles for the search bar
+   25. MAIN CONTAINER         - Styles for the main content container
+   26. BLOG PAGE STYLES       - Styles for the blog listing page
+   27. ADMIN BLOG & PORTFOLIO PAGE STYLES - Styles for admin blog and portfolio pages
+   28. Dropdown Menu Styles  - Styles for dropdown menus
+
+
    20. FOCUS STYLES           - Styles for focus states
    21. ARIA ROLES AND STATES  - Styles for ARIA roles and states
-   22. SEARCH BAR STYLES      - Styles for the search bar
+   
    ========================================================================== */
 
 /* ==========================================================================
@@ -3328,12 +3337,21 @@ a.blog-post {
     text-align: justify;
 }
 
+/* ==========================================================================
+   21. LAZY LOADING STYLES
+   ========================================================================== */
+.lazy {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
+.lazy.loaded {
+    opacity: 1;
+}
 
 /* ==========================================================================
-   20. MINDMAP STYLES
+   22. MINDMAP STYLES
    ========================================================================== */
-/* Process Timeline Section */
 /* Process Timeline Section */
 .process-timeline {
     background: #f8fbfe;
@@ -3513,9 +3531,10 @@ a.blog-post {
     }
 }
 
+/* ==========================================================================
+   23. MODAL STYLES
+   ========================================================================== */
 
-
-/*------------------------------------------------- popup message----------------------- */
 .modal {
     display: flex;
     /* Flexbox for centering */
@@ -3699,7 +3718,7 @@ a.blog-post {
 
 
 /* ==========================================================================
-   22. SEARCH BAR STYLES
+   24. SEARCH BAR STYLES
    ========================================================================== */
 .search-container {
     display: flex;
@@ -3821,7 +3840,7 @@ a.blog-post {
 
 
 /* ==========================================================================
-   23. MAIN CONTAINER
+   25. MAIN CONTAINER
    ========================================================================== */
 .main-container {
     width: 100%;
@@ -3834,11 +3853,10 @@ a.blog-post {
 
 
 
-
 /* ==========================================================================
-blog*/
-
-/* --- Filter Tabs (Professional Look) --- */
+   26. BLOG PAGE STYLES
+   ========================================================================== */
+/* --- Filter Tabs ---*/
 .filter-tabs {
     display: flex;
     overflow-x: auto;
@@ -4127,7 +4145,10 @@ blog*/
     }
 }
 
-/* ---------------------------------Admin Blog Post--------------------------------------------------------- */
+/*=====================================================================
+   27. ADMIN BLOG & PORTFOLIO PAGE STYLES
+   ========================================================================== */
+
 .admin-blog-container {
     max-width: 800px;
     margin: 2rem auto;
@@ -4338,7 +4359,7 @@ blog*/
 }
 
 /* ==========================================================================
-   17. Dropdown Menu Styles
+   28. Dropdown Menu Styles
    ========================================================================== */
 .dropdown {
     position: relative;
@@ -4489,5 +4510,3 @@ blog*/
         display: none;
     }
 }
-
-/* For newsletter Button */
