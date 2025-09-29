@@ -10,16 +10,18 @@
    7.  FOOTER                 - Styles for the site footer
    8.  RESPONSIVE DESIGN      - Media queries for different screen sizes
    9.  HERO SECTION           - Styles for the main landing section
-   10. SERVICES SECTION       - Styles for the services listing
-   11. FEATURED PROJECTS      - Styles for the project carousel
-   12. TESTIMONIALS           - Styles for customer feedback section
-   13. CLIENT LOGOS           - Styles for the client logos display
-   14. BLOG TEASER            - Styles for the blog post previews
-   15. ABOUT STYLES           - Styles for the about page
-   16. BLOG STYLES            - Styles for the blog page
-   17. SERVICE PAGE STYLES    - Styles for the service page
-   18. CHATBOT STYLES         - Styles for the chatbot
-   19. LAZY LOADING STYLES    - Styles for lazy loading images
+   10. WHY CHOOSE US SECTION   - Styles for the "Why Choose Us" section
+   11. SERVICES SECTION       - Styles for the services listing
+   12. FEATURED PROJECTS      - Styles for the project carousel
+   13. TESTIMONIALS           - Styles for customer feedback section
+   14. CLIENT LOGOS           - Styles for the client logos display
+   15. BLOG TEASER            - Styles for the blog post previews
+   16. ABOUT STYLES           - Styles for the about page
+   17. BLOG STYLES            - Styles for the blog page
+   18. SERVICE PAGE STYLES    - Styles for the service page
+   19. Slideshow Styles     - Styles for image slideshows
+   20. CHATBOT STYLES         - Styles for the chatbot
+   21. LAZY LOADING STYLES    - Styles for lazy loading images
    20. FOCUS STYLES           - Styles for focus states
    21. ARIA ROLES AND STATES  - Styles for ARIA roles and states
    22. SEARCH BAR STYLES      - Styles for the search bar
@@ -1186,7 +1188,7 @@ footer {
 }
 
 /* ==========================================================================
-   10. SERVICES SECTION
+   11. SERVICES SECTION
    ========================================================================== */
 .services-snapshot {
     padding: 3rem 0;
@@ -1336,7 +1338,7 @@ footer {
 }
 
 /* ==========================================================================
-   11. FEATURED PROJECTS
+   12. FEATURED PROJECTS
    ========================================================================== */
 .featured-projects {
     padding: 3rem 0;
@@ -1440,7 +1442,7 @@ footer {
 }
 
 /* ==========================================================================
-   12. TESTIMONIALS
+   13. TESTIMONIALS
    ========================================================================== */
 .testimonials-section {
     padding: 3rem 0;
@@ -1573,7 +1575,7 @@ footer {
 }
 
 /* ==========================================================================
-   13. CLIENT LOGOS
+   14. CLIENT LOGOS
    ========================================================================== */
 .client-logos {
     display: flex;
@@ -1600,7 +1602,7 @@ footer {
 }
 
 /* ==========================================================================
-   14. BLOG TEASER
+   15. BLOG TEASER
    ========================================================================== */
 .blog-teaser {
     padding: 3rem 0;
@@ -1844,7 +1846,7 @@ body,
 }
 
 /*=============================================
-    15. ABOUT STYLES
+    16. ABOUT STYLES
     ============================================= */
 .container {
     width: 90%;
@@ -2269,7 +2271,7 @@ body,
 }
 
 /* =================================================================
-    16. BLOG STYLES
+    17. BLOG STYLES
     ================================================================= */
 .blog-container {
     width: 90%;
@@ -2968,7 +2970,7 @@ a.blog-post {
 }
 
 /* ==========================================================================
-   17. SERVICE PAGE STYLES
+   18. SERVICE PAGE STYLES
    ========================================================================== */
 .container {
     width: 90%;
@@ -3141,7 +3143,7 @@ a.blog-post {
 
 
 /*================================================================
-    18. Slideshow Styles
+    19. Slideshow Styles
     ================================================================*/
 
 
@@ -3207,7 +3209,7 @@ a.blog-post {
 }
 
 /* ==========================================================================
-   19. CHATBOT STYLES
+   20. CHATBOT STYLES
    ========================================================================== */
 
 .chatbot-container {
