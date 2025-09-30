@@ -2102,15 +2102,23 @@ body,
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -20px;
-    /* Adjusted position for responsiveness */
+    left: -28px;
     top: 0;
-    width: 15px;
-    /* Adjusted width for responsiveness */
-    height: 15px;
-    /* Adjusted height for responsiveness */
-    background: #2560ff;
+    width: 955px;
+    height: 2px;
+    background: #a8b5d8;
     border-radius: 40%;
+}
+
+@media screen and (max-width: 600px) {
+    .timeline-item::before {
+        left: -29px;
+        width: 312px;
+        height: 2px;
+        border-radius: 50%;
+        background: #a8b5d8;
+    }
+    
 }
 
 .team-grid {
@@ -2303,7 +2311,7 @@ body,
 .contact-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 0.2rem;
     /* max-width: 900px; */
     margin: 0 auto;
     padding: 0 1rem;
