@@ -12,7 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     otherQuestion.setAttribute('aria-expanded', 'false');
                     const otherAnswerId = otherQuestion.getAttribute('aria-controls');
                     const otherAnswer = document.getElementById(otherAnswerId);
-                    if (otherAnswer) otherAnswer.hidden = true;
+                    if (otherAnswer) {
+                        otherAnswer.hidden = true;
+                        otherAnswer.classList.remove('open');
+                    }
                 }
             });
 
@@ -20,7 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
             question.setAttribute('aria-expanded', !expanded);
             const answerId = question.getAttribute('aria-controls');
             const answer = document.getElementById(answerId);
-            if (answer) answer.hidden = expanded;
+            if (answer) {
+                if (expanded) {
+                    answer.hidden = true;
+                    answer.classList.remove('open');
+                } else {
+                    answer.hidden = false;
+                    // Use setTimeout to allow DOM update before adding class for animation
+                    setTimeout(() => answer.classList.add('open'), 10);
+                }
+            }
         });
     });
 
