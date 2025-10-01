@@ -61,7 +61,7 @@
 }
 
 .faq-question:hover {
-    color: #2560ff;
+    color: #07677f;
 }
 
 /* .faq-question:focus {
@@ -76,7 +76,7 @@
 
 .faq-question[aria-expanded="true"] .faq-icon {
     transform: rotate(180deg);
-    color: #2560ff;
+    color: #07677f;
 }
 
 .faq-answer {
@@ -100,14 +100,14 @@
 }
 
 .faq-link {
-    color: #2560ff;
+    color: #07677f;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .faq-link:hover {
     text-decoration: underline;
-    color: #1a4fd8;
+    color: #07677f;
 }
 
 @media (max-width: 768px) {
@@ -133,7 +133,7 @@
 .faq-category h3 {
     font-size: 1.5rem;
     margin: 2rem 0 1rem 0;
-    color: #2560ff;
+    color: #07677f;
     font-weight: 700;
     text-align: center;
 }
