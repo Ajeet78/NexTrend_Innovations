@@ -12,7 +12,17 @@
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="assets/js/script.js" defer></script>
-  
+  <style>
+    .stack-groups.scrollable {
+      display: flex;
+      width: 100%;
+      animation: auto-scroll 30s linear infinite;
+    }
+    @keyframes auto-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
 </head>
 
 <body>
@@ -23,6 +33,8 @@
       <div class="container">
         <h1>Our Services</h1>
         <p>We offer a range of innovative solutions to help your business thrive in the digital age.</p>
+        <p class="hero-sub">We build with <strong>React, Flutter &amp; AWS</strong> — Shopify/Stripe integrations, Scalable APIs, Fast MVPs.</p>
+        <p><a href="contact.html" class="cta-button">Contact Us</a></p>
         <!-- <a href="#services" class="cta-button">Explore Services</a> -->
       </div>
     </section>
@@ -47,7 +59,7 @@
           <div class="service-item">
             <i class="fas fa-mobile-alt service-icon"></i>
             <h3>App Development</h3>
-            <p>iOS/Android, Cross-Platform (Flutter, React Native), App UI/UX, Backend APIs, Maintenance & Deployment,
+            <p>iOS/Android, Cross-Platform (Flutter, React Native), App UI/UX, Backend APIs, Maintenance &amp; Deployment,
               3rd Party Integration, and MVP Development</p>
             <a href="app-development.html" class="service-link">Learn More</a>
           </div>
@@ -55,7 +67,7 @@
           <div class="service-item">
             <i class="fas fa-paint-brush service-icon"></i>
             <h3>UI/UX Design</h3>
-            <p>Wireframing, Prototyping, User Flows, User Testing, Responsive & Accessible Design, and Design Systems
+            <p>Wireframing, Prototyping, User Flows, User Testing, Responsive &amp; Accessible Design, and Design Systems
               for Scalable Products.</p>
             <a href="ui-ux-design.html" class="service-link">Learn More</a>
           </div>
@@ -63,7 +75,7 @@
           <div class="service-item">
             <i class="fas fa-robot service-icon"></i>
             <h3>Emerging Tech</h3>
-            <p>AI Automation & Chatbots, AR/VR Experiences, Blockchain Solutions (DApps, NFTs, Smart Contracts), and
+            <p>AI Automation &amp; Chatbots, AR/VR Experiences, Blockchain Solutions (DApps, NFTs, Smart Contracts), and
               Custom R&D for Innovation-Driven Products.</p>
             <a href="emerging-tech.html" class="service-link">Learn More</a>
           </div>
@@ -71,31 +83,24 @@
           <div class="service-item">
             <i class="fas fa-building service-icon"></i>
             <h3 class="service-title">Enterprise Solutions</h3>
-            <p class="service-description">Custom ERP & CRM Systems, SaaS Platforms, Workflow Automation, Data
+            <p class="service-description">Custom ERP &amp; CRM Systems, SaaS Platforms, Workflow Automation, Data
               Dashboards, and Legacy System Integrations to Empower Enterprise Operations.</p>
             <a href="enterprise-solutions.html" class="service-link">Learn More</a>
           </div>
 
-          <!-- <div class="service-item">
-  <i class="fas fa-cubes service-icon"></i>
-  <h3 class="service-title">SaaS Product Development</h3>
-  <p class="service-description">Build scalable and secure SaaS platforms with end-to-end support.</p>
-  <a href="services.html" class="service-link">Learn More</a>
-</div> -->
-
           <div class="service-item">
             <i class="fas fa-shopping-cart service-icon"></i>
             <h3 class="service-title">eCommerce Development</h3>
-            <p class="service-description">Custom Storefronts, Shopify & WooCommerce Solutions, Payment Integration,
+            <p class="service-description">Custom Storefronts, Shopify &amp; WooCommerce Solutions, Payment Integration,
               Multi-Vendor Marketplaces, and Conversion-Focused Features to Grow Your Online Business.</p>
             <a href="ecommerce-development.html" class="service-link">Learn More</a>
           </div>
 
           <div class="service-item">
             <i class="fas fa-vials service-icon"></i>
-            <h3 class="service-title">QA & Automation Testing</h3>
-            <p class="service-description">Manual & Automated Testing, Functional & Regression Testing, Performance
-              Analysis, Mobile & API Testing, and Cross-Browser Compatibility to Ensure Flawless Delivery.</p>
+            <h3 class="service-title">QA &amp; Automation Testing</h3>
+            <p class="service-description">Manual &amp; Automated Testing, Functional &amp; Regression Testing, Performance
+              Analysis, Mobile &amp; API Testing, and Cross-Browser Compatibility to Ensure Flawless Delivery.</p>
             <a href="qa-testing.html" class="service-link">Learn More</a>
           </div>
 
@@ -214,34 +219,106 @@
 
     <div class="gradient-divider"></div>
 
-    <section class="tech-stack">
-      <div class="container">
-        <h2 class="section-title">Our Tech Stack</h2>
-        <!-- <p class="section-description">We utilize a diverse range of technologies to deliver robust and scalable solutions.</p> -->
-        <div class="tech-stack-carousel">
-          <div class="tech-stack-item">
-            <img src="assets/img/java.png" alt="Java">
-            <p>Java</p>
-          </div>
-          <div class="tech-stack-item">
-            <img src="assets/img/Kotlin.png" alt="Kotlin">
-            <p>Kotlin</p>
-          </div>
-          <div class="tech-stack-item">
-            <img src="assets/img/xml.png" alt="XML">
-            <p>XML</p>
-          </div>
-          <div class="tech-stack-item">
-            <img src="assets/img/Firebase.png" alt="Firebase">
-            <p>Firebase</p>
-          </div>
-          <div class="tech-stack-item">
-            <img src="assets/img/Flutter.png" alt="Flutter">
-            <p>Flutter</p>
-          </div>
-        </div>
+   <!-- Compact Tech Stack Section -->
+<section class="tech-stack compact">
+  <div class="container">
+    <h2 class="section-title">Our Tech Stack</h2>
+    <p class="section-description">
+      We use modern, battle-tested tools across web, mobile, and cloud — ensuring high performance and long-term reliability.
+    </p>
+
+    <!-- Horizontal scroll for smaller screens -->
+    <div class="stack-groups scrollable" role="list">
+
+      <!-- Web Development -->
+      <div class="stack-group" role="listitem" aria-label="Web Development Stack">
+        <h3>Web Development</h3>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="assets/img/react.svg" alt="React" loading="lazy"><span class="tech-name">React / Next.js</span></li>
+          <li class="tech-item"><img src="assets/img/node.svg" alt="Node.js" loading="lazy"><span class="tech-name">Node.js / Express</span></li>
+          <li class="tech-item"><img src="assets/img/postgres.svg" alt="PostgreSQL" loading="lazy"><span class="tech-name">PostgreSQL / MongoDB</span></li>
+        </ul>
       </div>
-    </section>
+
+      <!-- App Development -->
+      <div class="stack-group" role="listitem" aria-label="App Development Stack">
+        <h3>App Development</h3>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="assets/img/flutter.svg" alt="Flutter" loading="lazy"><span class="tech-name">Flutter</span></li>
+          <li class="tech-item"><img src="assets/img/swift.svg" alt="Swift" loading="lazy"><span class="tech-name">Swift (iOS)</span></li>
+          <li class="tech-item"><img src="assets/img/kotlin.svg" alt="Kotlin" loading="lazy"><span class="tech-name">Kotlin (Android)</span></li>
+        </ul>
+      </div>
+
+      <!-- Cloud & Enterprise -->
+      <div class="stack-group" role="listitem" aria-label="Cloud & Enterprise Stack">
+        <h3>Cloud & Enterprise</h3>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="assets/img/aws.svg" alt="AWS" loading="lazy"><span class="tech-name">AWS / Firebase</span></li>
+          <li class="tech-item"><img src="assets/img/docker.svg" alt="Docker" loading="lazy"><span class="tech-name">Docker / Kubernetes</span></li>
+          <li class="tech-item"><img src="assets/img/graphql.svg" alt="GraphQL" loading="lazy"><span class="tech-name">GraphQL / REST APIs</span></li>
+        </ul>
+      </div>
+
+      <!-- Emerging Tech -->
+      <div class="stack-group" role="listitem" aria-label="Emerging Technologies Stack">
+        <h3>Emerging Technologies</h3>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="assets/img/openai.svg" alt="AI" loading="lazy"><span class="tech-name">OpenAI / LangChain</span></li>
+          <li class="tech-item"><img src="assets/img/threejs.svg" alt="Three.js" loading="lazy"><span class="tech-name">Three.js / Unity</span></li>
+          <li class="tech-item"><img src="assets/img/ethereum.svg" alt="Blockchain" loading="lazy"><span class="tech-name">Ethereum / Solidity</span></li>
+        </ul>
+      </div>
+
+      <!-- Duplicate for seamless loop -->
+      <!-- Web Development -->
+      <div class="stack-group" role="listitem" aria-label="Web Development Stack">
+        <h3>Web Development</h3>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="assets/img/react.svg" alt="React" loading="lazy"><span class="tech-name">React / Next.js</span></li>
+          <li class="tech-item"><img src="assets/img/node.svg" alt="Node.js" loading="lazy"><span class="tech-name">Node.js / Express</span></li>
+          <li class="tech-item"><img src="assets/img/postgres.svg" alt="PostgreSQL" loading="lazy"><span class="tech-name">PostgreSQL / MongoDB</span></li>
+        </ul>
+      </div>
+
+      <!-- App Development -->
+      <div class="stack-group" role="listitem" aria-label="App Development Stack">
+        <h3>App Development</h3>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="assets/img/flutter.svg" alt="Flutter" loading="lazy"><span class="tech-name">Flutter</span></li>
+          <li class="tech-item"><img src="assets/img/swift.svg" alt="Swift" loading="lazy"><span class="tech-name">Swift (iOS)</span></li>
+          <li class="tech-item"><img src="assets/img/kotlin.svg" alt="Kotlin" loading="lazy"><span class="tech-name">Kotlin (Android)</span></li>
+        </ul>
+      </div>
+
+      <!-- Cloud & Enterprise -->
+      <div class="stack-group" role="listitem" aria-label="Cloud & Enterprise Stack">
+        <h3>Cloud & Enterprise</h3>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="assets/img/aws.svg" alt="AWS" loading="lazy"><span class="tech-name">AWS / Firebase</span></li>
+          <li class="tech-item"><img src="assets/img/docker.svg" alt="Docker" loading="lazy"><span class="tech-name">Docker / Kubernetes</span></li>
+          <li class="tech-item"><img src="assets/img/graphql.svg" alt="GraphQL" loading="lazy"><span class="tech-name">GraphQL / REST APIs</span></li>
+        </ul>
+      </div>
+
+      <!-- Emerging Tech -->
+      <div class="stack-group" role="listitem" aria-label="Emerging Technologies Stack">
+        <h3>Emerging Technologies</h3>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="assets/img/openai.svg" alt="AI" loading="lazy"><span class="tech-name">OpenAI / LangChain</span></li>
+          <li class="tech-item"><img src="assets/img/threejs.svg" alt="Three.js" loading="lazy"><span class="tech-name">Three.js / Unity</span></li>
+          <li class="tech-item"><img src="assets/img/ethereum.svg" alt="Blockchain" loading="lazy"><span class="tech-name">Ethereum / Solidity</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- <div class="tech-stack-footer">
+      <a href="tech-stack.html" class="cta-inline">View Full Tech Stack →</a>
+    </div> -->
+  </div>
+</section>
+
 
     <div class="gradient-divider"></div>
 
@@ -364,13 +441,67 @@
 
     <section class="cta">
       <h3>Get Started with Our Web Development Services</h3>
-      <p><a href="contact.html" class="cta-button">Contact us today</a></p>
+      <p><a href="contact.html" class="cta-button">Contact Us</a></p>
     </section>
   </main>
 
   <div id="footer-placeholder"></div>
     <script src="assets/js/faq.js" defer></script>
 
+    <style>
+      .tech-stack.compact {
+  padding: 80px 0;
+}
+
+.tech-stack .stack-groups.scrollable {
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 1rem;
+}
+
+.tech-stack .stack-group {
+  min-width: 280px;
+  flex: 0 0 auto;
+  background: var(--card-bg, #fff);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+
+.tech-stack .stack-group:hover {
+  transform: translateY(-5px);
+}
+
+.tech-stack .stack-group h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.tech-stack .tech-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tech-stack .tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.tech-stack .tech-item img {
+  width: 24px;
+  height: 24px;
+}
+
+.tech-stack-footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+    </style>
 </body>
 
 </html>
