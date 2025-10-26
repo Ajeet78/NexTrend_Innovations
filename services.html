@@ -12,17 +12,8 @@
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="assets/js/script.js" defer></script>
-  <style>
-    .stack-groups.scrollable {
-      display: flex;
-      width: 100%;
-      animation: auto-scroll 30s linear infinite;
-    }
-    @keyframes auto-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-  </style>
+ 
+
 </head>
 
 <body>
@@ -228,7 +219,7 @@
     </p>
 
     <!-- Horizontal scroll for smaller screens -->
-    <div class="stack-groups scrollable" role="list">
+    <div class="groups scrollable" role="list">
 
       <!-- Web Development -->
       <div class="stack-group" role="listitem" aria-label="Web Development Stack">
@@ -453,7 +444,7 @@
   padding: 80px 0;
 }
 
-.tech-stack .stack-groups.scrollable {
+.tech-stack .groups.scrollable {
   display: flex;
   gap: 2rem;
   padding-bottom: 1rem;
