@@ -176,7 +176,7 @@ body {
     max-width: 1200px;
     margin: auto;
     padding: 1rem;
-    /* Adjusted padding for better responsiveness */
+
 }
 
 .reveal {
@@ -4716,4 +4716,17 @@ a.blog-post {
     .dropdown::after {
         display: none;
     }
+}
+
+
+/* ==========================================================================
+   24. RECAPTCHA
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+   .g-recaptcha {
+    transform: scale(0.77);
+    -webkit-transform: scale(0.77);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+}
 }
