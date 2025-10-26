@@ -1,10 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+    // --- FAQ Toggle Logic ---
     const faqQuestions = document.querySelectorAll('.faq-question');
 
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
             const expanded = question.getAttribute('aria-expanded') === 'true';
-            
+
             // Close all other FAQs first
             faqQuestions.forEach(otherQuestion => {
                 if (otherQuestion !== question) {
@@ -13,17 +14,61 @@ document.addEventListener('DOMContentLoaded', () => {
                     const otherAnswer = document.getElementById(otherAnswerId);
                     if (otherAnswer) {
                         otherAnswer.hidden = true;
+                        otherAnswer.classList.remove('open');
                     }
                 }
             });
-            
+
             // Toggle the clicked FAQ
             question.setAttribute('aria-expanded', !expanded);
             const answerId = question.getAttribute('aria-controls');
             const answer = document.getElementById(answerId);
             if (answer) {
-                answer.hidden = expanded;
+                if (expanded) {
+                    answer.hidden = true;
+                    answer.classList.remove('open');
+                } else {
+                    answer.hidden = false;
+                    // Use setTimeout to allow DOM update before adding class for animation
+                    setTimeout(() => answer.classList.add('open'), 10);
+                }
             }
         });
     });
+
+    // --- JSON-LD FAQ Schema Generator ---
+    const faqItems = document.querySelectorAll(".faq-item");
+    if (faqItems.length > 0) {
+        let faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": []
+        };
+
+        faqItems.forEach(item => {
+            const questionEl = item.querySelector(".faq-question span");
+            const answerEl = item.querySelector(".faq-answer");
+            if (questionEl && answerEl) {
+                faqSchema.mainEntity.push({
+                    "@type": "Question",
+                    "name": questionEl.textContent.trim(),
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": answerEl.innerHTML.trim()
+                    }
+                });
+            }
+        });
+
+        // Remove old schema if exists
+        const oldScript = document.getElementById("faq-schema");
+        if (oldScript) oldScript.remove();
+
+        // Inject JSON-LD into <head>
+        const script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.id = "faq-schema";
+        script.textContent = JSON.stringify(faqSchema, null, 2);
+        document.head.appendChild(script);
+    }
 });

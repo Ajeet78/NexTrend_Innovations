@@ -224,64 +224,7 @@
 
 
 
-        <script>
-            document.addEventListener('DOMContentLoaded', async () => {
-                const container = document.getElementById('featured-projects-container');
-                container.innerHTML = '<p>Loading featured projects...</p>';
-
-                try {
-                    const response = await fetch('/api/blog-posts');
-                    if (!response.ok) throw new Error('Failed to fetch projects');
-                    const posts = await response.json();
-
-                    // Filter for case studies and take the first 3 as featured
-                    const featuredCaseStudies = posts
-                        .filter(post => post.postType === 'caseStudy')
-                        .slice(0, 3);
-
-                    if (featuredCaseStudies.length === 0) {
-                        container.innerHTML = '<p>No featured projects available.</p>';
-                        return;
-                    }
-
-                    container.innerHTML = '';
-
-                    featuredCaseStudies.forEach(post => {
-                        const projectItem = document.createElement('div');
-                        projectItem.className = 'project-item';
-
-                        const link = document.createElement('a');
-                        link.href = `case-study-template.html?id=${post.id}`;
-                        link.style.textDecoration = 'none';
-                        link.style.color = 'inherit';
-                        link.style.display = 'block';
-
-                        const img = document.createElement('img');
-                        img.src = post.image;
-                        img.alt = post.title;
-                        img.className = 'project-image';
-
-                        const title = document.createElement('h3');
-                        title.className = 'project-title';
-                        title.textContent = post.title;
-
-                        const excerpt = document.createElement('p');
-                        excerpt.className = 'project-excerpt';
-                        excerpt.textContent = post.snippet;
-
-                        link.appendChild(img);
-                        link.appendChild(title);
-                        link.appendChild(excerpt);
-
-                        projectItem.appendChild(link);
-                        container.appendChild(projectItem);
-                    });
-                } catch (error) {
-                    container.innerHTML = '<p>Unable to load featured projects at this time.</p>';
-                    console.error(error);
-                }
-            });
-        </script>
+       
 
         <!-- Testimonials Section -->
         <section class="testimonials-section">
@@ -415,34 +358,6 @@
 
             </div>
         </section>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', async () => {
-                const container = document.getElementById('blog-posts-container');
-                try {
-                    const response = await fetch('/api/blog-posts');
-                    if (!response.ok) throw new Error('Failed to fetch blog posts');
-                    const posts = await response.json();
-
-                    container.innerHTML = posts.map(post => `
-        <a href="blog-post.html?id=${post.id}" class="blog-post" data-category="${post.category}">
-    
-        <div>
-          <img src="${post.image}" alt="${post.title}">
-                <h3 class="blog-post-title">${post.title}</h3>
-                <!-- <p class="blog-post-excerpt">${post.snippet}</p> -->
-                <!-- <p class="blog-post-meta">Posted on <time datetime="${post.date}">${new Date(post.date).toLocaleDateString()}</time></span></p> -->
-                <!-- <a href="${post.url}" class="blog-post-link" aria-label="Read more about ${post.title}">Read More</a> -->
-            </div>
-
-            </a>
-        `).join('');
-                } catch (error) {
-                    container.innerHTML = '<p>Unable to load latest blog posts at this time.</p>';
-                    console.error(error);
-                }
-            });
-        </script>
 
 
     </main>
@@ -797,7 +712,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section reveal">
+    <section class="faq-section">
         <div class="container">
             <div class="faq-header">
                 <h2 class="section-title">Frequently Asked Questions</h2>
@@ -975,51 +890,7 @@
         // Disable interaction outside the modal
         document.body.style.overflow = "hidden";
     </script>  -->
-    <script>
-        document.getElementById('enquiry-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            const msg = document.getElementById('form-message');
-
-            // Validate form fields
-            if (!name || !email || !message) {
-                msg.textContent = 'Please fill in all fields.';
-                msg.style.color = 'red';
-                return;
-            }
-
-            try {
-                const res = await fetch('/api/send-enquiry', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, message })
-                });
-
-                if (res.ok) {
-                    msg.textContent = 'Enquiry sent successfully!';
-                    msg.style.color = 'green';
-                    this.reset(); // Clear the form
-                } else {
-                    const errorData = await res.json();
-                    msg.textContent = errorData.message || 'Failed to send enquiry.';
-                    msg.style.color = 'red';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                msg.textContent = 'An error occurred. Please check the server or network.';
-                msg.style.color = 'red';
-            }
-
-            // Clear the message after 3 seconds
-            setTimeout(() => {
-                msg.textContent = '';
-            }, 3000);
-        });
-    </script>
+   
 
     <!-- Contact Modal Structure -->
     <div id="contact-modal" class="modal" style="display: none;">
@@ -1107,95 +978,6 @@
         </div>
     </div>
 
-    <script>
-        // Contact Modal Functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            const openModalBtn = document.getElementById('open-contact-modal');
-            const closeModalBtn = document.getElementById('close-contact-modal');
-            const contactModal = document.getElementById('contact-modal');
-            const closeSuccessBtn = document.getElementById('close-success-popup');
-            const modalSuccessPopup = document.getElementById('modal-successPopup');
-            const modalForm = document.getElementById('contactForm');
-
-            // Open modal when button is clicked
-            openModalBtn.addEventListener('click', function () {
-                contactModal.style.display = 'flex';
-            });
-
-            // Close modal when close button is clicked
-            closeModalBtn.addEventListener('click', function () {
-                contactModal.style.display = 'none';
-            });
-
-            // Close success popup when close button is clicked
-            closeSuccessBtn.addEventListener('click', function () {
-                modalSuccessPopup.style.display = 'none';
-            });
-
-            // Close modal when clicking outside of modal content
-            window.addEventListener('click', function (event) {
-                if (event.target == contactModal) {
-                    contactModal.style.display = 'none';
-                }
-                if (event.target == modalSuccessPopup) {
-                    modalSuccessPopup.style.display = 'none';
-                }
-            });
-
-            // Handle form submission
-            modalForm.addEventListener('submit', async function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-                if (grecaptcha.getResponse() === "") {
-                    alert("Please complete the CAPTCHA");
-                    return;
-                }
-
-                const formData = new FormData(modalForm);
-                formData.append('g-recaptcha-response', grecaptcha.getResponse());
-
-                try {
-                    const response = await fetch('/submit-form', {
-                        method: 'POST',
-                        body: formData,
-                    });
-
-                    if (response.ok) {
-                        modalSuccessPopup.style.display = 'flex'; // Show success popup
-                        modalForm.reset(); // Reset the form
-                        grecaptcha.reset();
-                        // Reset upload label text
-                        uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
-                        setTimeout(function () {
-                            modalSuccessPopup.style.display = 'none'; // Hide popup after 3 seconds
-                        }, 3000);
-                    } else {
-                        alert('Failed to send inquiry. Please try again.');
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('An error occurred. Please try again.');
-                }
-            });
-
-            // Update upload label text on file select
-            const uploadInput = document.getElementById('modal-upload');
-            const uploadLabel = document.querySelector('label[for="modal-upload"]');
-
-            uploadInput.addEventListener('change', function () {
-                if (uploadInput.files.length > 0) {
-                    uploadLabel.innerHTML = `${uploadInput.files[0].name} <span id="remove-file" style="cursor:pointer; color:red; font-weight:bold; margin-left:8px;">&times;</span>`;
-                    const removeBtn = document.getElementById('remove-file');
-                    removeBtn.addEventListener('click', function () {
-                        uploadInput.value = '';
-                        uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
-                    });
-                } else {
-                    uploadLabel.innerHTML = '<i class="fas fa-upload"></i> Browse to upload (optional)';
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
