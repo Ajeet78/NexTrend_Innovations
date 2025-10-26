@@ -4730,3 +4730,22 @@ a.blog-post {
     -webkit-transform-origin: 0 0;
 }
 }
+
+.groups.scrollable {
+  display: flex;
+  width: max-content; 
+  animation: auto-scroll 15s linear infinite; 
+}
+
+@keyframes auto-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* loop halfway since you duplicated items */
+  }
+}
+
+.groups.scrollable:hover {
+  animation-play-state: paused;
+}
