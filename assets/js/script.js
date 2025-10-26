@@ -132,8 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Ensure aria attribute exists
                 if (!toggle.hasAttribute('aria-expanded')) toggle.setAttribute('aria-expanded', 'false');
 
+                // Remove hover event listeners to prevent dropdown on cursor hover
+                // Only toggle dropdown on click
                 toggle.addEventListener('click', function(e) {
-                    // Prevent navigation and toggle menu on all screen sizes
                     e.preventDefault();
                     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
 
