@@ -3704,6 +3704,7 @@ a.blog-post {
       border-right: 10px solid transparent; 
       border-top: 10px solid #4CAF50;
   } */
+   
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .step-container {
@@ -4629,8 +4630,7 @@ a.blog-post {
     background: transparent;
 }
 
-/* Show when hovering or when JS toggles the .show class */
-.dropdown:hover>.dropdown-menu,
+/* Show when JS toggles the .show class */
 .nav-item.dropdown:focus-within>.dropdown-menu,
 .nav-item.dropdown.show>.dropdown-menu {
     display: block;
@@ -4640,11 +4640,6 @@ a.blog-post {
     visibility: visible;
 }
 
-/* Add a small transition delay to prevent immediate hiding */
-.dropdown:hover>.dropdown-menu {
-    transition-delay: 0.1s;
-}
-
 /* Dropdown arrow animation */
 .nav-item .dropdown-arrow {
     display: inline-block;
@@ -4652,7 +4647,7 @@ a.blog-post {
     vertical-align: middle;
     transform: rotate(0deg);
     transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1);
-    color: #424242;
+    color: #ffffff;
     /* stroke color via currentColor */
     transform-origin: center;
 }
